@@ -1,11 +1,11 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from 'vue';
+import App from './app.vue';
+import router from './router';
 // 设置全局样式
-import './global.less'
+import './global.less';
 
-const app = createApp(App)
+const app = createApp(App);
 // 设置路由器
-app.use(router)
+app.use(router);
 
-app.mount('#app')
+app.mount('#app');
