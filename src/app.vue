@@ -38,7 +38,17 @@
         </div>
       </div>
     </div>
-    <div class="part-2"></div>
+    <div class="part-2">
+      <div class="content">
+        <div class="left">
+          <div class="title">配置即代码</div>
+          <div class="desc">国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验</div>
+        </div>
+        <div class="right">
+          <div class="dsl-viewer"></div>
+        </div>
+      </div>
+    </div>
     <div class="part-3"></div>
     <div class="part-4"></div>
     <div class="part-5"></div>
@@ -208,6 +218,47 @@ export default defineComponent({});
   .part-2 {
     height: 833px;
     background-image: url('@/assets/images/part-2.png');
+
+    .content {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      height: 100%;
+
+      .left {
+        padding-top: 216px;
+        padding-left: 20px;
+        width: 35%;
+
+        .title {
+          font-size: 30px;
+          font-weight: bold;
+          color: #042749;
+        }
+
+        .desc {
+          margin-top: 24px;
+          width: 303px;
+          font-size: 16px;
+          color: #042749;
+          line-height: 26px;
+          text-align: justify;
+        }
+      }
+
+      .right {
+        padding-top: 183px;
+        padding-right: 20px;
+        width: 65%;
+
+        .dsl-viewer {
+          height: 530px;
+          background-color: #19253B;
+          box-shadow: 0 -10px 40px 0 #768094;
+          border-radius: 4px;
+        }
+      }
+    }
   }
 
   .part-3 {
