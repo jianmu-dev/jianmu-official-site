@@ -62,7 +62,12 @@
         </div>
       </div>
     </div>
-    <div class="part-4"></div>
+    <div class="part-4">
+      <div class="content">
+        <div class="title">组件生态</div>
+        <div class="desc">流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然</div>
+      </div>
+    </div>
     <div class="part-5"></div>
     <div class="part-6"></div>
     <div class="bottom">
@@ -320,6 +325,29 @@ export default defineComponent({
   .part-4 {
     height: 808px;
     background-image: url('@/assets/images/part-4.png');
+
+    .content {
+      max-width: 1600px;
+      margin: 0 auto;
+
+      padding-top: 280px;
+      padding-left: 100px;
+
+      .title {
+        font-size: 30px;
+        font-weight: bold;
+        color: #042749;
+      }
+
+      .desc {
+        margin-top: 24px;
+        width: 303px;
+        font-size: 16px;
+        color: #042749;
+        line-height: 26px;
+        text-align: justify;
+      }
+    }
   }
 
   .part-5 {
