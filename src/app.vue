@@ -68,8 +68,13 @@
         <div class="desc">流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然</div>
       </div>
     </div>
-    <div class="part-5"></div>
-    <div class="part-6"></div>
+    <div class="part-5">
+      <div class="title">平台中立</div>
+      <div class="desc">平台中立说明内容后面补全</div>
+    </div>
+    <div class="part-6">
+      <div class="title">产品特性</div>
+    </div>
     <div class="bottom">
       &copy;2012-2020 版权所有 九州云信息科技有限公司 浙ICP备 12032350号-3
     </div>
@@ -353,11 +358,35 @@ export default defineComponent({
   .part-5 {
     height: 895px;
     background-image: url('@/assets/images/part-5.png');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+      font-size: 30px;
+      font-weight: bold;
+      color: #042749;
+    }
+
+    .desc {
+      margin-top: 16px;
+      font-size: 16px;
+      color: #042749;
+    }
   }
 
   .part-6 {
     height: 834px;
     background-image: url('@/assets/images/part-6.png');
+
+    .title {
+      padding-top: 195px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #042749;
+      text-align: center;
+    }
   }
 
   .bottom {
