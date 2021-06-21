@@ -49,7 +49,19 @@
         </div>
       </div>
     </div>
-    <div class="part-3"></div>
+    <div class="part-3">
+      <div class="content">
+        <div class="title">流程可视化</div>
+        <div class="desc">流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然</div>
+        <div class="carousel">
+          <el-carousel indicator-position="outside" height="530px">
+            <el-carousel-item v-for="(img, index) in carouselImgs" :key="index">
+              <img :src="img"/>
+            </el-carousel-item>
+          </el-carousel>
+        </div>
+      </div>
+    </div>
     <div class="part-4"></div>
     <div class="part-5"></div>
     <div class="part-6"></div>
@@ -61,8 +73,19 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import carouselImg1 from '@/assets/images/carousel/1.png';
+import carouselImg2 from '@/assets/images/carousel/2.png';
+import carouselImg3 from '@/assets/images/carousel/3.png';
+import carouselImg4 from '@/assets/images/carousel/4.png';
+import carouselImg5 from '@/assets/images/carousel/5.png';
 
-export default defineComponent({});
+export default defineComponent({
+  setup() {
+    return {
+      carouselImgs: [carouselImg1, carouselImg2, carouselImg3, carouselImg4, carouselImg5],
+    };
+  },
+});
 </script>
 
 <style scoped lang="less">
@@ -264,6 +287,34 @@ export default defineComponent({});
   .part-3 {
     height: 775px;
     background-image: url('@/assets/images/part-3.png');
+
+    .content {
+      padding: 0 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .title {
+        margin-top: 64px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #042749;
+      }
+
+      .desc {
+        margin-top: 24px;
+        font-size: 16px;
+        color: #042749;
+      }
+
+      .carousel {
+        margin-top: 53px;
+        width: 1060px;
+        box-shadow: 0 0 40px 0 #94A6C9;
+      }
+    }
   }
 
   .part-4 {
