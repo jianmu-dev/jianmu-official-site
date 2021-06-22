@@ -120,14 +120,21 @@ export default defineComponent({
   position: relative;
   z-index: 0;
   // 必须与codemirror主题背景保持一致
-  background-color: #1f2430;
+  background-color: #19253B;
 
   ::v-deep(.CodeMirror) {
     z-index: 0;
     height: inherit;
+    background-color: #19253B;
 
     .CodeMirror-gutters {
       z-index: 0;
+      background-color: #19253B;
+    }
+
+    .CodeMirror-linenumber {
+      // 字体设为等宽
+      font-family: 'Helvetica Neue';
     }
   }
 }
