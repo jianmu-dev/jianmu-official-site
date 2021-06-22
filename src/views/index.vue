@@ -444,17 +444,17 @@ export default defineComponent({
       padding-left: 100px;
 
       .title {
-        font-size: 30px;
+        font-size: 20px;
         font-weight: bold;
         color: #042749;
       }
 
       .desc {
-        margin-top: 24px;
-        width: 303px;
-        font-size: 16px;
-        color: #042749;
-        line-height: 26px;
+        margin-top: 20px;
+        width: 270px;
+        font-size: 14px;
+        color: #385775;
+        line-height: 24px;
         text-align: justify;
       }
     }
