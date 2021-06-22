@@ -19,10 +19,7 @@
       <div class="left">
         <div class="content">
           <div class="title">持续集成平台</div>
-          <div class="subtitle">
-            <div>持续集成平台是国产化的开源持续集成平台，</div>
-            <div>致力于为国内开发者提供更好的CI/CD使用体验</div>
-          </div>
+          <div class="desc">持续集成平台是国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验</div>
           <div class="operation">
             <button class="large primary">
               <span>快速开始</span>
@@ -183,16 +180,14 @@ export default defineComponent({
     color: #7B8C9C;
     border-width: 0;
     font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
 
     &.large {
-      width: 192px;
+      width: 156px;
       height: 56px;
-      font-size: 20px
     }
 
     &.primary {
@@ -280,6 +275,7 @@ export default defineComponent({
   }
 
   .part-1 {
+    border-top: 1px solid #C2DFFF;
     height: 678px;
     background-image: url('@/assets/images/part-1.png');
 
@@ -298,21 +294,22 @@ export default defineComponent({
         padding-top: 130px;
 
         .title {
-          font-size: 58px;
+          font-size: 40px;
           font-weight: bold;
           color: #042749;
           letter-spacing: 3px;
         }
 
-        .subtitle {
-          margin-top: 33px;
-          font-size: 20px;
-          color: #042749;
-          line-height: 34px;
+        .desc {
+          margin-top: 24px;
+          width: 330px;
+          font-size: 14px;
+          color: #385775;
+          line-height: 24px;
         }
 
         .operation {
-          margin-top: 99px;
+          margin-top: 131px;
 
           button + button {
             margin-left: 40px;
