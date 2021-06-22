@@ -45,7 +45,9 @@
           <div class="desc">国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验</div>
         </div>
         <div class="right">
-          <div class="dsl-viewer"></div>
+          <div class="dsl-viewer">
+            <jm-dsl-editor :value="dsl" readonly/>
+          </div>
         </div>
       </div>
     </div>
@@ -92,6 +94,69 @@ import carouselImg5 from '@/assets/images/carousel/5.png';
 export default defineComponent({
   setup() {
     return {
+      dsl: 'event:\n' +
+        '  push_event:\n' +
+        '    branch: ${branch_name} # dev, master\n' +
+        '  tag_event:\n' +
+        '    tag: ${branch_name} # tag_name\n' +
+        '\n' +
+        'param:\n' +
+        '  branch_name: master\n' +
+        '  git_site: gitee.com\n' +
+        '\n' +
+        'workflow:\n' +
+        '  name: 建木-前端CI&CD流程\n' +
+        '  ref: jianmu_ui_ci_cd\n' +
+        '  description: 建木-前端CI&CD流程\n' +
+        '  Start_1:\n' +
+        '    type: start\n' +
+        '    targets:\n' +
+        '      - Git_1\n' +
+        '  Git_1:\n' +
+        '    type: git_clone0.3\n' +
+        '    sources:\n' +
+        '      - Start_1\n' +
+        '    targets:\n' +
+        '      - Build_1\n' +
+        '    param:\n' +
+        '      workspace: jianmu-ui\n' +
+        '      commit_branch: ${branch_name}\n' +
+        '      remote_url: https://gitee.com/jianmu_dev/jianmu-ui.git\n' +
+        '      netrc_machine: ${git_site}\n' +
+        '      netrc_username: ((gitee.user))\n' +
+        '      netrc_password: ((gitee.pass))\n' +
+        '  Build_1:\n' +
+        '    type: node14.2\n' +
+        '    sources:\n' +
+        '      - Git_1\n' +
+        '    targets:\n' +
+        '      - Upload_1\n' +
+        '    param:\n' +
+        '      workspace: jianmu-ui\n' +
+        '  Upload_1:\n' +
+        '    type: file_upload0.3\n' +
+        '    param:\n' +
+        '      minio_host: http://192.168.1.24:9000\n' +
+        '      minio_access_key: ((minio.access_key))\n' +
+        '      minio_secret_key: ((minio.secret_key))\n' +
+        '      file_source: "jianmu-ui/dist"\n' +
+        '    sources:\n' +
+        '      - Build_1\n' +
+        '    targets:\n' +
+        '      - SSH_1\n' +
+        '  SSH_1:\n' +
+        '    type: ssh0.4\n' +
+        '    param:\n' +
+        '      ssh_host: ethan@192.168.1.24\n' +
+        '      ssh_private_key: ((ssh.private_key))\n' +
+        '    sources:\n' +
+        '      - Upload_1\n' +
+        '    targets:\n' +
+        '      - End_1\n' +
+        '  End_1:\n' +
+        '    type: end\n' +
+        '    sources:\n' +
+        '      - SSH_1\n',
       carouselImgs: [carouselImg1, carouselImg2, carouselImg3, carouselImg4, carouselImg5],
     };
   },
@@ -289,6 +354,7 @@ export default defineComponent({
           background-color: #19253B;
           box-shadow: 0 -10px 40px 0 #768094;
           border-radius: 4px;
+          overflow: hidden;
         }
       }
     }
