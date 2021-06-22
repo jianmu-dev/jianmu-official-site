@@ -7,7 +7,7 @@
         <div class="title">持续集成平台</div>
       </div>
       <div class="right">
-        <button class="primary">
+        <button class="primary" @click="contribution">
           <span>参与贡献</span>
           <i class="contribution"/>
         </button>
@@ -30,7 +30,7 @@
               <span>文档</span>
               <i class="doc"/>
             </button>
-            <button class="large">
+            <button class="large" @click="example">
               <span>示例</span>
               <i class="example"/>
             </button>
@@ -158,6 +158,12 @@ export default defineComponent({
         '    sources:\n' +
         '      - SSH_1\n',
       carouselImgs: [carouselImg1, carouselImg2, carouselImg3, carouselImg4, carouselImg5],
+      contribution: () => {
+        window.open('https://gitee.com/jianmu_dev', '_blank');
+      },
+      example: () => {
+        window.open('https://ci.jianmu.dev', '_blank');
+      },
     };
   },
 });
