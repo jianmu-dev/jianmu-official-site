@@ -357,7 +357,7 @@ export default defineComponent({
 
         .dsl-viewer {
           padding: 24px 0 24px 14px;
-          height: 530px;
+          height: 482px;
           background-color: #19253B;
           box-shadow: 0 -10px 40px 0 #768094;
           border-radius: 4px;
