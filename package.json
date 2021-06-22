@@ -8,6 +8,7 @@
     "lint": "eslint ./ --ext .vue,.ts,.tsx --cache --fix"
   },
   "dependencies": {
+    "codemirror": "^5.62.0",
     "element-plus": "^1.0.2-beta.48",
     "vue": "^3.0.5",
     "vue-router": "4"
