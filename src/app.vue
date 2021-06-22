@@ -72,7 +72,7 @@
     </div>
     <div class="part-5">
       <div class="title">平台中立</div>
-      <div class="desc">平台中立说明内容后面补全</div>
+<!--      <div class="desc">平台中立说明内容后面补全</div>-->
     </div>
     <div class="part-6">
       <div class="title">产品特性</div>
@@ -436,6 +436,7 @@ export default defineComponent({
     align-items: center;
 
     .title {
+      margin-top: 50px;
       font-size: 30px;
       font-weight: bold;
       color: #042749;
