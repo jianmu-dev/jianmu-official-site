@@ -470,15 +470,15 @@ export default defineComponent({
 
     .title {
       margin-top: 50px;
-      font-size: 30px;
+      font-size: 20px;
       font-weight: bold;
       color: #042749;
     }
 
     .desc {
-      margin-top: 16px;
-      font-size: 16px;
-      color: #042749;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #385775;
     }
   }
 
