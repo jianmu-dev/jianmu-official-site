@@ -488,7 +488,7 @@ export default defineComponent({
 
     .title {
       padding-top: 195px;
-      font-size: 30px;
+      font-size: 20px;
       font-weight: bold;
       color: #042749;
       text-align: center;
