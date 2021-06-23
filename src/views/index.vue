@@ -65,7 +65,7 @@
     </div>
     <div class="part-4">
       <div class="content">
-        <div class="title">节点生态</div>
+        <div class="title" @click="hub">节点生态</div>
         <div class="desc">流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然</div>
       </div>
     </div>
@@ -162,6 +162,9 @@ export default defineComponent({
       },
       example: () => {
         window.open('https://ci.jianmu.dev', '_blank');
+      },
+      hub: () => {
+        window.open('https://hub.jianmu.run', '_blank');
       },
     };
   },
@@ -448,6 +451,11 @@ export default defineComponent({
         font-size: 20px;
         font-weight: bold;
         color: #042749;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       .desc {
