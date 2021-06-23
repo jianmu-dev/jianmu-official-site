@@ -65,7 +65,7 @@
     </div>
     <div class="part-4">
       <div class="content">
-        <div class="title">组件生态</div>
+        <div class="title">节点生态</div>
         <div class="desc">流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然</div>
       </div>
     </div>
