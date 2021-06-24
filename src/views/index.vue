@@ -231,7 +231,7 @@ export default defineComponent({
     margin: 0 auto;
     max-width: 1600px;
     padding: 0 20px;
-    height: 80px;
+    height: 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -506,10 +506,10 @@ export default defineComponent({
 
   .bottom {
     text-align: center;
-    height: 80px;
-    line-height: 80px;
+    height: 64px;
+    line-height: 64px;
     background-color: #096DD9;
-    font-size: 16px;
+    font-size: 14px;
     color: #FFFFFF;
   }
 }
