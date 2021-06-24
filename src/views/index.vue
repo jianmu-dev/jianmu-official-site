@@ -364,7 +364,6 @@ export default defineComponent({
           background-color: #19253B;
           box-shadow: 0 -10px 40px 0 #768094;
           border-radius: 4px;
-          overflow: hidden;
         }
       }
     }
