@@ -95,69 +95,63 @@ export default defineComponent({
     return {
       dsl: 'cron: \'* 5/* * * * ? *\'\n' +
         '\n' +
-        'event:\n' +
-        '  push_event:\n' +
-        '    branch: ${branch_name} # dev, master\n' +
-        '  tag_event:\n' +
-        '    tag: ${branch_name} # tag_name\n' +
-        '\n' +
         'param:\n' +
         '  branch_name: master\n' +
         '  git_site: gitee.com\n' +
         '\n' +
         'workflow:\n' +
-        '  name: 测试流程1\n' +
-        '  ref: flow_1\n' +
-        '  description: 测试流程1的描述1\n' +
-        '  Start_1:\n' +
+        '  name: CI_Flow\n' +
+        '  ref: ci_flow\n' +
+        '  description: jianmu-workflow-core CI Flow\n' +
+        '  Start:\n' +
         '    type: start\n' +
         '    targets:\n' +
-        '      - Git_1\n' +
-        '  Git_1:\n' +
-        '    type: git_clone0.4\n' +
+        '      - GitClone\n' +
+        '  GitClone:\n' +
+        '    type: git_clone:0.4\n' +
         '    sources:\n' +
-        '      - Start_1\n' +
+        '      - Start\n' +
         '    targets:\n' +
-        '      - Build_1\n' +
+        '      - Build\n' +
         '    param:\n' +
         '      commit_branch: ${branch_name}\n' +
         '      remote_url: https://gitee.com/jianmu_dev/jianmu-workflow-core.git\n' +
         '      netrc_machine: ${git_site}\n' +
         '      netrc_username: ((gitee.user))\n' +
         '      netrc_password: ((gitee.pass))\n' +
-        '  Build_1:\n' +
-        '    type: maven13\n' +
+        '  Build:\n' +
+        '    type: maven:11\n' +
         '    sources:\n' +
-        '      - Git_1\n' +
+        '      - GitClone\n' +
         '    targets:\n' +
-        '      - Condition_1\n' +
+        '      - Condition\n' +
         '    param:\n' +
         '      cmd: mvn install\n' +
-        '  Condition_1:\n' +
+        '  Condition:\n' +
         '    type: condition\n' +
         '    sources:\n' +
-        '      - Build_1\n' +
+        '      - Build\n' +
         '    expression: Git_1["commit_branch"] == "dev"\n' +
         '    cases:\n' +
         '      false: Notice_1\n' +
         '      true: Notice_2\n' +
         '  Notice_1:\n' +
-        '    type: maven11\n' +
+        '    type: sms:0.1\n' +
         '    param:\n' +
         '      text: \'"Build error, msg is: " + ${Build_1.build_error_message}\'\n' +
         '    sources:\n' +
-        '      - Condition_1\n' +
+        '      - Condition\n' +
         '    targets:\n' +
-        '      - End_1\n' +
+        '      - End\n' +
         '  Notice_2:\n' +
-        '    type: maven12\n' +
+        '    type: weixin:0.1\n' +
         '    param:\n' +
         '      text: ${Build_1.build_info}\n' +
         '    sources:\n' +
-        '      - Condition_1\n' +
+        '      - Condition\n' +
         '    targets:\n' +
-        '      - End_1\n' +
-        '  End_1:\n' +
+        '      - End\n' +
+        '  End:\n' +
         '    type: end\n' +
         '    sources:\n' +
         '      - Notice_1\n' +
