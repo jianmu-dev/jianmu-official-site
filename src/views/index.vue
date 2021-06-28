@@ -21,11 +21,11 @@
           <div class="title">持续集成平台</div>
           <div class="desc">持续集成平台是国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验</div>
           <div class="operation">
-            <button class="large primary">
+            <button class="large primary" @click="quickStart">
               <span>快速开始</span>
               <i class="quick-start"/>
             </button>
-            <button class="large">
+            <button class="large" @click="doc">
               <span>文档</span>
               <i class="doc"/>
             </button>
@@ -159,6 +159,12 @@ export default defineComponent({
       carouselImgs: [carouselImg1, carouselImg2, carouselImg3, carouselImg4, carouselImg5],
       contribution: () => {
         window.open('https://gitee.com/jianmu_dev', '_blank');
+      },
+      quickStart: () => {
+        window.open('https://docs.jianmu.dev/guide/quick-start.html', '_blank');
+      },
+      doc: () => {
+        window.open('https://docs.jianmu.dev/guide/index.html', '_blank');
       },
       example: () => {
         window.open('https://ci.jianmu.dev', '_blank');
