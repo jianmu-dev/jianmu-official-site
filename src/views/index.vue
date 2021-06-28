@@ -170,7 +170,7 @@ export default defineComponent({
         window.open('https://ci.jianmu.dev', '_blank');
       },
       hub: () => {
-        window.open('https://hub.jianmu.run', '_blank');
+        window.open('https://hub.jianmu.dev', '_blank');
       },
     };
   },
