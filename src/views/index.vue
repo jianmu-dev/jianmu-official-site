@@ -9,6 +9,10 @@
         <div class="title">持续集成平台</div>
       </div>
       <div class="right">
+        <button @click="hub">
+          <span>节点库</span>
+          <i class="hub"/>
+        </button>
         <button class="primary" @click="contribution">
           <span>参与贡献</span>
           <i class="contribution"/>
@@ -157,6 +161,9 @@ export default defineComponent({
         '      - Notice_1\n' +
         '      - Notice_2\n',
       carouselImgs: [carouselImg1, carouselImg2, carouselImg3, carouselImg4, carouselImg5],
+      hub: () => {
+        window.open('https://hub.jianmu.dev', '_blank');
+      },
       contribution: () => {
         window.open('https://gitee.com/jianmu_dev', '_blank');
       },
@@ -169,9 +176,6 @@ export default defineComponent({
       example: () => {
         window.open('https://ci.jianmu.dev', '_blank');
       },
-      hub: () => {
-        window.open('https://hub.jianmu.dev', '_blank');
-      },
     };
   },
 });
@@ -180,15 +184,15 @@ export default defineComponent({
 <style scoped lang="less">
 .home-page {
   button {
-    width: 140px;
+    width: 136px;
     padding: 0 14px 0 22px;
-    height: 44px;
+    height: 36px;
     box-shadow: 0 6px 14px 0 #ACC3EE;
     border-radius: 4px;
     background-color: #FFFFFF;
     color: #7B8C9C;
     border-width: 0;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     display: inline-flex;
     justify-content: space-between;
@@ -196,7 +200,8 @@ export default defineComponent({
 
     &.large {
       width: 156px;
-      height: 56px;
+      height: 46px;
+      font-size: 16px;
     }
 
     &.primary {
@@ -205,11 +210,15 @@ export default defineComponent({
     }
 
     i {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center center;
+
+      &.hub {
+        background-image: url('@/assets/svgs/hub.svg');
+      }
 
       &.contribution {
         background-image: url('@/assets/svgs/contribution.svg');
@@ -274,7 +283,9 @@ export default defineComponent({
     }
 
     .right {
-
+      button + button {
+        margin-left: 20px;
+      }
     }
   }
 
