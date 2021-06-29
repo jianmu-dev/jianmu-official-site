@@ -247,8 +247,8 @@ export default defineComponent({
       align-items: center;
 
       .logo {
-        width: 118px;
-        height: 30px;
+        width: 130px;
+        height: 35px;
         background-image: url('@/assets/svgs/logo.svg');
         background-repeat: no-repeat;
         background-size: contain;
