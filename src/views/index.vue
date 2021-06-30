@@ -81,7 +81,7 @@
       <div class="title">产品特性</div>
     </div>
     <div class="bottom">
-      &copy;2012-2020 版权所有 九州云信息科技有限公司 浙ICP备 12032350号-3
+      &copy;2020-{{ new Date().getFullYear() }} 版权所有 九州云信息科技有限公司
     </div>
   </div>
 </template>
