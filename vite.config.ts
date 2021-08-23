@@ -10,7 +10,7 @@ export default (
   return {
     plugins: [vue()],
     // base public path
-    base: command === 'build' && mode === 'production' ? `https://cdn.jianmu.run/${name}/${version}/` : '/',
+    base: command === 'build' && mode === 'cdn' ? `https://cdn.jianmu.run/${name}/${version}/` : '/',
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),

@@ -15,6 +15,7 @@ pipeline:
     type: node_build:14.16.1-alpine3.13
     param:
       workspace: jianmu-official-site
+      build_arg: --mode cdn
   qiniu_upload:
     type: jianmu_runner_qiniu:0.1.2
     param:
