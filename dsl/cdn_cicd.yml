@@ -37,6 +37,6 @@ pipeline:
     param:
       bot_webhook_url: ((charbot.webhook_url))
       mentioned_moblie_list: "[]"
-      text_content: "jianmu官网CDN更新完成"
+      text_content: "建木官网CDN更新完成"
       msgtype: "text"
       mentioned_list: "[]"
