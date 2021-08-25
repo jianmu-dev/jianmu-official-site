@@ -12,7 +12,7 @@ pipeline:
       netrc_username: ((gitee.username))
       netrc_password: ((gitee.password))
   node_build:
-    type: node_build:14.16.1-alpine3.13
+    type: node_build:14.16.1-alpine3.13-result
     param:
       workspace: jianmu-official-site
       build_arg: --mode cdn
@@ -22,8 +22,8 @@ pipeline:
       qiniu_bucket: jianmu
       qiniu_ak: ((qiniu.AccessKey))
       qiniu_sk: ((qiniu.SecretKey))
-      qiniu_upload_version: 0.0.1
-      qiniu_upload_name: jianmu-official-site
+      qiniu_upload_name: ${node_build.package_name}
+      qiniu_upload_version: ${node_build.package_version}
       qiniu_upload_dir: jianmu-official-site/dist
   update_index_page:
     type: ssh_update:v1.0
