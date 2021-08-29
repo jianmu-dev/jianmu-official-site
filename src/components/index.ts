@@ -1,7 +1,7 @@
 import { App } from 'vue';
 import JmScrollbar from './scrollbar';
 import JmDslEditor from './dsl-editor/index.vue';
-import { ElCarousel, ElCarouselItem } from 'element-plus';
+import { ElCarousel, ElCarouselItem, ElTooltip } from 'element-plus';
 // 设置element-plus自定义主题色样式
 import './theme/custom-element-plus/index.scss';
 
@@ -14,5 +14,6 @@ export default {
     // 按需加载
     app.use(ElCarousel);
     app.use(ElCarouselItem);
+    app.use(ElTooltip);
   },
 };

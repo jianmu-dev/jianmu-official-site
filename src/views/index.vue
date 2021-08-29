@@ -49,6 +49,16 @@
         </div>
         <div class="right">
           <div class="dsl-viewer">
+            <div class="labels">
+              <el-tooltip content="流程DSL" placement="top">
+                <div :class="{workflow: true, selected: dslType === DslTypeEnum.WORKFLOW}"
+                     @click="dslType = DslTypeEnum.WORKFLOW"/>
+              </el-tooltip>
+              <el-tooltip content="管道DSL" placement="top">
+                <div :class="{pipeline: true, selected: dslType === DslTypeEnum.PIPELINE}"
+                     @click="dslType = DslTypeEnum.PIPELINE"/>
+              </el-tooltip>
+            </div>
             <jm-dsl-editor :value="dsl" readonly/>
           </div>
         </div>
@@ -87,79 +97,119 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import carouselImg1 from '@/assets/images/carousel/1.png';
 import carouselImg2 from '@/assets/images/carousel/2.png';
 import carouselImg3 from '@/assets/images/carousel/3.png';
 import carouselImg4 from '@/assets/images/carousel/4.png';
 import carouselImg5 from '@/assets/images/carousel/5.png';
 
+enum DslTypeEnum {
+  WORKFLOW = 'workflow',
+  PIPELINE = 'pipeline',
+}
+
 export default defineComponent({
   setup() {
+    const workflow = 'cron: \'* 5/* * * * ? *\'\n' +
+      '\n' +
+      'param:\n' +
+      '  branch_name: master\n' +
+      '  git_site: gitee.com\n' +
+      '\n' +
+      'workflow:\n' +
+      '  name: CI_Flow\n' +
+      '  ref: ci_flow\n' +
+      '  description: jianmu-workflow-core CI Flow\n' +
+      '  Start:\n' +
+      '    type: start\n' +
+      '    targets:\n' +
+      '      - GitClone\n' +
+      '  GitClone:\n' +
+      '    type: git_clone:0.4\n' +
+      '    sources:\n' +
+      '      - Start\n' +
+      '    targets:\n' +
+      '      - Build\n' +
+      '    param:\n' +
+      '      commit_branch: ${branch_name}\n' +
+      '      remote_url: https://gitee.com/jianmu_dev/jianmu-workflow-core.git\n' +
+      '      netrc_machine: ${git_site}\n' +
+      '      netrc_username: ((gitee.user))\n' +
+      '      netrc_password: ((gitee.pass))\n' +
+      '  Build:\n' +
+      '    type: maven:11\n' +
+      '    sources:\n' +
+      '      - GitClone\n' +
+      '    targets:\n' +
+      '      - Condition\n' +
+      '    param:\n' +
+      '      cmd: mvn install\n' +
+      '  Condition:\n' +
+      '    type: condition\n' +
+      '    sources:\n' +
+      '      - Build\n' +
+      '    expression: Git_1["commit_branch"] == "dev"\n' +
+      '    cases:\n' +
+      '      false: Notice_1\n' +
+      '      true: Notice_2\n' +
+      '  Notice_1:\n' +
+      '    type: sms:0.1\n' +
+      '    param:\n' +
+      '      text: \'"Build error, msg is: " + ${Build_1.build_error_message}\'\n' +
+      '    sources:\n' +
+      '      - Condition\n' +
+      '    targets:\n' +
+      '      - End\n' +
+      '  Notice_2:\n' +
+      '    type: weixin:0.1\n' +
+      '    param:\n' +
+      '      text: ${Build_1.build_info}\n' +
+      '    sources:\n' +
+      '      - Condition\n' +
+      '    targets:\n' +
+      '      - End\n' +
+      '  End:\n' +
+      '    type: end\n' +
+      '    sources:\n' +
+      '      - Notice_1\n' +
+      '      - Notice_2\n';
+    const pipeline = 'cron: \'* 5/* * * * ? *\'\n' +
+      '\n' +
+      'param:\n' +
+      '  branch_name: master\n' +
+      '  git_site: gitee.com\n' +
+      '\n' +
+      'pipeline:\n' +
+      '  name: CI_Flow\n' +
+      '  ref: ci_flow\n' +
+      '  description: jianmu-workflow-core CI Flow\n' +
+      '  GitClone:\n' +
+      '    type: git_clone:0.4\n' +
+      '    param:\n' +
+      '      commit_branch: ${branch_name}\n' +
+      '      remote_url: https://gitee.com/jianmu_dev/jianmu-workflow-core.git\n' +
+      '      netrc_machine: ${git_site}\n' +
+      '      netrc_username: ((gitee.user))\n' +
+      '      netrc_password: ((gitee.pass))\n' +
+      '  Build:\n' +
+      '    type: maven:11\n' +
+      '    param:\n' +
+      '      cmd: mvn install\n' +
+      '  Notice_1:\n' +
+      '    type: sms:0.1\n' +
+      '    param:\n' +
+      '      text: \'"Build error, msg is: " + ${Build_1.build_error_message}\'\n' +
+      '  Notice_2:\n' +
+      '    type: weixin:0.1\n' +
+      '    param:\n' +
+      '      text: ${Build_1.build_info}\n';
+    const dslType = ref<string>(DslTypeEnum.PIPELINE);
+
     return {
-      dsl: 'cron: \'* 5/* * * * ? *\'\n' +
-        '\n' +
-        'param:\n' +
-        '  branch_name: master\n' +
-        '  git_site: gitee.com\n' +
-        '\n' +
-        'workflow:\n' +
-        '  name: CI_Flow\n' +
-        '  ref: ci_flow\n' +
-        '  description: jianmu-workflow-core CI Flow\n' +
-        '  Start:\n' +
-        '    type: start\n' +
-        '    targets:\n' +
-        '      - GitClone\n' +
-        '  GitClone:\n' +
-        '    type: git_clone:0.4\n' +
-        '    sources:\n' +
-        '      - Start\n' +
-        '    targets:\n' +
-        '      - Build\n' +
-        '    param:\n' +
-        '      commit_branch: ${branch_name}\n' +
-        '      remote_url: https://gitee.com/jianmu_dev/jianmu-workflow-core.git\n' +
-        '      netrc_machine: ${git_site}\n' +
-        '      netrc_username: ((gitee.user))\n' +
-        '      netrc_password: ((gitee.pass))\n' +
-        '  Build:\n' +
-        '    type: maven:11\n' +
-        '    sources:\n' +
-        '      - GitClone\n' +
-        '    targets:\n' +
-        '      - Condition\n' +
-        '    param:\n' +
-        '      cmd: mvn install\n' +
-        '  Condition:\n' +
-        '    type: condition\n' +
-        '    sources:\n' +
-        '      - Build\n' +
-        '    expression: Git_1["commit_branch"] == "dev"\n' +
-        '    cases:\n' +
-        '      false: Notice_1\n' +
-        '      true: Notice_2\n' +
-        '  Notice_1:\n' +
-        '    type: sms:0.1\n' +
-        '    param:\n' +
-        '      text: \'"Build error, msg is: " + ${Build_1.build_error_message}\'\n' +
-        '    sources:\n' +
-        '      - Condition\n' +
-        '    targets:\n' +
-        '      - End\n' +
-        '  Notice_2:\n' +
-        '    type: weixin:0.1\n' +
-        '    param:\n' +
-        '      text: ${Build_1.build_info}\n' +
-        '    sources:\n' +
-        '      - Condition\n' +
-        '    targets:\n' +
-        '      - End\n' +
-        '  End:\n' +
-        '    type: end\n' +
-        '    sources:\n' +
-        '      - Notice_1\n' +
-        '      - Notice_2\n',
+      DslTypeEnum,
+      dslType,
+      dsl: computed<string>(() => dslType.value === DslTypeEnum.WORKFLOW ? workflow : pipeline),
       carouselImgs: [carouselImg1, carouselImg2, carouselImg3, carouselImg4, carouselImg5],
       hub: () => {
         window.open('https://hub.jianmu.dev', '_blank');
@@ -376,11 +426,44 @@ export default defineComponent({
         width: 65%;
 
         .dsl-viewer {
+          position: relative;
           padding: 24px 0 24px 14px;
           height: 482px;
           background-color: #19253B;
           box-shadow: 0 -10px 40px 0 #768094;
           border-radius: 4px;
+
+          .labels {
+            position: absolute;
+            z-index: 1;
+            top: 15px;
+            right: 15px;
+            display: flex;
+
+            .workflow, .pipeline {
+              padding: 5px;
+              width: 20px;
+              height: 20px;
+              background-repeat: no-repeat;
+              background-position: center center;
+              cursor: pointer;
+
+              &.selected {
+                background-color: rgba(255, 255, 255, 0.35);
+                border-radius: 4px;
+                cursor: not-allowed;
+              }
+            }
+
+            .workflow {
+              background-image: url('@/assets/svgs/workflow-label.svg');
+            }
+
+            .pipeline {
+              margin-left: 10px;
+              background-image: url('@/assets/svgs/pipeline-label.svg');
+            }
+          }
         }
       }
     }
@@ -522,11 +605,11 @@ export default defineComponent({
 
   .bottom {
     text-align: center;
+    border: 1px solid #E7ECF1;
     height: 64px;
     line-height: 64px;
-    background-color: #096DD9;
     font-size: 14px;
-    color: #FFFFFF;
+    color: #042749;
   }
 }
 </style>
