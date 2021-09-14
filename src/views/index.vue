@@ -23,7 +23,7 @@
       <div class="left">
         <div class="content">
           <div class="title">建木持续集成平台</div>
-          <div class="desc">持续集成平台是国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验</div>
+          <div class="desc">基于建木的持续集成平台是国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验</div>
           <div class="operation">
             <button class="large primary" @click="quickStart">
               <span>快速开始</span>
