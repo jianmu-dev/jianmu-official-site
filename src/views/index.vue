@@ -133,7 +133,7 @@ export default defineComponent({
       '      - Build\n' +
       '    param:\n' +
       '      commit_branch: ${branch_name}\n' +
-      '      remote_url: https://gitee.com/jianmu_dev/jianmu-workflow-core.git\n' +
+      '      remote_url: https://gitee.com/jianmu-dev/jianmu-workflow-core.git\n' +
       '      netrc_machine: ${git_site}\n' +
       '      netrc_username: ((gitee.user))\n' +
       '      netrc_password: ((gitee.pass))\n' +
@@ -188,7 +188,7 @@ export default defineComponent({
       '    type: git_clone:0.4\n' +
       '    param:\n' +
       '      commit_branch: ${branch_name}\n' +
-      '      remote_url: https://gitee.com/jianmu_dev/jianmu-workflow-core.git\n' +
+      '      remote_url: https://gitee.com/jianmu-dev/jianmu-workflow-core.git\n' +
       '      netrc_machine: ${git_site}\n' +
       '      netrc_username: ((gitee.user))\n' +
       '      netrc_password: ((gitee.pass))\n' +
@@ -215,7 +215,7 @@ export default defineComponent({
         window.open('https://hub.jianmu.dev', '_blank');
       },
       contribution: () => {
-        window.open('https://gitee.com/jianmu_dev', '_blank');
+        window.open('https://gitee.com/jianmu-dev', '_blank');
       },
       quickStart: () => {
         window.open('https://docs.jianmu.dev/guide/quick-start.html', '_blank');

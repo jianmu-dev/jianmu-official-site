@@ -5,7 +5,7 @@ pipeline:
   git_clone:
     type: git_clone:1.0.0
     param:
-      remote_url: https://gitee.com/jianmu_dev/jianmu-official-site.git
+      remote_url: https://gitee.com/jianmu-dev/jianmu-official-site.git
       ref: refs/heads/master
       netrc_machine: gitee.com
       netrc_username: ((gitee.username))
