@@ -615,12 +615,6 @@ export default defineComponent({
     > span + span {
       margin-left: 30px;
     }
-
-    span {
-      a {
-        color: #042749;
-      }
-    }
   }
 }
 </style>
