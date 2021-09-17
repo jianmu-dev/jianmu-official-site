@@ -112,99 +112,116 @@ enum DslTypeEnum {
 
 export default defineComponent({
   setup() {
-    const workflow = 'cron: \'* 5/* * * * ? *\'\n' +
-      '\n' +
-      'param:\n' +
-      '  branch_name: master\n' +
-      '  git_site: gitee.com\n' +
-      '\n' +
-      'workflow:\n' +
-      '  name: CI_Flow\n' +
-      '  ref: ci_flow\n' +
-      '  description: jianmu-workflow-core CI Flow\n' +
-      '  Start:\n' +
+    const workflow = 'workflow:\n' +
+      '  name: 建木官网CDN CI/CD\n' +
+      '  ref: jianmu_official_site_cdn_cicd\n' +
+      '  description: 建木官网CDN CI/CD\n' +
+      '  start:\n' +
       '    type: start\n' +
       '    targets:\n' +
-      '      - GitClone\n' +
-      '  GitClone:\n' +
-      '    type: git_clone:0.4\n' +
+      '      - git_clone\n' +
+      '  git_clone:\n' +
+      '    type: git_clone:1.0.0\n' +
       '    sources:\n' +
-      '      - Start\n' +
+      '      - start\n' +
       '    targets:\n' +
-      '      - Build\n' +
+      '      - node_build\n' +
       '    param:\n' +
-      '      commit_branch: ${branch_name}\n' +
-      '      remote_url: https://gitee.com/jianmu-dev/jianmu-workflow-core.git\n' +
-      '      netrc_machine: ${git_site}\n' +
-      '      netrc_username: ((gitee.user))\n' +
-      '      netrc_password: ((gitee.pass))\n' +
-      '  Build:\n' +
-      '    type: maven:11\n' +
+      '      remote_url: https://gitee.com/jianmu-dev/jianmu-official-site.git\n' +
+      '      ref: refs/heads/master\n' +
+      '      netrc_machine: gitee.com\n' +
+      '      netrc_username: ((gitee.username))\n' +
+      '      netrc_password: ((gitee.password))\n' +
+      '  node_build:\n' +
+      '    type: nodejs_build:1.0.0-14.16.1\n' +
       '    sources:\n' +
-      '      - GitClone\n' +
+      '      - git_clone\n' +
       '    targets:\n' +
-      '      - Condition\n' +
+      '      - qiniu_upload\n' +
       '    param:\n' +
-      '      cmd: mvn install\n' +
-      '  Condition:\n' +
-      '    type: condition\n' +
+      '      workspace: ${git_clone.git_path}\n' +
+      '      build_arg: --mode cdn\n' +
+      '  qiniu_upload:\n' +
+      '    type: qiniu_upload:1.0.1\n' +
       '    sources:\n' +
-      '      - Build\n' +
-      '    expression: Git_1["commit_branch"] == "dev"\n' +
-      '    cases:\n' +
-      '      false: Notice_1\n' +
-      '      true: Notice_2\n' +
-      '  Notice_1:\n' +
-      '    type: sms:0.1\n' +
-      '    param:\n' +
-      '      text: \'"Build error, msg is: " + ${Build_1.build_error_message}\'\n' +
-      '    sources:\n' +
-      '      - Condition\n' +
+      '      - node_build\n' +
       '    targets:\n' +
-      '      - End\n' +
-      '  Notice_2:\n' +
-      '    type: weixin:0.1\n' +
+      '      - update_index_page\n' +
       '    param:\n' +
-      '      text: ${Build_1.build_info}\n' +
+      '      qiniu_bucket: jianmu\n' +
+      '      qiniu_ak: ((qiniu.AccessKey))\n' +
+      '      qiniu_sk: ((qiniu.SecretKey))\n' +
+      '      qiniu_zone: z1\n' +
+      '      qiniu_upload_uri_prefix: ${node_build.package_name}/${node_build.package_version}\n' +
+      '      qiniu_upload_dir: ${git_clone.git_path}/dist\n' +
+      '  update_index_page:\n' +
+      '    type: scp_resouce:1.0.0\n' +
       '    sources:\n' +
-      '      - Condition\n' +
+      '      - qiniu_upload\n' +
       '    targets:\n' +
-      '      - End\n' +
-      '  End:\n' +
+      '      - send_message\n' +
+      '    param:\n' +
+      '      ssh_private_key: ((private_key.alixg))\n' +
+      '      ssh_ip: 47.243.164.48\n' +
+      '      remote_file: /etc/nginx/html/index.html\n' +
+      '      local_file: ${git_clone.git_path}/dist/index.html\n' +
+      '  send_message:\n' +
+      '    type: qywx_notice:1.0.0\n' +
+      '    sources:\n' +
+      '      - update_index_page\n' +
+      '    targets:\n' +
+      '      - end\n' +
+      '    param:\n' +
+      '      bot_webhook_url: ((charbot.webhook_url))\n' +
+      '      mentioned_moblie_list: "[]"\n' +
+      '      text_content: "建木官网CDN更新完成\\\\n\\\\n版本：${node_build.package_version}"\n' +
+      '      msgtype: "text"\n' +
+      '      mentioned_list: "[]"\n' +
+      '  end:\n' +
       '    type: end\n' +
       '    sources:\n' +
-      '      - Notice_1\n' +
-      '      - Notice_2\n';
-    const pipeline = 'cron: \'* 5/* * * * ? *\'\n' +
-      '\n' +
-      'param:\n' +
-      '  branch_name: master\n' +
-      '  git_site: gitee.com\n' +
-      '\n' +
-      'pipeline:\n' +
-      '  name: CI_Flow\n' +
-      '  ref: ci_flow\n' +
-      '  description: jianmu-workflow-core CI Flow\n' +
-      '  GitClone:\n' +
-      '    type: git_clone:0.4\n' +
+      '      - send_message\n';
+    const pipeline = 'pipeline:\n' +
+      '  name: 建木官网CDN CI/CD\n' +
+      '  ref: jianmu_official_site_cdn_cicd\n' +
+      '  description: 建木官网CDN CI/CD\n' +
+      '  git_clone:\n' +
+      '    type: git_clone:1.0.0\n' +
       '    param:\n' +
-      '      commit_branch: ${branch_name}\n' +
-      '      remote_url: https://gitee.com/jianmu-dev/jianmu-workflow-core.git\n' +
-      '      netrc_machine: ${git_site}\n' +
-      '      netrc_username: ((gitee.user))\n' +
-      '      netrc_password: ((gitee.pass))\n' +
-      '  Build:\n' +
-      '    type: maven:11\n' +
+      '      remote_url: https://gitee.com/jianmu-dev/jianmu-official-site.git\n' +
+      '      ref: refs/heads/master\n' +
+      '      netrc_machine: gitee.com\n' +
+      '      netrc_username: ((gitee.username))\n' +
+      '      netrc_password: ((gitee.password))\n' +
+      '  node_build:\n' +
+      '    type: nodejs_build:1.0.0-14.16.1\n' +
       '    param:\n' +
-      '      cmd: mvn install\n' +
-      '  Notice_1:\n' +
-      '    type: sms:0.1\n' +
+      '      workspace: ${git_clone.git_path}\n' +
+      '      build_arg: --mode cdn\n' +
+      '  qiniu_upload:\n' +
+      '    type: qiniu_upload:1.0.1\n' +
       '    param:\n' +
-      '      text: \'"Build error, msg is: " + ${Build_1.build_error_message}\'\n' +
-      '  Notice_2:\n' +
-      '    type: weixin:0.1\n' +
+      '      qiniu_bucket: jianmu\n' +
+      '      qiniu_ak: ((qiniu.AccessKey))\n' +
+      '      qiniu_sk: ((qiniu.SecretKey))\n' +
+      '      qiniu_zone: z1\n' +
+      '      qiniu_upload_uri_prefix: ${node_build.package_name}/${node_build.package_version}\n' +
+      '      qiniu_upload_dir: ${git_clone.git_path}/dist\n' +
+      '  update_index_page:\n' +
+      '    type: scp_resouce:1.0.0\n' +
       '    param:\n' +
-      '      text: ${Build_1.build_info}\n';
+      '      ssh_private_key: ((private_key.alixg))\n' +
+      '      ssh_ip: 47.243.164.48\n' +
+      '      remote_file: /etc/nginx/html/index.html\n' +
+      '      local_file: ${git_clone.git_path}/dist/index.html\n' +
+      '  send_message:\n' +
+      '    type: qywx_notice:1.0.0\n' +
+      '    param:\n' +
+      '      bot_webhook_url: ((charbot.webhook_url))\n' +
+      '      mentioned_moblie_list: "[]"\n' +
+      '      text_content: "建木官网CDN更新完成\\\\n\\\\n版本：${node_build.package_version}"\n' +
+      '      msgtype: "text"\n' +
+      '      mentioned_list: "[]"\n';
     const dslType = ref<string>(DslTypeEnum.PIPELINE);
 
     return {
@@ -613,7 +630,7 @@ export default defineComponent({
     color: #042749;
 
     > span + span {
-      margin-left: 30px;
+      margin-left: 20px;
     }
   }
 }
