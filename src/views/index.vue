@@ -91,7 +91,8 @@
       <div class="title">产品特性</div>
     </div>
     <div class="bottom">
-      &copy;2020-{{ new Date().getFullYear() }} 版权所有 九州云信息科技有限公司
+      <span>&copy;2020-{{ new Date().getFullYear() }} 版权所有 九州云信息科技有限公司</span>
+      <span>邮箱：<a href=mailto:support@jianmu.dev>support@jianmu.dev</a></span>
     </div>
   </div>
 </template>
@@ -610,6 +611,16 @@ export default defineComponent({
     line-height: 64px;
     font-size: 14px;
     color: #042749;
+
+    > span + span {
+      margin-left: 30px;
+    }
+
+    span {
+      a {
+        color: #042749;
+      }
+    }
   }
 }
 </style>
