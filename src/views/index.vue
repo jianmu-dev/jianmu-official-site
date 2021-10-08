@@ -3,19 +3,19 @@
     <div class="top">
       <div class="left">
         <router-link to="/">
-          <div class="logo"/>
+          <div class="logo" />
         </router-link>
-        <div class="separator"/>
+        <div class="separator" />
         <div class="title">持续集成平台</div>
       </div>
       <div class="right">
         <button @click="hub">
           <span>节点库</span>
-          <i class="hub"/>
+          <i class="hub" />
         </button>
         <button class="primary" @click="contribution">
           <span>参与贡献</span>
-          <i class="contribution"/>
+          <i class="contribution" />
         </button>
       </div>
     </div>
@@ -23,19 +23,21 @@
       <div class="left">
         <div class="content">
           <div class="title">建木持续集成平台</div>
-          <div class="desc">基于建木的持续集成平台是国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验</div>
+          <div class="desc">
+            基于建木的持续集成平台是国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验
+          </div>
           <div class="operation">
             <button class="large primary" @click="quickStart">
               <span>快速开始</span>
-              <i class="quick-start"/>
+              <i class="quick-start" />
             </button>
             <button class="large" @click="doc">
               <span>文档</span>
-              <i class="doc"/>
+              <i class="doc" />
             </button>
             <button class="large" @click="example">
               <span>示例</span>
-              <i class="example"/>
+              <i class="example" />
             </button>
           </div>
         </div>
@@ -45,21 +47,33 @@
       <div class="content">
         <div class="left">
           <div class="title">配置即代码</div>
-          <div class="desc">国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验</div>
+          <div class="desc">
+            国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验
+          </div>
         </div>
         <div class="right">
-          <div class="dsl-viewer">
-            <div class="labels">
-              <el-tooltip content="流程DSL" placement="top">
-                <div :class="{workflow: true, selected: dslType === DslTypeEnum.WORKFLOW}"
-                     @click="dslType = DslTypeEnum.WORKFLOW"/>
-              </el-tooltip>
-              <el-tooltip content="管道DSL" placement="top">
-                <div :class="{pipeline: true, selected: dslType === DslTypeEnum.PIPELINE}"
-                     @click="dslType = DslTypeEnum.PIPELINE"/>
-              </el-tooltip>
+          <div class="labels">
+            <div
+              :class="{
+                pipeline: true,
+                selected: dslType === DslTypeEnum.PIPELINE,
+              }"
+              @click="dslType = DslTypeEnum.PIPELINE"
+            >
+              管道DSL
             </div>
-            <jm-dsl-editor :value="dsl" readonly/>
+            <div
+              :class="{
+                workflow: true,
+                selected: dslType === DslTypeEnum.WORKFLOW,
+              }"
+              @click="dslType = DslTypeEnum.WORKFLOW"
+            >
+              流程DSL
+            </div>
+          </div>
+          <div class="dsl-viewer">
+            <jm-dsl-editor :value="dsl" readonly />
           </div>
         </div>
       </div>
@@ -67,11 +81,17 @@
     <div class="part-3">
       <div class="content">
         <div class="title">流程可视化</div>
-        <div class="desc">流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然</div>
+        <div class="desc">
+          流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然
+        </div>
         <div class="carousel">
-          <el-carousel indicator-position="outside" height="530px" arrow="never">
+          <el-carousel
+            indicator-position="outside"
+            height="530px"
+            arrow="never"
+          >
             <el-carousel-item v-for="(img, index) in carouselImgs" :key="index">
-              <img :src="img"/>
+              <img :src="img" />
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -80,7 +100,9 @@
     <div class="part-4">
       <div class="content">
         <div class="title" @click="hub">节点生态</div>
-        <div class="desc">流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然</div>
+        <div class="desc">
+          流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然
+        </div>
       </div>
     </div>
     <div class="part-5">
@@ -91,8 +113,13 @@
       <div class="title">产品特性</div>
     </div>
     <div class="bottom">
-      <span>&copy;2020-{{ new Date().getFullYear() }} 版权所有 九州云信息科技有限公司</span>
-      <span>邮箱：<a href=mailto:support@jianmu.dev>support@jianmu.dev</a></span>
+      <span
+        >&copy;2020-{{ new Date().getFullYear() }} 版权所有
+        九州云信息科技有限公司</span
+      >
+      <span
+        >邮箱：<a href="mailto:support@jianmu.dev">support@jianmu.dev</a></span
+      >
     </div>
   </div>
 </template>
@@ -112,7 +139,8 @@ enum DslTypeEnum {
 
 export default defineComponent({
   setup() {
-    const workflow = 'workflow:\n' +
+    const workflow =
+      'workflow:\n' +
       '  name: 建木官网CDN CI/CD\n' +
       '  ref: jianmu_official_site_cdn_cicd\n' +
       '  description: 建木官网CDN CI/CD\n' +
@@ -181,7 +209,8 @@ export default defineComponent({
       '    type: end\n' +
       '    sources:\n' +
       '      - send_message\n';
-    const pipeline = 'pipeline:\n' +
+    const pipeline =
+      'pipeline:\n' +
       '  name: 建木官网CDN CI/CD\n' +
       '  ref: jianmu_official_site_cdn_cicd\n' +
       '  description: 建木官网CDN CI/CD\n' +
@@ -227,8 +256,16 @@ export default defineComponent({
     return {
       DslTypeEnum,
       dslType,
-      dsl: computed<string>(() => dslType.value === DslTypeEnum.WORKFLOW ? workflow : pipeline),
-      carouselImgs: [carouselImg1, carouselImg2, carouselImg3, carouselImg4, carouselImg5],
+      dsl: computed<string>(() =>
+        dslType.value === DslTypeEnum.WORKFLOW ? workflow : pipeline
+      ),
+      carouselImgs: [
+        carouselImg1,
+        carouselImg2,
+        carouselImg3,
+        carouselImg4,
+        carouselImg5,
+      ],
       hub: () => {
         window.open('https://hub.jianmu.dev', '_blank');
       },
@@ -255,10 +292,10 @@ export default defineComponent({
     width: 136px;
     padding: 0 14px 0 22px;
     height: 36px;
-    box-shadow: 0 6px 14px 0 #ACC3EE;
+    box-shadow: 0 6px 14px 0 #acc3ee;
     border-radius: 4px;
-    background-color: #FFFFFF;
-    color: #7B8C9C;
+    background-color: #ffffff;
+    color: #7b8c9c;
     border-width: 0;
     font-size: 14px;
     cursor: pointer;
@@ -273,8 +310,8 @@ export default defineComponent({
     }
 
     &.primary {
-      background-color: #096DD9;
-      color: #FFFFFF;
+      background-color: #096dd9;
+      color: #ffffff;
     }
 
     i {
@@ -309,7 +346,6 @@ export default defineComponent({
       opacity: 0.8;
     }
   }
-
   .top {
     margin: 0 auto;
     max-width: 1600px;
@@ -318,11 +354,9 @@ export default defineComponent({
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     .left {
       display: flex;
       align-items: center;
-
       .logo {
         width: 130px;
         height: 35px;
@@ -332,16 +366,14 @@ export default defineComponent({
         background-position: center center;
         cursor: pointer;
       }
-
       .separator {
         margin: 0 18px;
         width: 1px;
         height: 20px;
-        background-color: #C2DFFF;
+        background-color: #c2dfff;
         border-radius: 1px;
         overflow: hidden;
       }
-
       .title {
         font-size: 24px;
         font-weight: bold;
@@ -349,45 +381,36 @@ export default defineComponent({
         letter-spacing: 1px;
       }
     }
-
     .right {
       button + button {
         margin-left: 20px;
       }
     }
   }
-
   [class^='part-'] {
     background-repeat: no-repeat;
     background-position: center center;
   }
-
   .part-1 {
-    border-top: 1px solid #C2DFFF;
+    border-top: 1px solid #c2dfff;
     height: 678px;
     background-image: url('@/assets/images/part-1.png');
-
     display: flex;
-
     .left {
       width: 50%;
       height: 100%;
-
       .content {
         margin-left: auto;
         max-width: 800px;
         height: 100%;
-
         padding-left: 20px;
         padding-top: 130px;
-
         .title {
           font-size: 40px;
           font-weight: bold;
           color: #042749;
           letter-spacing: 3px;
         }
-
         .desc {
           margin-top: 24px;
           width: 330px;
@@ -395,10 +418,8 @@ export default defineComponent({
           color: #385775;
           line-height: 24px;
         }
-
         .operation {
           margin-top: 131px;
-
           button + button {
             margin-left: 40px;
           }
@@ -406,28 +427,23 @@ export default defineComponent({
       }
     }
   }
-
   .part-2 {
     height: 833px;
     background-image: url('@/assets/images/part-2.png');
-
     .content {
       max-width: 1600px;
       margin: 0 auto;
       display: flex;
       height: 100%;
-
       .left {
         padding-top: 216px;
         padding-left: 20px;
         width: 35%;
-
         .title {
           font-size: 20px;
           font-weight: bold;
           color: #042749;
         }
-
         .desc {
           margin-top: 24px;
           width: 303px;
@@ -437,51 +453,69 @@ export default defineComponent({
           text-align: justify;
         }
       }
-
       .right {
         padding-top: 183px;
         padding-right: 20px;
         width: 65%;
-
-        .dsl-viewer {
-          position: relative;
-          padding: 24px 0 24px 14px;
-          height: 482px;
-          background-color: #19253B;
-          box-shadow: 0 -10px 40px 0 #768094;
-          border-radius: 4px;
-
-          .labels {
-            position: absolute;
-            z-index: 1;
-            top: 15px;
-            right: 15px;
+        position: relative;
+        .labels {
+          width: 100%;
+          z-index: 1;
+          display: flex;
+          justify-content: flex-end;
+          div {
+            border: 1px solid #b9cfe6;
+            border-bottom: none;
+            background: #fff;
+          }
+          div + div {
+            margin-left: 15px;
+          }
+          .workflow,
+          .pipeline {
+            padding: 5px;
+            width: 120px;
+            height: 30px;
             display: flex;
-
-            .workflow, .pipeline {
-              padding: 5px;
-              width: 20px;
-              height: 20px;
-              background-repeat: no-repeat;
-              background-position: center center;
-              cursor: pointer;
-
-              &.selected {
-                background-color: rgba(255, 255, 255, 0.35);
-                border-radius: 4px;
-                cursor: not-allowed;
-              }
-            }
-
-            .workflow {
-              background-image: url('@/assets/svgs/workflow-label.svg');
-            }
-
-            .pipeline {
-              margin-left: 10px;
-              background-image: url('@/assets/svgs/pipeline-label.svg');
+            justify-content: center;
+            align-items: center;
+            background-repeat: no-repeat;
+            background-position: center center;
+            cursor: pointer;
+            &.selected {
+              background: #19253b;
+              color: #fff;
+              cursor: not-allowed;
+              border: 1px solid #19253b;
+              border-bottom: none;
             }
           }
+          .workflow::before {
+            content: '';
+            display: inline-block;
+            width: 17.5px;
+            height: 17.5px;
+            background-image: url('@/assets/svgs/workflow-label.svg');
+            background-size: 100%;
+            position: relative;
+            right: 10px;
+          }
+          .pipeline::before {
+            content: '';
+            display: inline-block;
+            width: 17.5px;
+            height: 17.5px;
+            background-image: url('@/assets/svgs/pipeline-label.svg');
+            background-size: 100%;
+            position: relative;
+            right: 10px;
+          }
+        }
+        .dsl-viewer {
+          padding: 24px 0 24px 14px;
+          height: 482px;
+          background-color: #19253b;
+          box-shadow: 0 -10px 40px 0 #768094;
         }
       }
     }
@@ -516,13 +550,14 @@ export default defineComponent({
         margin-top: 53px;
         width: 1060px;
         height: 530px;
-        box-shadow: 0 0 40px 0 #94A6C9;
+        box-shadow: 0 0 40px 0 #94a6c9;
 
         ::v-deep(.el-carousel) {
           .el-carousel__indicators--outside {
             margin-top: 30px;
 
-            .el-carousel__indicator--horizontal + .el-carousel__indicator--horizontal {
+            .el-carousel__indicator--horizontal
+              + .el-carousel__indicator--horizontal {
               margin-left: 12px;
             }
 
@@ -531,18 +566,18 @@ export default defineComponent({
                 width: 52px;
                 height: 8px;
                 border-radius: 6px;
-                background-color: #CCD4DF;
+                background-color: #ccd4df;
                 opacity: 0.59;
 
                 &:hover {
-                  background-color: #096DD9;
+                  background-color: #096dd9;
                   opacity: 1;
                 }
               }
 
               &.is-active {
                 .el-carousel__button {
-                  background-color: #096DD9;
+                  background-color: #096dd9;
                   opacity: 1;
                 }
               }
@@ -623,7 +658,7 @@ export default defineComponent({
 
   .bottom {
     text-align: center;
-    border: 1px solid #E7ECF1;
+    border: 1px solid #e7ecf1;
     height: 64px;
     line-height: 64px;
     font-size: 14px;
