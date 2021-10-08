@@ -46,6 +46,7 @@ workflow:
       - qiniu_upload
     targets:
       - send_message
+      - feishu_notice
     param:
       ssh_private_key: ((private_key.alixg))
       ssh_ip: 47.243.164.48
@@ -63,7 +64,19 @@ workflow:
       text_content: "建木官网CDN更新完成\\n\\n版本：${node_build.package_version}"
       msgtype: "text"
       mentioned_list: "[]"
+  feishu_notice:
+    sources:
+      - update_index_page
+    targets:
+      - end
+    type: feishu_notice:1.0.0
+    param:
+      bot_webhook_url: ((feishu.webhook_url))
+      msgtype: "fulltext"
+      msg_title: "建木官网CDN更新完成"
+      msg_text: "版本：${node_build.package_version}"
   end:
     type: end
     sources:
       - send_message
+      - feishu_notice
