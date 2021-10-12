@@ -4,6 +4,8 @@ import components from './components';
 import router from './router';
 // 设置全局样式
 import './global.less';
+// 安装百度统计
+import './utils/baidu-tongji.js';
 
 const app = createApp(App);
 // 全局注册公共组件
