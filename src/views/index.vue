@@ -99,9 +99,23 @@
     </div>
     <div class="part-4">
       <div class="content">
-        <div class="title" @click="hub">节点生态</div>
-        <div class="desc">
-          流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然
+        <div class="left-title">
+          <div class="title" @click="hub">节点生态</div>
+          <div class="desc">
+            流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然
+          </div>
+        </div>
+        <div class="right-icons">
+          <div class="icons-container">
+            <div
+              class="single"
+              v-for="item in nodeSearchDate?.content"
+              :key="item.id"
+            >
+              <img :src="item.icon" class="single-icon" />
+              <div class="single-title">{{ item.name }}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -125,12 +139,23 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+import {
+  computed,
+  defineComponent,
+  ref,
+  onMounted,
+  getCurrentInstance,
+} from 'vue';
 import carouselImg1 from '@/assets/images/carousel/1.png';
 import carouselImg2 from '@/assets/images/carousel/2.png';
 import carouselImg3 from '@/assets/images/carousel/3.png';
 import carouselImg4 from '@/assets/images/carousel/4.png';
 import carouselImg5 from '@/assets/images/carousel/5.png';
+
+// 引入api
+import { nodeSearch } from '@/api/node-search';
+import { IPageVo } from '@/api/dto/common';
+import { INodeDefinitionVo } from '@/api/dto/node-search';
 
 enum DslTypeEnum {
   WORKFLOW = 'workflow',
@@ -252,12 +277,20 @@ export default defineComponent({
       '      msgtype: "text"\n' +
       '      mentioned_list: "[]"\n';
     const dslType = ref<string>(DslTypeEnum.PIPELINE);
-
+    const { proxy } = getCurrentInstance() as any;
+    const nodeSearchDate = ref<IPageVo<INodeDefinitionVo>>();
+    onMounted(async () => {
+      try {
+        nodeSearchDate.value = await nodeSearch({ pageNum: 0, pageSize: 18 });
+      } catch (err) {
+        proxy.$thow(err, proxy);
+      }
+    });
     return {
       DslTypeEnum,
       dslType,
       dsl: computed<string>(() =>
-        dslType.value === DslTypeEnum.WORKFLOW ? workflow : pipeline
+        dslType.value === DslTypeEnum.WORKFLOW ? workflow : pipeline,
       ),
       carouselImgs: [
         carouselImg1,
@@ -281,6 +314,7 @@ export default defineComponent({
       example: () => {
         window.open('https://ci.jianmu.dev', '_blank');
       },
+      nodeSearchDate,
     };
   },
 });
@@ -590,33 +624,61 @@ export default defineComponent({
 
   .part-4 {
     height: 808px;
-    background-image: url('@/assets/images/part-4.png');
-
+    background-image: url('@/assets/svgs/part-4.svg');
     .content {
       max-width: 1600px;
       margin: 0 auto;
-
-      padding-top: 280px;
-      padding-left: 100px;
-
-      .title {
-        font-size: 20px;
-        font-weight: bold;
-        color: #042749;
-        cursor: pointer;
-
-        &:hover {
-          text-decoration: underline;
+      display: flex;
+      .left-title {
+        padding-top: 280px;
+        padding-left: 100px;
+        width: 450px;
+        .title {
+          font-size: 20px;
+          font-weight: bold;
+          color: #042749;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        .desc {
+          margin-top: 20px;
+          width: 270px;
+          font-size: 14px;
+          color: #385775;
+          line-height: 24px;
+          text-align: justify;
         }
       }
-
-      .desc {
-        margin-top: 20px;
-        width: 270px;
-        font-size: 14px;
-        color: #385775;
-        line-height: 24px;
-        text-align: justify;
+      .right-icons {
+        position: relative;
+        top: 210px;
+        box-sizing: border-box;
+        .icons-container {
+          width: 1015px;
+          display: flex;
+          flex-wrap: wrap;
+          margin-left: 96px;
+          .single {
+            width: 96px;
+            height: 135px;
+            margin: 0 50px 50px 0;
+            .single-icon {
+              width: 96px;
+              height: 96px;
+              background-size: 100%;
+              border-radius: 24px;
+            }
+            .single-title {
+              width: 96px;
+              text-align: center;
+              margin-top: 10px;
+              font-size: 16px;
+              color: #3f536e;
+            }
+          }
+        }
       }
     }
   }

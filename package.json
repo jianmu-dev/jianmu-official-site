@@ -8,6 +8,7 @@
     "lint": "eslint ./ --ext .vue,.ts,.tsx --cache --fix"
   },
   "dependencies": {
+    "axios": "0.21.1",
     "codemirror": "^5.62.0",
     "element-plus": "^1.0.2-beta.48",
     "vue": "^3.0.5",
