@@ -69,7 +69,7 @@ workflow:
       - update_index_page
     targets:
       - end
-    type: feishu_notice_fulltext:1.0.0
+    type: feishu_notice_post:1.0.0
     param:
       bot_webhook_url: ((feishu.webhook_url))
       msg_title: "建木官网CDN更新完成"
