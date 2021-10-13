@@ -107,14 +107,19 @@
         </div>
         <div class="right-icons">
           <div class="icons-container">
-            <div
+            <a
               class="single"
               v-for="item in nodeSearchDate?.content"
               :key="item.id"
+              :href="`https://hub.jianmu.dev/${item.ownerRef}/${item.ref}`"
+              target="_blank"
             >
-              <img :src="item.icon" class="single-icon" />
+              <img
+                :src="`${item.icon}?imageView2/2/w/96/h/96/interlace/1/q/100`"
+                class="single-icon"
+              />
               <div class="single-title">{{ item.name }}</div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -282,6 +287,7 @@ export default defineComponent({
     onMounted(async () => {
       try {
         nodeSearchDate.value = await nodeSearch({ pageNum: 0, pageSize: 18 });
+        console.log(nodeSearchDate.value);
       } catch (err) {
         proxy.$thow(err, proxy);
       }
@@ -663,6 +669,7 @@ export default defineComponent({
           .single {
             width: 96px;
             height: 135px;
+            display: inline-block;
             margin: 0 50px 50px 0;
             .single-icon {
               width: 96px;
