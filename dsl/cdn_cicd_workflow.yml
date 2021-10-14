@@ -28,7 +28,7 @@ workflow:
       workspace: ${git_clone.git_path}
       build_arg: --mode cdn
   qiniu_upload:
-    type: qiniu_upload:1.0.1
+    type: qiniu_upload:1.0.2
     sources:
       - node_build
     targets:
