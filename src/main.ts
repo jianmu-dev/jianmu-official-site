@@ -5,7 +5,7 @@ import router from './router';
 // 设置全局样式
 import './global.less';
 // 安装百度统计
-import './utils/baidu-tongji.js';
+import './utils/baidu-tongji.ts';
 import { globalErrorHandler } from './utils/global-error-handler';
 
 const app = createApp(App);
