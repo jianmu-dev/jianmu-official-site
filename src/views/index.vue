@@ -287,7 +287,6 @@ export default defineComponent({
     onMounted(async () => {
       try {
         nodeSearchDate.value = await nodeSearch({ pageNum: 0, pageSize: 18 });
-        console.log(nodeSearchDate.value);
       } catch (err) {
         proxy.$thow(err, proxy);
       }
