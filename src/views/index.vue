@@ -3,39 +3,41 @@
     <div class="top">
       <div class="left">
         <router-link to="/">
-          <div class="logo"/>
+          <div class="logo" />
         </router-link>
-        <div class="separator"/>
+        <div class="separator" />
         <div class="title">持续集成平台</div>
       </div>
       <div class="right">
         <button @click="hub">
           <span>节点库</span>
-          <i class="hub"/>
+          <i class="hub" />
         </button>
         <button class="primary" @click="contribution">
           <span>参与贡献</span>
-          <i class="contribution"/>
+          <i class="contribution" />
         </button>
       </div>
     </div>
     <div class="part-1">
       <div class="left">
         <div class="content">
-          <div class="title">持续集成平台</div>
-          <div class="desc">持续集成平台是国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验</div>
+          <div class="title">建木持续集成平台</div>
+          <div class="desc">
+            基于建木的持续集成平台是国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验
+          </div>
           <div class="operation">
             <button class="large primary" @click="quickStart">
               <span>快速开始</span>
-              <i class="quick-start"/>
+              <i class="quick-start" />
             </button>
             <button class="large" @click="doc">
               <span>文档</span>
-              <i class="doc"/>
+              <i class="doc" />
             </button>
             <button class="large" @click="example">
               <span>示例</span>
-              <i class="example"/>
+              <i class="example" />
             </button>
           </div>
         </div>
@@ -45,21 +47,33 @@
       <div class="content">
         <div class="left">
           <div class="title">配置即代码</div>
-          <div class="desc">国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验</div>
+          <div class="desc">
+            国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验国产化的开源持续集成平台，致力于为国内开发者提供更好的CI/CD使用体验
+          </div>
         </div>
         <div class="right">
-          <div class="dsl-viewer">
-            <div class="labels">
-              <el-tooltip content="流程DSL" placement="top">
-                <div :class="{workflow: true, selected: dslType === DslTypeEnum.WORKFLOW}"
-                     @click="dslType = DslTypeEnum.WORKFLOW"/>
-              </el-tooltip>
-              <el-tooltip content="管道DSL" placement="top">
-                <div :class="{pipeline: true, selected: dslType === DslTypeEnum.PIPELINE}"
-                     @click="dslType = DslTypeEnum.PIPELINE"/>
-              </el-tooltip>
+          <div class="labels">
+            <div
+              :class="{
+                pipeline: true,
+                selected: dslType === DslTypeEnum.PIPELINE,
+              }"
+              @click="dslType = DslTypeEnum.PIPELINE"
+            >
+              管道DSL
             </div>
-            <jm-dsl-editor :value="dsl" readonly/>
+            <div
+              :class="{
+                workflow: true,
+                selected: dslType === DslTypeEnum.WORKFLOW,
+              }"
+              @click="dslType = DslTypeEnum.WORKFLOW"
+            >
+              流程DSL
+            </div>
+          </div>
+          <div class="dsl-viewer">
+            <jm-dsl-editor :value="dsl" readonly />
           </div>
         </div>
       </div>
@@ -67,11 +81,17 @@
     <div class="part-3">
       <div class="content">
         <div class="title">流程可视化</div>
-        <div class="desc">流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然</div>
+        <div class="desc">
+          流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然
+        </div>
         <div class="carousel">
-          <el-carousel indicator-position="outside" height="530px" arrow="never">
+          <el-carousel
+            indicator-position="outside"
+            height="530px"
+            arrow="never"
+          >
             <el-carousel-item v-for="(img, index) in carouselImgs" :key="index">
-              <img :src="img"/>
+              <img :src="img" />
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -79,8 +99,29 @@
     </div>
     <div class="part-4">
       <div class="content">
-        <div class="title" @click="hub">节点生态</div>
-        <div class="desc">流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然</div>
+        <div class="left-title">
+          <div class="title" @click="hub">节点生态</div>
+          <div class="desc">
+            流程可视化提供CI/CD流程的可视化展示，任务编排依赖与执行情况一目了然
+          </div>
+        </div>
+        <div class="right-icons">
+          <div class="icons-container">
+            <a
+              class="single"
+              v-for="item in nodeSearchDate?.content"
+              :key="item.id"
+              :href="`https://hub.jianmu.dev/${item.ownerRef}/${item.ref}`"
+              target="_blank"
+            >
+              <img
+                :src="`${item.icon}?imageView2/2/w/96/h/96/interlace/1/q/100`"
+                class="single-icon"
+              />
+              <div class="single-title">{{ item.name }}</div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="part-5">
@@ -91,18 +132,36 @@
       <div class="title">产品特性</div>
     </div>
     <div class="bottom">
-      &copy;2020-{{ new Date().getFullYear() }} 版权所有 九州云信息科技有限公司
+      <span
+        >&copy;2020-{{ new Date().getFullYear() }} 版权所有
+        九州云信息科技有限公司</span
+      >
+      <span
+        >邮箱：<a href="mailto:support@jianmu.dev">support@jianmu.dev</a></span
+      >
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+import {
+  computed,
+  defineComponent,
+  ref,
+  onMounted,
+  getCurrentInstance,
+} from 'vue';
 import carouselImg1 from '@/assets/images/carousel/1.png';
 import carouselImg2 from '@/assets/images/carousel/2.png';
 import carouselImg3 from '@/assets/images/carousel/3.png';
 import carouselImg4 from '@/assets/images/carousel/4.png';
 import carouselImg5 from '@/assets/images/carousel/5.png';
+import { START_PAGE_NUM } from '@/utils/rest/constants';
+
+// 引入api
+import { nodeSearch } from '@/api/node-search';
+import { IPageVo } from '@/api/dto/common';
+import { INodeDefinitionVo } from '@/api/dto/node-search';
 
 enum DslTypeEnum {
   WORKFLOW = 'workflow',
@@ -111,111 +170,149 @@ enum DslTypeEnum {
 
 export default defineComponent({
   setup() {
-    const workflow = 'cron: \'* 5/* * * * ? *\'\n' +
-      '\n' +
-      'param:\n' +
-      '  branch_name: master\n' +
-      '  git_site: gitee.com\n' +
-      '\n' +
+    const workflow =
       'workflow:\n' +
-      '  name: CI_Flow\n' +
-      '  ref: ci_flow\n' +
-      '  description: jianmu-workflow-core CI Flow\n' +
-      '  Start:\n' +
+      '  name: 建木官网CDN CI/CD\n' +
+      '  ref: jianmu_official_site_cdn_cicd\n' +
+      '  description: 建木官网CDN CI/CD\n' +
+      '  start:\n' +
       '    type: start\n' +
       '    targets:\n' +
-      '      - GitClone\n' +
-      '  GitClone:\n' +
-      '    type: git_clone:0.4\n' +
+      '      - git_clone\n' +
+      '  git_clone:\n' +
+      '    type: git_clone:1.0.0\n' +
       '    sources:\n' +
-      '      - Start\n' +
+      '      - start\n' +
       '    targets:\n' +
-      '      - Build\n' +
+      '      - node_build\n' +
       '    param:\n' +
-      '      commit_branch: ${branch_name}\n' +
-      '      remote_url: https://gitee.com/jianmu_dev/jianmu-workflow-core.git\n' +
-      '      netrc_machine: ${git_site}\n' +
-      '      netrc_username: ((gitee.user))\n' +
-      '      netrc_password: ((gitee.pass))\n' +
-      '  Build:\n' +
-      '    type: maven:11\n' +
+      '      remote_url: https://gitee.com/jianmu-dev/jianmu-official-site.git\n' +
+      '      ref: refs/heads/master\n' +
+      '      netrc_machine: gitee.com\n' +
+      '      netrc_username: ((gitee.username))\n' +
+      '      netrc_password: ((gitee.password))\n' +
+      '  node_build:\n' +
+      '    type: nodejs_build:1.0.0-14.16.1\n' +
       '    sources:\n' +
-      '      - GitClone\n' +
+      '      - git_clone\n' +
       '    targets:\n' +
-      '      - Condition\n' +
+      '      - qiniu_upload\n' +
       '    param:\n' +
-      '      cmd: mvn install\n' +
-      '  Condition:\n' +
-      '    type: condition\n' +
+      '      workspace: ${git_clone.git_path}\n' +
+      '      build_arg: --mode cdn\n' +
+      '  qiniu_upload:\n' +
+      '    type: qiniu_upload:1.0.1\n' +
       '    sources:\n' +
-      '      - Build\n' +
-      '    expression: Git_1["commit_branch"] == "dev"\n' +
-      '    cases:\n' +
-      '      false: Notice_1\n' +
-      '      true: Notice_2\n' +
-      '  Notice_1:\n' +
-      '    type: sms:0.1\n' +
-      '    param:\n' +
-      '      text: \'"Build error, msg is: " + ${Build_1.build_error_message}\'\n' +
-      '    sources:\n' +
-      '      - Condition\n' +
+      '      - node_build\n' +
       '    targets:\n' +
-      '      - End\n' +
-      '  Notice_2:\n' +
-      '    type: weixin:0.1\n' +
+      '      - update_index_page\n' +
       '    param:\n' +
-      '      text: ${Build_1.build_info}\n' +
+      '      qiniu_bucket: jianmu\n' +
+      '      qiniu_ak: ((qiniu.AccessKey))\n' +
+      '      qiniu_sk: ((qiniu.SecretKey))\n' +
+      '      qiniu_zone: z1\n' +
+      '      qiniu_upload_uri_prefix: ${node_build.package_name}/${node_build.package_version}\n' +
+      '      qiniu_upload_dir: ${git_clone.git_path}/dist\n' +
+      '  update_index_page:\n' +
+      '    type: scp_resouce:1.0.0\n' +
       '    sources:\n' +
-      '      - Condition\n' +
+      '      - qiniu_upload\n' +
       '    targets:\n' +
-      '      - End\n' +
-      '  End:\n' +
+      '      - send_message\n' +
+      '    param:\n' +
+      '      ssh_private_key: ((private_key.alixg))\n' +
+      '      ssh_ip: 47.243.164.48\n' +
+      '      remote_file: /etc/nginx/html/index.html\n' +
+      '      local_file: ${git_clone.git_path}/dist/index.html\n' +
+      '  send_message:\n' +
+      '    type: qywx_notice:1.0.0\n' +
+      '    sources:\n' +
+      '      - update_index_page\n' +
+      '    targets:\n' +
+      '      - end\n' +
+      '    param:\n' +
+      '      bot_webhook_url: ((charbot.webhook_url))\n' +
+      '      mentioned_moblie_list: "[]"\n' +
+      '      text_content: "建木官网CDN更新完成\\\\n\\\\n版本：${node_build.package_version}"\n' +
+      '      msgtype: "text"\n' +
+      '      mentioned_list: "[]"\n' +
+      '  end:\n' +
       '    type: end\n' +
       '    sources:\n' +
-      '      - Notice_1\n' +
-      '      - Notice_2\n';
-    const pipeline = 'cron: \'* 5/* * * * ? *\'\n' +
-      '\n' +
-      'param:\n' +
-      '  branch_name: master\n' +
-      '  git_site: gitee.com\n' +
-      '\n' +
+      '      - send_message\n';
+    const pipeline =
       'pipeline:\n' +
-      '  name: CI_Flow\n' +
-      '  ref: ci_flow\n' +
-      '  description: jianmu-workflow-core CI Flow\n' +
-      '  GitClone:\n' +
-      '    type: git_clone:0.4\n' +
+      '  name: 建木官网CDN CI/CD\n' +
+      '  ref: jianmu_official_site_cdn_cicd\n' +
+      '  description: 建木官网CDN CI/CD\n' +
+      '  git_clone:\n' +
+      '    type: git_clone:1.0.0\n' +
       '    param:\n' +
-      '      commit_branch: ${branch_name}\n' +
-      '      remote_url: https://gitee.com/jianmu_dev/jianmu-workflow-core.git\n' +
-      '      netrc_machine: ${git_site}\n' +
-      '      netrc_username: ((gitee.user))\n' +
-      '      netrc_password: ((gitee.pass))\n' +
-      '  Build:\n' +
-      '    type: maven:11\n' +
+      '      remote_url: https://gitee.com/jianmu-dev/jianmu-official-site.git\n' +
+      '      ref: refs/heads/master\n' +
+      '      netrc_machine: gitee.com\n' +
+      '      netrc_username: ((gitee.username))\n' +
+      '      netrc_password: ((gitee.password))\n' +
+      '  node_build:\n' +
+      '    type: nodejs_build:1.0.0-14.16.1\n' +
       '    param:\n' +
-      '      cmd: mvn install\n' +
-      '  Notice_1:\n' +
-      '    type: sms:0.1\n' +
+      '      workspace: ${git_clone.git_path}\n' +
+      '      build_arg: --mode cdn\n' +
+      '  qiniu_upload:\n' +
+      '    type: qiniu_upload:1.0.1\n' +
       '    param:\n' +
-      '      text: \'"Build error, msg is: " + ${Build_1.build_error_message}\'\n' +
-      '  Notice_2:\n' +
-      '    type: weixin:0.1\n' +
+      '      qiniu_bucket: jianmu\n' +
+      '      qiniu_ak: ((qiniu.AccessKey))\n' +
+      '      qiniu_sk: ((qiniu.SecretKey))\n' +
+      '      qiniu_zone: z1\n' +
+      '      qiniu_upload_uri_prefix: ${node_build.package_name}/${node_build.package_version}\n' +
+      '      qiniu_upload_dir: ${git_clone.git_path}/dist\n' +
+      '  update_index_page:\n' +
+      '    type: scp_resouce:1.0.0\n' +
       '    param:\n' +
-      '      text: ${Build_1.build_info}\n';
+      '      ssh_private_key: ((private_key.alixg))\n' +
+      '      ssh_ip: 47.243.164.48\n' +
+      '      remote_file: /etc/nginx/html/index.html\n' +
+      '      local_file: ${git_clone.git_path}/dist/index.html\n' +
+      '  send_message:\n' +
+      '    type: qywx_notice:1.0.0\n' +
+      '    param:\n' +
+      '      bot_webhook_url: ((charbot.webhook_url))\n' +
+      '      mentioned_moblie_list: "[]"\n' +
+      '      text_content: "建木官网CDN更新完成\\\\n\\\\n版本：${node_build.package_version}"\n' +
+      '      msgtype: "text"\n' +
+      '      mentioned_list: "[]"\n';
     const dslType = ref<string>(DslTypeEnum.PIPELINE);
-
+    const { proxy } = getCurrentInstance() as any;
+    const nodeSearchDate = ref<IPageVo<INodeDefinitionVo>>();
+    onMounted(async () => {
+      try {
+        nodeSearchDate.value = await nodeSearch({
+          pageNum: START_PAGE_NUM,
+          pageSize: 18,
+        });
+      } catch (err) {
+        proxy.$thow(err, proxy);
+      }
+    });
     return {
       DslTypeEnum,
       dslType,
-      dsl: computed<string>(() => dslType.value === DslTypeEnum.WORKFLOW ? workflow : pipeline),
-      carouselImgs: [carouselImg1, carouselImg2, carouselImg3, carouselImg4, carouselImg5],
+      dsl: computed<string>(() =>
+        dslType.value === DslTypeEnum.WORKFLOW ? workflow : pipeline
+      ),
+      carouselImgs: [
+        carouselImg1,
+        carouselImg2,
+        carouselImg3,
+        carouselImg4,
+        carouselImg5,
+      ],
       hub: () => {
         window.open('https://hub.jianmu.dev', '_blank');
       },
       contribution: () => {
-        window.open('https://gitee.com/jianmu_dev', '_blank');
+        window.open('https://gitee.com/jianmu-dev', '_blank');
       },
       quickStart: () => {
         window.open('https://docs.jianmu.dev/guide/quick-start.html', '_blank');
@@ -226,6 +323,7 @@ export default defineComponent({
       example: () => {
         window.open('https://ci.jianmu.dev', '_blank');
       },
+      nodeSearchDate,
     };
   },
 });
@@ -237,10 +335,10 @@ export default defineComponent({
     width: 136px;
     padding: 0 14px 0 22px;
     height: 36px;
-    box-shadow: 0 6px 14px 0 #ACC3EE;
+    box-shadow: 0 6px 14px 0 #acc3ee;
     border-radius: 4px;
-    background-color: #FFFFFF;
-    color: #7B8C9C;
+    background-color: #ffffff;
+    color: #7b8c9c;
     border-width: 0;
     font-size: 14px;
     cursor: pointer;
@@ -255,8 +353,8 @@ export default defineComponent({
     }
 
     &.primary {
-      background-color: #096DD9;
-      color: #FFFFFF;
+      background-color: #096dd9;
+      color: #ffffff;
     }
 
     i {
@@ -291,7 +389,6 @@ export default defineComponent({
       opacity: 0.8;
     }
   }
-
   .top {
     margin: 0 auto;
     max-width: 1600px;
@@ -300,11 +397,9 @@ export default defineComponent({
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     .left {
       display: flex;
       align-items: center;
-
       .logo {
         width: 130px;
         height: 35px;
@@ -314,16 +409,14 @@ export default defineComponent({
         background-position: center center;
         cursor: pointer;
       }
-
       .separator {
         margin: 0 18px;
         width: 1px;
         height: 20px;
-        background-color: #C2DFFF;
+        background-color: #c2dfff;
         border-radius: 1px;
         overflow: hidden;
       }
-
       .title {
         font-size: 24px;
         font-weight: bold;
@@ -331,45 +424,36 @@ export default defineComponent({
         letter-spacing: 1px;
       }
     }
-
     .right {
       button + button {
         margin-left: 20px;
       }
     }
   }
-
   [class^='part-'] {
     background-repeat: no-repeat;
     background-position: center center;
   }
-
   .part-1 {
-    border-top: 1px solid #C2DFFF;
+    border-top: 1px solid #c2dfff;
     height: 678px;
     background-image: url('@/assets/images/part-1.png');
-
     display: flex;
-
     .left {
       width: 50%;
       height: 100%;
-
       .content {
         margin-left: auto;
         max-width: 800px;
         height: 100%;
-
         padding-left: 20px;
         padding-top: 130px;
-
         .title {
           font-size: 40px;
           font-weight: bold;
           color: #042749;
           letter-spacing: 3px;
         }
-
         .desc {
           margin-top: 24px;
           width: 330px;
@@ -377,10 +461,8 @@ export default defineComponent({
           color: #385775;
           line-height: 24px;
         }
-
         .operation {
           margin-top: 131px;
-
           button + button {
             margin-left: 40px;
           }
@@ -388,28 +470,23 @@ export default defineComponent({
       }
     }
   }
-
   .part-2 {
     height: 833px;
     background-image: url('@/assets/images/part-2.png');
-
     .content {
       max-width: 1600px;
       margin: 0 auto;
       display: flex;
       height: 100%;
-
       .left {
         padding-top: 216px;
         padding-left: 20px;
         width: 35%;
-
         .title {
           font-size: 20px;
           font-weight: bold;
           color: #042749;
         }
-
         .desc {
           margin-top: 24px;
           width: 303px;
@@ -419,51 +496,69 @@ export default defineComponent({
           text-align: justify;
         }
       }
-
       .right {
         padding-top: 183px;
         padding-right: 20px;
         width: 65%;
-
-        .dsl-viewer {
-          position: relative;
-          padding: 24px 0 24px 14px;
-          height: 482px;
-          background-color: #19253B;
-          box-shadow: 0 -10px 40px 0 #768094;
-          border-radius: 4px;
-
-          .labels {
-            position: absolute;
-            z-index: 1;
-            top: 15px;
-            right: 15px;
+        position: relative;
+        .labels {
+          width: 100%;
+          z-index: 1;
+          display: flex;
+          justify-content: flex-end;
+          div {
+            border: 1px solid #b9cfe6;
+            border-bottom: none;
+            background: #fff;
+          }
+          div + div {
+            margin-left: 15px;
+          }
+          .workflow,
+          .pipeline {
+            padding: 5px;
+            width: 120px;
+            height: 30px;
             display: flex;
-
-            .workflow, .pipeline {
-              padding: 5px;
-              width: 20px;
-              height: 20px;
-              background-repeat: no-repeat;
-              background-position: center center;
-              cursor: pointer;
-
-              &.selected {
-                background-color: rgba(255, 255, 255, 0.35);
-                border-radius: 4px;
-                cursor: not-allowed;
-              }
-            }
-
-            .workflow {
-              background-image: url('@/assets/svgs/workflow-label.svg');
-            }
-
-            .pipeline {
-              margin-left: 10px;
-              background-image: url('@/assets/svgs/pipeline-label.svg');
+            justify-content: center;
+            align-items: center;
+            background-repeat: no-repeat;
+            background-position: center center;
+            cursor: pointer;
+            &.selected {
+              background: #19253b;
+              color: #fff;
+              cursor: not-allowed;
+              border: 1px solid #19253b;
+              border-bottom: none;
             }
           }
+          .workflow::before {
+            content: '';
+            display: inline-block;
+            width: 17.5px;
+            height: 17.5px;
+            background-image: url('@/assets/svgs/workflow-label.svg');
+            background-size: 100%;
+            position: relative;
+            right: 10px;
+          }
+          .pipeline::before {
+            content: '';
+            display: inline-block;
+            width: 17.5px;
+            height: 17.5px;
+            background-image: url('@/assets/svgs/pipeline-label.svg');
+            background-size: 100%;
+            position: relative;
+            right: 10px;
+          }
+        }
+        .dsl-viewer {
+          padding: 24px 0 24px 14px;
+          height: 482px;
+          background-color: #19253b;
+          box-shadow: 0 -10px 40px 0 #768094;
         }
       }
     }
@@ -498,13 +593,14 @@ export default defineComponent({
         margin-top: 53px;
         width: 1060px;
         height: 530px;
-        box-shadow: 0 0 40px 0 #94A6C9;
+        box-shadow: 0 0 40px 0 #94a6c9;
 
         ::v-deep(.el-carousel) {
           .el-carousel__indicators--outside {
             margin-top: 30px;
 
-            .el-carousel__indicator--horizontal + .el-carousel__indicator--horizontal {
+            .el-carousel__indicator--horizontal
+              + .el-carousel__indicator--horizontal {
               margin-left: 12px;
             }
 
@@ -513,18 +609,18 @@ export default defineComponent({
                 width: 52px;
                 height: 8px;
                 border-radius: 6px;
-                background-color: #CCD4DF;
+                background-color: #ccd4df;
                 opacity: 0.59;
 
                 &:hover {
-                  background-color: #096DD9;
+                  background-color: #096dd9;
                   opacity: 1;
                 }
               }
 
               &.is-active {
                 .el-carousel__button {
-                  background-color: #096DD9;
+                  background-color: #096dd9;
                   opacity: 1;
                 }
               }
@@ -537,33 +633,62 @@ export default defineComponent({
 
   .part-4 {
     height: 808px;
-    background-image: url('@/assets/images/part-4.png');
-
+    background-image: url('@/assets/svgs/part-4.svg');
     .content {
       max-width: 1600px;
       margin: 0 auto;
-
-      padding-top: 280px;
-      padding-left: 100px;
-
-      .title {
-        font-size: 20px;
-        font-weight: bold;
-        color: #042749;
-        cursor: pointer;
-
-        &:hover {
-          text-decoration: underline;
+      display: flex;
+      .left-title {
+        padding-top: 280px;
+        padding-left: 100px;
+        width: 450px;
+        .title {
+          font-size: 20px;
+          font-weight: bold;
+          color: #042749;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        .desc {
+          margin-top: 20px;
+          width: 270px;
+          font-size: 14px;
+          color: #385775;
+          line-height: 24px;
+          text-align: justify;
         }
       }
-
-      .desc {
-        margin-top: 20px;
-        width: 270px;
-        font-size: 14px;
-        color: #385775;
-        line-height: 24px;
-        text-align: justify;
+      .right-icons {
+        position: relative;
+        top: 210px;
+        box-sizing: border-box;
+        .icons-container {
+          width: 1015px;
+          display: flex;
+          flex-wrap: wrap;
+          margin-left: 96px;
+          .single {
+            width: 96px;
+            height: 135px;
+            display: inline-block;
+            margin: 0 50px 50px 0;
+            .single-icon {
+              width: 96px;
+              height: 96px;
+              background-size: 100%;
+              border-radius: 24px;
+            }
+            .single-title {
+              width: 96px;
+              text-align: center;
+              margin-top: 10px;
+              font-size: 16px;
+              color: #3f536e;
+            }
+          }
+        }
       }
     }
   }
@@ -605,11 +730,15 @@ export default defineComponent({
 
   .bottom {
     text-align: center;
-    border: 1px solid #E7ECF1;
+    border: 1px solid #e7ecf1;
     height: 64px;
     line-height: 64px;
     font-size: 14px;
     color: #042749;
+
+    > span + span {
+      margin-left: 20px;
+    }
   }
 }
 </style>

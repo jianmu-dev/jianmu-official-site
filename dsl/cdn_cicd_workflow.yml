@@ -1,9 +1,17 @@
-pipeline:
+workflow:
   name: 建木官网CDN CI/CD
   ref: jianmu_official_site_cdn_cicd
   description: 建木官网CDN CI/CD
+  start:
+    type: start
+    targets:
+      - git_clone
   git_clone:
     type: git_clone:1.0.0
+    sources:
+      - start
+    targets:
+      - node_build
     param:
       remote_url: https://gitee.com/jianmu-dev/jianmu-official-site.git
       ref: refs/heads/master
@@ -12,11 +20,19 @@ pipeline:
       netrc_password: ((gitee.password))
   node_build:
     type: nodejs_build:1.0.0-14.16.1
+    sources:
+      - git_clone
+    targets:
+      - qiniu_upload
     param:
       workspace: ${git_clone.git_path}
       build_arg: --mode cdn
   qiniu_upload:
     type: qiniu_upload:1.0.2
+    sources:
+      - node_build
+    targets:
+      - update_index_page
     param:
       qiniu_bucket: jianmu
       qiniu_ak: ((qiniu.AccessKey))
@@ -26,6 +42,11 @@ pipeline:
       qiniu_upload_dir: ${git_clone.git_path}/dist
   update_index_page:
     type: scp_resouce:1.0.0
+    sources:
+      - qiniu_upload
+    targets:
+      - send_message
+      - feishu_notice
     param:
       ssh_private_key: ((private_key.alixg))
       ssh_ip: 47.243.164.48
@@ -33,9 +54,28 @@ pipeline:
       local_file: ${git_clone.git_path}/dist/index.html
   send_message:
     type: qywx_notice:1.0.0
+    sources:
+      - update_index_page
+    targets:
+      - end
     param:
       bot_webhook_url: ((charbot.webhook_url))
       mentioned_moblie_list: "[]"
       text_content: "建木官网CDN更新完成\\n\\n版本：${node_build.package_version}"
       msgtype: "text"
       mentioned_list: "[]"
+  feishu_notice:
+    sources:
+      - update_index_page
+    targets:
+      - end
+    type: feishu_notice_post:1.0.0
+    param:
+      bot_webhook_url: ((feishu.webhook_url))
+      msg_title: "建木官网CDN更新完成"
+      msg_text: "版本：${node_build.package_version}"
+  end:
+    type: end
+    sources:
+      - send_message
+      - feishu_notice
