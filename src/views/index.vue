@@ -59,18 +59,14 @@
                 selected: dslType === DslTypeEnum.PIPELINE,
               }"
               @click="dslType = DslTypeEnum.PIPELINE"
-            >
-              管道DSL
-            </div>
+            >管道</div>
             <div
               :class="{
                 workflow: true,
                 selected: dslType === DslTypeEnum.WORKFLOW,
               }"
               @click="dslType = DslTypeEnum.WORKFLOW"
-            >
-              流程DSL
-            </div>
+            >流程</div>
           </div>
           <div class="dsl-viewer">
             <jm-dsl-editor :value="dsl" readonly />
