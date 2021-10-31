@@ -295,7 +295,7 @@ export default defineComponent({
       DslTypeEnum,
       dslType,
       dsl: computed<string>(() =>
-        dslType.value === DslTypeEnum.WORKFLOW ? workflow : pipeline
+        dslType.value === DslTypeEnum.WORKFLOW ? workflow : pipeline,
       ),
       carouselImgs: [
         carouselImg1,
@@ -513,7 +513,7 @@ export default defineComponent({
           .workflow,
           .pipeline {
             padding: 5px;
-            width: 120px;
+            width: 90px;
             height: 30px;
             display: flex;
             justify-content: center;
