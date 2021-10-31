@@ -152,6 +152,7 @@ import carouselImg2 from '@/assets/images/carousel/2.png';
 import carouselImg3 from '@/assets/images/carousel/3.png';
 import carouselImg4 from '@/assets/images/carousel/4.png';
 import carouselImg5 from '@/assets/images/carousel/5.png';
+import { START_PAGE_NUM } from '@/utils/rest/constants';
 
 // 引入api
 import { nodeSearch } from '@/api/node-search';
@@ -282,8 +283,10 @@ export default defineComponent({
     const nodeSearchDate = ref<IPageVo<INodeDefinitionVo>>();
     onMounted(async () => {
       try {
-        nodeSearchDate.value = await nodeSearch({ pageNum: 0, pageSize: 18 });
-        console.log(nodeSearchDate.value);
+        nodeSearchDate.value = await nodeSearch({
+          pageNum: START_PAGE_NUM,
+          pageSize: 18,
+        });
       } catch (err) {
         proxy.$thow(err, proxy);
       }
@@ -292,7 +295,7 @@ export default defineComponent({
       DslTypeEnum,
       dslType,
       dsl: computed<string>(() =>
-        dslType.value === DslTypeEnum.WORKFLOW ? workflow : pipeline,
+        dslType.value === DslTypeEnum.WORKFLOW ? workflow : pipeline
       ),
       carouselImgs: [
         carouselImg1,
