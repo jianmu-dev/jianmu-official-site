@@ -8,6 +8,8 @@ import components from './components';
 import './global.less';
 // 引入全局异常处理函数
 import { globalErrorHandler } from './utils/global-error-handler';
+// 安装百度统计
+import './utils/baidu-tongji.ts';
 
 const app = createApp(App);
 app.use(router);
