@@ -22,7 +22,7 @@ export default defineConfig({
           // 要转换的单位
           unitToConvert: 'px',
           // 视窗的宽度
-          viewportWidth: 375,
+          viewportWidth: 750,
           // 转换后的精度，小数点保留几位
           unitPrecision: 3,
           // 指定转换的css属性的单位，*表示全部css属性的单位都要进行转换
@@ -40,7 +40,7 @@ export default defineConfig({
           // 是否在转换后直接更换属性值
           replace: true,
           // 设置忽略文件，用正则做目录名匹配，[/node_modules/]
-          exclude: [/node_modules/],
+          exclude: [],
           // 是否做横屏处理
           landscape: true,
           // landscape横屏处理后的单位

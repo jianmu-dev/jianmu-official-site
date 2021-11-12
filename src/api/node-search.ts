@@ -12,7 +12,7 @@ const baseUrl = 'https://api.jianmu.run/hub/view/node_definitions/search';
  *@param dto
  */
 export function nodeSearch(
-  dto: INodeDefinitionSearchingDto,
+  dto: INodeDefinitionSearchingDto
 ): Promise<IPageVo<INodeDefinitionVo>> {
   return restProxy({
     url: `${baseUrl}`,

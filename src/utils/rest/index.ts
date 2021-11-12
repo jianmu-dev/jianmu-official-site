@@ -1,6 +1,7 @@
-import axios, { AxiosTransformer, Method } from 'axios';
+import axios, { Method, AxiosRequestTransformer } from 'axios';
 import qs from 'qs';
 import { HttpError, TimeoutError } from '@/utils/rest/error';
+console.log(import.meta);
 
 const instance = axios.create({
   // `baseURL` will be prepended to `url` unless `url` is absolute.
@@ -33,7 +34,7 @@ export default async function rest({
 }: IRequest): Promise<any> {
   const m = method.toLocaleLowerCase();
   let contentType: string | undefined;
-  let transformRequest: AxiosTransformer | undefined;
+  let transformRequest: AxiosRequestTransformer | undefined;
   let params: object | undefined;
   let data: object | undefined;
   if (m === 'get' || m === 'delete' || m === 'head') {
@@ -42,7 +43,8 @@ export default async function rest({
     switch (payloadType) {
       case 'form-data':
         contentType = 'application/x-www-form-urlencoded';
-        transformRequest = data => qs.stringify(data, { indices: false });
+        transformRequest = (data: any) =>
+          qs.stringify(data, { indices: false });
         break;
       case 'file':
         contentType = 'multipart/form-data';

@@ -8,13 +8,14 @@
   </div>
   <!-- 建木介绍 -->
   <div class="official-description-container border-bottom-common">
-    <img src="@/assets/official-h5/pngs/jianmu-description.png">
+    <div class="jianmu-description-img" />
   </div>
 </template>
 
 <style scoped lang="less">
 // logo
 .official-logo-container {
+  width: 100%;
   padding: 33px 30px;
   display: flex;
   align-items: center;
@@ -36,9 +37,18 @@
 }
 // 建木描述
 .official-description-container {
+  width: 100%;
+  height: 322px;
   padding: 60px 30px 55px 30px;
-  img {
-    display: inline-block;
+  background-image: url('@/assets/official-h5/pngs/jianmu-tree.png');
+  background-size: 100%;
+  position: relative;
+  z-index: 100;
+  .jianmu-description-img {
+    width: 690px;
+    height: 207px;
+    background: url('@/assets/official-h5/pngs/jianmu-description.png');
+    background-size: 100%;
   }
 }
 // 公共样式-下边框

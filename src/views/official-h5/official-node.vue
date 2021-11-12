@@ -8,21 +8,130 @@ import { START_PAGE_NUM } from '@/utils/rest/constants';
 
 // dsl模拟展示代码
 const workflow =
-  'event:\n' +
-  '  push_event:\n' +
-  '    branch: ${branch_name} # dev, master\n' +
-  '  tag_event:\n' +
-  '    tag: ${branch_name} # tag_name\n' +
-  'param:\n' +
-  '  branch_name: master\n' +
-  '  git_site: gitee.com\n' +
-  '\n' +
   'workflow:\n' +
-  '  name: 建木-Git DSL导入测试测试3\n' +
-  '  ref: git_ci_flow55\n' +
-  '  description: Git DSL导入测试流程\n' +
-  '  Start_1:\n' +
-  '    type: start';
+  '  name: 建木官网CDN CI/CD\n' +
+  '  ref: jianmu_official_site_cdn_cicd\n' +
+  '  description: 建木官网CDN CI/CD\n' +
+  '  start:\n' +
+  '    type: start\n' +
+  '    targets:\n' +
+  '      - git_clone\n' +
+  '  git_clone:\n' +
+  '    type: git_clone:1.0.0\n' +
+  '    sources:\n' +
+  '      - start\n' +
+  '    targets:\n' +
+  '      - node_build\n' +
+  '    param:\n' +
+  '      remote_url: https://gitee.com/jianmu-dev/jianmu-official-site.git\n' +
+  '      ref: refs/heads/master\n' +
+  '      netrc_machine: gitee.com\n' +
+  '      netrc_username: ((gitee.username))\n' +
+  '      netrc_password: ((gitee.password))\n' +
+  '  node_build:\n' +
+  '    type: nodejs_build:1.0.0-14.16.1\n' +
+  '    sources:\n' +
+  '      - git_clone\n' +
+  '    targets:\n' +
+  '      - qiniu_upload\n' +
+  '    param:\n' +
+  '      workspace: ${git_clone.git_path}\n' +
+  '      build_arg: --mode cdn\n' +
+  '  qiniu_upload:\n' +
+  '    type: qiniu_upload:1.0.1\n' +
+  '    sources:\n' +
+  '      - node_build\n' +
+  '    targets:\n' +
+  '      - update_index_page\n' +
+  '    param:\n' +
+  '      qiniu_bucket: jianmu\n' +
+  '      qiniu_ak: ((qiniu.AccessKey))\n' +
+  '      qiniu_sk: ((qiniu.SecretKey))\n' +
+  '      qiniu_zone: z1\n' +
+  '      qiniu_upload_uri_prefix: ${node_build.package_name}/${node_build.package_version}\n' +
+  '      qiniu_upload_dir: ${git_clone.git_path}/dist\n' +
+  '  update_index_page:\n' +
+  '    type: scp_resouce:1.0.0\n' +
+  '    sources:\n' +
+  '      - qiniu_upload\n' +
+  '    targets:\n' +
+  '      - send_message\n' +
+  '    param:\n' +
+  '      ssh_private_key: ((private_key.alixg))\n' +
+  '      ssh_ip: 47.243.164.48\n' +
+  '      remote_file: /etc/nginx/html/index.html\n' +
+  '      local_file: ${git_clone.git_path}/dist/index.html\n' +
+  '  send_message:\n' +
+  '    type: qywx_notice:1.0.0\n' +
+  '    sources:\n' +
+  '      - update_index_page\n' +
+  '    targets:\n' +
+  '      - end\n' +
+  '    param:\n' +
+  '      bot_webhook_url: ((charbot.webhook_url))\n' +
+  '      mentioned_moblie_list: "[]"\n' +
+  '      text_content: "建木官网CDN更新完成\\\\n\\\\n版本：${node_build.package_version}"\n' +
+  '      msgtype: "text"\n' +
+  '      mentioned_list: "[]"\n' +
+  '  end:\n' +
+  '    type: end\n' +
+  '    sources:\n' +
+  '      - send_message\n';
+const pipeline =
+  'pipeline:\n' +
+  '  name: 建木官网CDN CI/CD\n' +
+  '  ref: jianmu_official_site_cdn_cicd\n' +
+  '  description: 建木官网CDN CI/CD\n' +
+  '  git_clone:\n' +
+  '    type: git_clone:1.0.0\n' +
+  '    param:\n' +
+  '      remote_url: https://gitee.com/jianmu-dev/jianmu-official-site.git\n' +
+  '      ref: refs/heads/master\n' +
+  '      netrc_machine: gitee.com\n' +
+  '      netrc_username: ((gitee.username))\n' +
+  '      netrc_password: ((gitee.password))\n' +
+  '  node_build:\n' +
+  '    type: nodejs_build:1.0.0-14.16.1\n' +
+  '    param:\n' +
+  '      workspace: ${git_clone.git_path}\n' +
+  '      build_arg: --mode cdn\n' +
+  '  qiniu_upload:\n' +
+  '    type: qiniu_upload:1.0.1\n' +
+  '    param:\n' +
+  '      qiniu_bucket: jianmu\n' +
+  '      qiniu_ak: ((qiniu.AccessKey))\n' +
+  '      qiniu_sk: ((qiniu.SecretKey))\n' +
+  '      qiniu_zone: z1\n' +
+  '      qiniu_upload_uri_prefix: ${node_build.package_name}/${node_build.package_version}\n' +
+  '      qiniu_upload_dir: ${git_clone.git_path}/dist\n' +
+  '  update_index_page:\n' +
+  '    type: scp_resouce:1.0.0\n' +
+  '    param:\n' +
+  '      ssh_private_key: ((private_key.alixg))\n' +
+  '      ssh_ip: 47.243.164.48\n' +
+  '      remote_file: /etc/nginx/html/index.html\n' +
+  '      local_file: ${git_clone.git_path}/dist/index.html\n' +
+  '  send_message:\n' +
+  '    type: qywx_notice:1.0.0\n' +
+  '    param:\n' +
+  '      bot_webhook_url: ((charbot.webhook_url))\n' +
+  '      mentioned_moblie_list: "[]"\n' +
+  '      text_content: "建木官网CDN更新完成\\\\n\\\\n版本：${node_build.package_version}"\n' +
+  '      msgtype: "text"\n' +
+  '      mentioned_list: "[]"\n';
+// 切换flag
+const workFlowFlag = ref<boolean>(true);
+const pipeLineFlag = ref<boolean>(false);
+// 切换到流程dsl
+const toWorkFlow = () => {
+  workFlowFlag.value = true;
+  pipeLineFlag.value = false;
+};
+// 切换到管道dsl
+const toPipeLine = () => {
+  workFlowFlag.value = false;
+  pipeLineFlag.value = true;
+};
 // 快速开始
 const quickStart = () => {
   window.location.href = 'https://docs.jianmu.dev/guide/quick-start.html';
@@ -40,6 +149,7 @@ const toNodeStore = () => {
   window.location.href = 'https://hub.jianmu.dev';
 };
 
+// 请求到的节点数据
 const nodeSearchDate = ref<IPageVo<INodeDefinitionVo>>();
 const { proxy } = getCurrentInstance() as any;
 
@@ -65,17 +175,20 @@ onMounted(async () => {
     <div class="document-content">
       建木持续集成平台基于建木，致力于为国内开发者与DevOps人员提供极致用户体验，提升开发、上线、运维的效率，让用户专注于提供业务价值。
     </div>
-    <div
-      class="quick-start-btn document-btn-common"
-      @click="quickStart"
-    >
-      快速开始
-    </div>
-    <div
-      class="document-btn document-btn-common"
-      @click="toDocument"
-    >
-      文档
+    <!-- 按钮 -->
+    <div class="btns-container">
+      <div
+        class="quick-start-btn document-btn-common"
+        @click="quickStart"
+      >
+        快速开始
+      </div>
+      <div
+        class="document-btn document-btn-common"
+        @click="toDocument"
+      >
+        文档
+      </div>
     </div>
   </div>
   <!-- 配置即代码 -->
@@ -89,17 +202,44 @@ onMounted(async () => {
     <div class="configure">
       <!-- 控制器 -->
       <div class="controller">
-        <img src="@/assets/official-h5/svgs/left.svg">
-        <div class="controller-title">
+        <img
+          src="@/assets/official-h5/svgs/left.svg"
+          v-if="workFlowFlag"
+        >
+        <img
+          src="@/assets/official-h5/svgs/left-active.svg"
+          @click="toWorkFlow"
+          v-else
+        >
+        <div
+          class="controller-title"
+          v-if="workFlowFlag"
+        >
+          <img src="@/assets/official-h5/svgs/workflow-label.svg">
+          流程DSL
+        </div>
+        <div
+          class="controller-title"
+          v-else
+        >
           <img src="@/assets/official-h5/svgs/flowchart.svg">
           管道DSL
         </div>
-        <img src="@/assets/official-h5/svgs/right.svg">
+
+        <img
+          src="@/assets/official-h5/svgs/right.svg"
+          v-if="pipeLineFlag"
+        >
+        <img
+          src="@/assets/official-h5/svgs/right-active.svg"
+          v-else
+          @click="toPipeLine"
+        >
       </div>
       <!-- dsl展示 -->
       <div class="dsl-show">
         <jm-dsl-editor
-          :value="workflow"
+          :value="workFlowFlag ? workflow : pipeline"
           readonly
         />
       </div>
@@ -111,14 +251,11 @@ onMounted(async () => {
       流程可视化
     </div>
     <div class="common-description">
-      流程可视化提供流程与管道DSL代码的可视化展示，节点编排依赖与执行情况一目了然
+      流程配置可视化，任务编排与执行状态一目了然。
     </div>
     <!-- 轮播图 -->
     <div class="visualization-swipper">
-      <el-carousel
-        indicator-position="outside"
-        height="348px"
-      >
+      <el-carousel indicator-position="outside">
         <el-carousel-item
           v-for="item in 5"
           :key="item"
@@ -127,11 +264,13 @@ onMounted(async () => {
     </div>
   </div>
   <!-- 示例-按钮 -->
-  <div
-    class="common-btn"
-    @click="toExample"
-  >
-    示例
+  <div class="btns-container">
+    <div
+      class="common-btn"
+      @click="toExample"
+    >
+      示例
+    </div>
   </div>
   <!-- 节点生态 -->
   <div class="official-common-container node-ecology">
@@ -150,19 +289,21 @@ onMounted(async () => {
         :href="`https://hub.jianmu.dev/${item.ownerRef}/${item.ref}`"
       >
         <img
-          class="node-img"
           :src="`${item.icon}?imageView2/2/w/96/h/96/interlace/1/q/100`"
+          class="node-img"
         >
         <div class="node-title">{{ item.name }}</div>
       </a>
     </div>
   </div>
   <!-- 节点库-按钮 -->
-  <div
-    class="common-btn"
-    @click="toNodeStore"
-  >
-    节点库
+  <div class="btns-container">
+    <div
+      class="common-btn"
+      @click="toNodeStore"
+    >
+      节点库
+    </div>
   </div>
 </template>
 
@@ -171,7 +312,6 @@ onMounted(async () => {
 .official-document-entry {
   width: 100%;
   padding: 54px 30px 0 30px;
-  margin-bottom: 80px;
   .document-title {
     font-size: 48px;
     color: #012c53;
@@ -227,8 +367,10 @@ onMounted(async () => {
   // 配置即代码
   .configure {
     background: url('@/assets/official-h5/svgs/configure.svg');
+    background-size: 100%;
     padding: 0 30px;
-    margin-bottom: 80px;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
     // 控制器
     .controller {
       height: 94px;
@@ -275,7 +417,8 @@ onMounted(async () => {
 }
 // 流程可视化
 .visualization {
-  background: url('@/assets/official-h5/svgs/visualization.svg');
+  background: url('@/assets/official-h5/svgs/visualization.svg') no-repeat;
+  background-size: 100% 100%;
   padding: 0 30px;
   .common-title,
   .common-description {
@@ -283,71 +426,98 @@ onMounted(async () => {
   }
   .visualization-swipper {
     width: 690px;
-    height: 348px;
-    margin-bottom: 60px;
+    height: 402px;
+    // 轮播图切换条
+    ::v-deep(.el-carousel__indicators) {
+      margin-top: 50px;
+      .el-carousel__button {
+        background: #096dd9;
+        width: 28px;
+        height: 4px;
+      }
+    }
+    ::v-deep(.el-carousel__item) {
+      height: 348px;
+    }
     .el-carousel__item:nth-of-type(1) {
-      background: url('@/assets/carousel-imgs/1.png');
+      background: url('@/assets/carousel-imgs/1.png') no-repeat;
       background-size: 100%;
     }
     .el-carousel__item:nth-of-type(2) {
-      background: url('@/assets/carousel-imgs/2.png');
+      background: url('@/assets/carousel-imgs/2.png') no-repeat;
       background-size: 100%;
     }
     .el-carousel__item:nth-of-type(3) {
-      background: url('@/assets/carousel-imgs/3.png');
+      background: url('@/assets/carousel-imgs/3.png') no-repeat;
       background-size: 100%;
     }
     .el-carousel__item:nth-of-type(4) {
-      background: url('@/assets/carousel-imgs/4.png');
+      background: url('@/assets/carousel-imgs/4.png') no-repeat;
       background-size: 100%;
     }
     .el-carousel__item:nth-of-type(5) {
-      background: url('@/assets/carousel-imgs/5.png');
+      background: url('@/assets/carousel-imgs/5.png') no-repeat;
       background-size: 100%;
     }
   }
 }
 // 公共按钮样式
-.common-btn {
-  width: 690px;
-  height: 94px;
-  font-size: 30px;
-  text-align: center;
-  line-height: 94px;
-  color: #fff;
-  background: url('@/assets/official-h5/svgs/quick-start.svg');
-  margin: 60px 0px 80px 30px;
+.btns-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
+  margin-top: 60px;
+
+  .common-btn {
+    width: 690px;
+    height: 94px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 94px;
+    color: #fff;
+    background: #0f2647;
+    border-radius: 10px;
+  }
 }
 // 节点生态
 .node-ecology {
   background: url('@/assets/official-h5/svgs/node-ecology.svg');
+  background-size: 100%;
   // 节点展示
   .node-show {
-    height: 255px;
-    margin-left: 60px;
+    width: 750px;
+    height: 300px;
+    padding: 0 30px;
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
     .node-container {
-      width: 78px;
-      height: 102px;
-      margin: 0 30px 27px 0;
-      display: block;
+      width: 168px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 40px;
+      margin-right: 4px;
+
+      // 节点图片
       .node-img {
-        display: inline-block;
-        width: 78px;
-        height: 78px;
-        border-radius: 20px;
-        margin-bottom: 12px;
+        width: 87px;
+        height: 87px;
+        margin-bottom: 11px;
+        border-radius: 22.19px;
       }
+      // 节点名
       .node-title {
-        font-size: 14px;
-        color: #042749;
-        height: 20px;
+        width: 150px;
+        font-size: 20px;
         text-align: center;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+      .node-container:nth-of-type(5) {
+        margin-right: 0;
       }
     }
   }

@@ -20,6 +20,7 @@ import OfficialProduct from './official-product.vue';
 
 <style scoped lang="less">
 .official-container {
+  width: 750px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

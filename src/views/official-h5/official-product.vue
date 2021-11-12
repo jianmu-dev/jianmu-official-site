@@ -62,10 +62,12 @@ const contribution = () => {
     <div class="belonging-community-title">
       所属社区
     </div>
-    <img
-      src="@/assets/official-h5/pngs/belonging-community.png"
-      class="community-img"
-    >
+    <div class="community-img-container">
+      <img
+        src="@/assets/official-h5/pngs/belonging-community.png"
+        class="community-img"
+      >
+    </div>
     <div class="community-description">
       “木兰开源社区”建立于2019年8月，是国家重点研发计划重点专项“云计算和大数据开源社区生态系统”的核心成果。旨在促进产学研用各方开源领域的交流，推动国家科技创新成果开源，加强企业、科教研单位和行业用户之间的沟通，推动开源成果转化落地，同时为各类开源项目提供中立托管，保证开源项目的持续发展不受第三方影响，通过更加开放的方式来打造和完善开源社区生态。
     </div>
@@ -79,20 +81,19 @@ const contribution = () => {
     <div class="participating-units-imgs">
       <img
         src="@/assets/official-h5/pngs/esi.png"
-        alt=""
+        class="cis-img"
       >
       <img
         src="@/assets/official-h5/pngs/cloud.png"
-        alt=""
         class="cloud-img"
       >
       <img
         src="@/assets/official-h5/pngs/gitee.png"
-        alt=""
+        class="gitee-img"
       >
       <img
         src="@/assets/official-h5/pngs/shs.png"
-        alt=""
+        class="shs-img"
       >
     </div>
   </div>
@@ -102,12 +103,18 @@ const contribution = () => {
       九州云在“开源·赋能云边变⾰”的理想和共同⽬标指引下，重新对DevOps &
       OpsDev领域中共性、有价值的需求做了⼀次完整的梳理和重写，最终以“建⽊”开源项⽬的形态呈现。
     </div>
-    <img src="@/assets/official-h5/pngs/kaiyuan-jianmu.png">
+    <div class="cloud-img-container">
+      <img src="@/assets/official-h5/pngs/kaiyuan-jianmu.png">
+    </div>
     <!-- 链接 -->
     <div class="cloud-links">
-      <a href="https://jianmu.dev">项⽬官⽹：https://jianmu.dev</a>
-      <a href="https://gitee.com/jianmu-dev">项⽬托管：https://gitee.com/jianmu-dev</a>
-      <a href="https://docs.jianmu.dev">项⽬文档：https://docs.jianmu.dev</a>
+      <div>项⽬官⽹：<a href="https://jianmu.dev">https://jianmu.dev</a></div>
+      <div>
+        项⽬托管：<a href="https://gitee.com/jianmu-dev">https://gitee.com/jianmu-dev</a>
+      </div>
+      <div>
+        项⽬文档：<a href="https://docs.jianmu.dev">https://docs.jianmu.dev</a>
+      </div>
     </div>
   </div>
 </template>
@@ -121,13 +128,15 @@ const contribution = () => {
   text-align: center;
   line-height: 94px;
   color: #fff;
-  background: url('@/assets/official-h5/svgs/quick-start.svg');
+  background: #0f2647;
+  border-radius: 10px;
   margin: 60px 0px 80px 30px;
 }
 // 产品特性
 .product-characteristics {
-  padding: 20px 30px;
+  padding: 0px 30px;
   background: url('@/assets/official-h5/svgs/product.svg');
+  background-size: 100%;
   .product-characteristics-title {
     font-size: 36px;
     color: #012c53;
@@ -164,10 +173,14 @@ const contribution = () => {
     color: #012c53;
     margin-bottom: 50px;
   }
-  .community-img {
-    width: 248px;
-    height: 86px;
-    margin: 0 0 30px 251px;
+  .community-img-container {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    .community-img {
+      width: 248px;
+      height: 86px;
+    }
   }
   .community-description {
     font-size: 30px;
@@ -179,6 +192,7 @@ const contribution = () => {
 .participating-units-container {
   padding: 0 30px;
   background: url('@/assets/official-h5/svgs/participating-units.svg');
+  background-size: 100%;
   margin-bottom: 60px;
   .participating-units-title {
     font-size: 36px;
@@ -187,14 +201,29 @@ const contribution = () => {
     margin-bottom: 45px;
   }
   .participating-units-imgs {
+    width: 690px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    .cis-img {
+      width: 500px;
+      height: 90px;
+    }
     img {
       margin-bottom: 40px;
     }
     .cloud-img {
+      width: 202px;
+      height: 90px;
       margin-right: 50px;
+    }
+    .gitee-img {
+      width: 218px;
+      height: 90px;
+    }
+    .shs-img {
+      width: 276px;
+      height: 90px;
     }
   }
 }
@@ -208,16 +237,19 @@ const contribution = () => {
     line-height: 48px;
     margin-bottom: 26px;
   }
-  img {
-    margin: 0 0 37px 208px;
-  }
   .cloud-links {
     font-weight: 500;
     color: #042749;
     font-size: 30px;
     line-height: 48px;
-    a {
-      display: block;
+  }
+  .cloud-img-container {
+    padding-bottom: 37px;
+    display: flex;
+    justify-content: center;
+    img {
+      width: 270px;
+      height: 270px;
     }
   }
 }
