@@ -17,7 +17,6 @@ export const example = () => {
 export const dsl =
   'pipeline:\n' +
   '  name: 建木官网CDN CI/CD\n' +
-  '  ref: jianmu_official_site_cdn_cicd\n' +
   '  description: 建木官网CDN CI/CD\n' +
   '  git_clone:\n' +
   '    type: git_clone:1.0.0\n' +
@@ -59,7 +58,6 @@ export const dsl =
 export const workFlow =
   'workflow:\n' +
   '  name: 建木官网CDN CI/CD\n' +
-  '  ref: jianmu_official_site_cdn_cicd\n' +
   '  description: 建木官网CDN CI/CD\n' +
   '  start:\n' +
   '    type: start\n' +

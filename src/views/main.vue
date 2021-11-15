@@ -27,74 +27,68 @@ const scrollBarRef = ref<HTMLElement>();
 // 第二根卷轴
 const scrollBarBottomRef = ref<HTMLElement>();
 const scrollTop = ref<number>(0);
-const canScrollHeight = ref<number>(0);
 // 处理卷轴上下滚动时动态调整显示内容高度
 const scrollHeightHandler = () => {
-  // console.log('main', scrollContainerRef.value?.style.height);
-  // console.log('main', mainRef.value!.scrollTop);
   const _this = scrollContainerRef.value;
-  // 向上滚动
-  // mainRef.value?.scrollTop as number) < scrollTop.value
+  let h = 0;
   // 如果当前滚动高度小于上一次的滚动高度，向上滚动
   if ((mainRef.value?.scrollTop as number) < scrollTop.value) {
-    // scrollRef.value!.style.paddingBottom = '0px';
-    // if (offsetHeight.value < 10) {
-    //   console.log('hehe');
-    //   offsetHeight.value = 10;
-    //   _this!.style.height = `${offsetHeight.value}px`;
-    //   return;
-    // }
-
-    if (mainRef.value!.scrollTop > 4799 - height.value) {
-      // padding填充高度让背景出来
-      // offsetHeight.value = 4749;
-      _this!.style.height = `${4808}px`;
+    if (
+      mainRef.value!.clientHeight <= 693
+        ? mainRef.value!.scrollTop >
+          4749 - height.value + (693 - mainRef.value!.clientHeight) + 60
+        : mainRef.value!.scrollTop > 4749 - height.value
+    ) {
+      h = 4808;
     } else {
       // 将main元素的滚动高度，复制一份
       scrollTop.value = mainRef.value?.scrollTop as number;
-      _this!.style.height = height.value + scrollTop.value + 'px';
-      offsetHeight.value = height.value + scrollTop.value;
+      // 高度小于693
+      if (mainRef.value!.clientHeight <= 693) {
+        h =
+          height.value + scrollTop.value - (693 - mainRef.value!.clientHeight);
+        offsetHeight.value = height.value + scrollTop.value;
+      } else {
+        h = height.value + scrollTop.value;
+        offsetHeight.value = height.value + scrollTop.value;
+      }
     }
   } else {
     // 将main元素的滚动高度，复制一份
     scrollTop.value = mainRef.value?.scrollTop as number;
     // 向下滚动
-    // 100% -> 4649   canScrollHeight -> 4972
-    if (mainRef.value!.scrollTop > 4799 - height.value) {
-      // padding填充高度让背景出来
-      // offsetHeight.value = 4749;
-      _this!.style.height = `${4808}px`;
+    if (
+      mainRef.value!.clientHeight <= 693
+        ? mainRef.value!.scrollTop >
+          4749 - height.value + (693 - mainRef.value!.clientHeight)
+        : mainRef.value!.scrollTop > 4749 - height.value
+    ) {
+      h = 4808;
     } else {
       // 卷轴的高度=初始高度+main的滚动偏移值
-      _this!.style.height = height.value + scrollTop.value + 'px';
-      offsetHeight.value = height.value + scrollTop.value;
+      if (mainRef.value!.clientHeight <= 693) {
+        h =
+          height.value + scrollTop.value - (693 - mainRef.value!.clientHeight);
+        offsetHeight.value = height.value + scrollTop.value;
+      } else {
+        h = height.value + scrollTop.value;
+        offsetHeight.value = height.value + scrollTop.value;
+      }
     }
   }
-};
-function getStyle (element: HTMLElement, attr: string) {
-  // @ts-ignore
-  if (element.currentStyle) {
-    // @ts-ignore
-    return element.currentStyle[attr];
+  if (h < height.value) {
+    h = height.value;
   }
-  // @ts-ignore
-  return getComputedStyle(element, null)[attr];
-}
+  _this!.style.height = h + 'px';
+};
 const initScroll = (): void => {
-  canScrollHeight.value =
-    scrollContainerRef.value!.clientHeight -
-    getStyle(mainRef.value as HTMLElement, 'height').split('px')[0];
-  console.log(canScrollHeight.value, scrollContainerRef.value!.clientHeight);
   // 解决浏览器窗口缩放后，页面出现空白的问题
   mainRef.value?.scrollTo(0, 0);
-  // canScrollHeight.value =
-  //   mainRef.value!.clientHeight -
-  //   getStyle(mainRef.value as HTMLElement, 'height').split('px')[0];
   // 卷轴的初始高度
   height.value =
     document.documentElement.clientHeight -
     (scrollBarRef.value!.offsetTop - document.documentElement.scrollTop) -
-    110;
+    (scrollBarRef.value!.clientHeight * 2 + height.value);
   if (height.value < 10) {
     // 屏幕展示的区域小的时候，将卷轴饿高度设置为10，让其折叠
     height.value = 10;
@@ -178,7 +172,7 @@ const tabClick = (index: number) => {
           </div>
           <div class="scroll" ref="scrollRef">
             <div class="scroll-bar" ref="scrollBarRef">
-              <img src="~@/assets/pngs/scroll-bar.png" />
+              <img src="~@/assets/pngs/bar-top.png" />
             </div>
             <div class="scroll-container" ref="scrollContainerRef">
               <div class="scroll-wrapper">
@@ -404,7 +398,6 @@ const tabClick = (index: number) => {
                       <div class="qrcode">
                         <img src="~@/assets/pngs/qrcode.png" />
                       </div>
-                      <!-- <span>开源建木+ 二维码</span>  -->
                     </div>
                     <div class="right">
                       <div class="top">
@@ -431,7 +424,7 @@ const tabClick = (index: number) => {
               </div>
             </div>
             <div class="scroll-bar-bottom" ref="scrollBarBottomRef">
-              <img src="~@/assets/pngs/scroll-bar.png" />
+              <img src="~@/assets/pngs/bar-bottom.png" />
             </div>
           </div>
         </div>
@@ -576,10 +569,11 @@ const tabClick = (index: number) => {
           }
         }
         .scroll {
-          margin-top: 160px;
+          // margin-top: 160px;
+          margin-top: 150px;
           .scroll-bar,
           .scroll-bar-bottom {
-            height: 50px;
+            height: 30px;
             max-width: 99%;
             margin: 0 auto;
             img {
@@ -593,7 +587,7 @@ const tabClick = (index: number) => {
             position: relative;
             z-index: 11;
             .scroll-wrapper {
-              max-width: 87%;
+              max-width: 90%;
               background-color: #f2f4f7;
               margin: 0 auto;
               padding: 30px;
@@ -790,8 +784,6 @@ const tabClick = (index: number) => {
                     margin-top: 150px;
                     width: 1100px;
                     display: flex;
-                    // margin-left: 170px;
-                    // justify-content: flex-start;
                     justify-content: center;
                     height: 600px;
                     flex-wrap: wrap;
@@ -1068,17 +1060,4 @@ const tabClick = (index: number) => {
     }
   }
 }
-// @keyframes ani {
-//   0% {
-//     height: 0;
-//     opacity: 0;
-//   }
-//   15% {
-//     opacity: 1;
-//   }
-//   100% {
-//     opacity: 1;
-//     height: 4749px;
-//   }
-// }
 </style>
