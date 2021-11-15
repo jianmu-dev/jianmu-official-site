@@ -27,9 +27,53 @@ const scrollBarRef = ref<HTMLElement>();
 // 第二根卷轴
 const scrollBarBottomRef = ref<HTMLElement>();
 const scrollTop = ref<number>(0);
+const scrollInterval = ref<any>();
+const preHeight = ref<number>(0);
+const animateScroll = (height: number) => {
+  if (scrollInterval.value) {
+    clearInterval(scrollInterval.value);
+    scrollInterval.value = undefined;
+  }
+  if (preHeight.value === 0) {
+    preHeight.value = height;
+  }
+
+  if (height < preHeight.value) {
+    if (preHeight.value - height > 50) {
+      // 60为动画开始时的高度，大于50即可完全隐藏卷轴
+      preHeight.value = height + 50;
+    }
+  } else if (height - preHeight.value > document.documentElement.clientHeight) {
+    preHeight.value = height - document.documentElement.clientHeight;
+  }
+
+  let h: number = preHeight.value;
+  scrollInterval.value = setInterval(() => {
+    if (h === height) {
+      clearInterval(scrollInterval.value);
+      scrollInterval.value = undefined;
+      return;
+    }
+
+    if (height >= preHeight.value) {
+      h += 5;
+      if (h > height) {
+        h = height;
+      }
+    } else {
+      h -= 1;
+      if (h < height) {
+        h = height;
+      }
+    }
+
+    preHeight.value = h;
+    scrollContainerRef.value!.style.height = h + 'px';
+  }, 1);
+};
 // 处理卷轴上下滚动时动态调整显示内容高度
 const scrollHeightHandler = () => {
-  const _this = scrollContainerRef.value;
+  // const _this = scrollContainerRef.value;
   let h = 0;
   // 如果当前滚动高度小于上一次的滚动高度，向上滚动
   if ((mainRef.value?.scrollTop as number) < scrollTop.value) {
@@ -79,7 +123,8 @@ const scrollHeightHandler = () => {
   if (h < height.value) {
     h = height.value;
   }
-  _this!.style.height = h + 'px';
+  // _this!.style.height = h + 'px';
+  animateScroll(h);
 };
 const initScroll = (): void => {
   // 解决浏览器窗口缩放后，页面出现空白的问题
@@ -151,7 +196,7 @@ const tabClick = (index: number) => {
           <div class="description">
             <div class="left">
               <div class="top-card">
-                <img src="~@/assets/pngs/top-card.png" />
+                <!-- <img src="~@/assets/pngs/top-card.png" /> -->
               </div>
               <div class="operation-btns">
                 <div class="item quick-start" @click="quickStart">
@@ -256,6 +301,7 @@ const tabClick = (index: number) => {
                         <img src="~@/assets/pngs/4.png" />
                       </el-carousel-item>
                     </el-carousel>
+                    <div class="shadow"></div>
                   </div>
                   <div class="pr-4">
                     <h1 class="title">节点生态</h1>
@@ -339,28 +385,34 @@ const tabClick = (index: number) => {
                         <div class="desc-img">
                           <img src="~@/assets/svgs/pr-6-1-icon.svg" />
                         </div>
-                        <h3 class="heading">配置即代码</h3>
-                        <span class="desc">
-                          支持GitOps使用模型，可实现更快的部署和恢复并提高应用系统可靠性。
-                        </span>
+                        <div class="desc-content">
+                          <h3 class="heading">配置即代码</h3>
+                          <span class="desc">
+                            支持GitOps使用模型，可实现更快的部署和恢复并提高应用系统可靠性。
+                          </span>
+                        </div>
                       </div>
                       <div class="feat-item">
                         <div class="desc-img">
                           <img src="~@/assets/svgs/pr-6-2-icon.svg" />
                         </div>
-                        <h3 class="heading">环境隔离性</h3>
-                        <span class="desc">
-                          无需担心环境的不一致性，每个环境都在隔离的容器内运行，运行后自动销毁回收。
-                        </span>
+                        <div class="desc-content">
+                          <h3 class="heading">环境隔离性</h3>
+                          <span class="desc">
+                            无需担心环境的不一致性，每个环境都在隔离的容器内运行，运行后自动销毁回收。
+                          </span>
+                        </div>
                       </div>
                       <div class="feat-item">
                         <div class="desc-img">
                           <img src="~@/assets/pngs/pr-6-3-icon.png" />
                         </div>
-                        <h3 class="heading">流程可视化</h3>
-                        <span class="desc">
-                          可清晰地看到流程的运转细节，让团队了解CI/CD流程在实际场景中将如何运作。
-                        </span>
+                        <div class="desc-content">
+                          <h3 class="heading">流程可视化</h3>
+                          <span class="desc">
+                            可清晰地看到流程的运转细节，让团队了解CI/CD流程在实际场景中将如何运作。
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -432,7 +484,8 @@ const tabClick = (index: number) => {
     </div>
     <div class="bottom-block">
       <div class="copy-info">
-        ©2020-2021 版权所有 九州云信息科技有限公司 <span>邮箱：</span
+        ©2020-{{ new Date().getFullYear() }} 版权所有 九州云信息科技有限公司
+        <span>邮箱：</span
         ><span><a href="mailto:support@jianmu.dev">support@jianmu.dev</a></span>
       </div>
     </div>
@@ -525,9 +578,10 @@ const tabClick = (index: number) => {
             margin-top: 80px;
             .top-card {
               width: 515px;
-              img {
-                width: 100%;
-              }
+              height: 222px;
+              background-image: url('@/assets/svgs/top-card.svg');
+              background-repeat: no-repeat;
+              background-position: top center;
             }
             .operation-btns {
               margin-top: 100px;
@@ -561,11 +615,14 @@ const tabClick = (index: number) => {
           }
           .right {
             flex-shrink: 0;
-            margin-right: 150px;
+            margin-right: 100px;
             margin-top: 80px;
             width: 437px;
+            height: 400px;
             background-image: url('@/assets/pngs/description.png');
             background-position: top center;
+            background-size: contain;
+            background-repeat: no-repeat;
           }
         }
         .scroll {
@@ -718,6 +775,7 @@ const tabClick = (index: number) => {
                 }
                 .pr-3 {
                   display: flex;
+                  position: relative;
                   flex-direction: column;
                   align-items: center;
                   padding: 0 60px;
@@ -742,12 +800,19 @@ const tabClick = (index: number) => {
                     }
                     .el-carousel__indicators {
                       .el-carousel__indicator {
+                        margin-top: 50px;
                         &.is-active {
                           .el-carousel__button {
                             background-color: #042749;
+                            &:hover {
+                              opacity: 1;
+                            }
                           }
                         }
                         .el-carousel__button {
+                          &:hover {
+                            opacity: 1;
+                          }
                           height: 6px;
                           width: 40px;
                           border-radius: 3px;
@@ -755,6 +820,14 @@ const tabClick = (index: number) => {
                         }
                       }
                     }
+                  }
+                  .shadow {
+                    position: absolute;
+                    top: 140px;
+                    left: 0.5%;
+                    box-shadow: 0px 0px 30px 0px #dce3ef;
+                    width: 99%;
+                    height: 640px;
                   }
                 }
                 .pr-4 {
@@ -886,9 +959,13 @@ const tabClick = (index: number) => {
                     margin-top: 60px;
                     justify-content: center;
                     .feat-item {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: flex-start;
                       &:nth-child(1) {
                         margin-left: 30px;
                         .desc-img {
+                          align-self: flex-start;
                           width: 240px;
                           img {
                             width: 100%;
@@ -897,6 +974,7 @@ const tabClick = (index: number) => {
                       }
                       &:nth-child(2) {
                         .desc-img {
+                          align-self: flex-start;
                           width: 226px;
                           img {
                             width: 100%;
@@ -906,6 +984,7 @@ const tabClick = (index: number) => {
                       &:nth-child(3) {
                         margin-right: 0px;
                         .desc-img {
+                          align-self: flex-start;
                           width: 195px;
                           img {
                             width: 100%;
