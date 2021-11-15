@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1140px" height="675px" viewBox="0 0 1140 675" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 23</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="1140" height="675"></rect>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="建木官网" transform="translate(-390.000000, -2664.000000)">
+            <g id="编组-23" transform="translate(390.000000, 2664.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="矩形" opacity="0.603924419"></g>
+                <path d="M-121.192507,165.347929 C-75.4995353,165.347929 349.626208,178.39037 573.234041,165.347929 C722.305929,156.652969 901.186514,129.036993 1109.87579,82.5 C1156.92927,398.534979 1148.86022,590.485704 1085.66866,658.352175 C990.881308,760.151882 754.386681,610.379994 511.869795,622.584172 C269.35291,634.788351 -122.124206,694.001512 -122.124206,658.352175 C-122.124206,622.702838 -122.124206,165.347929 -121.192507,165.347929 Z" id="路径-3备份-3" fill="#F6FAFF" opacity="0.600813045" mask="url(#mask-2)" transform="translate(508.937897, 388.255795) scale(-1, 1) translate(-508.937897, -388.255795) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

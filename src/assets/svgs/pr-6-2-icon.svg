@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="226px" height="139px" viewBox="0 0 226 139" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 16</title>
+    <defs>
+        <rect id="path-1" x="11" y="84" width="206" height="38"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="206" height="38" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect id="path-3" x="51" y="42" width="126" height="38"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="126" height="38" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <rect id="path-5" x="127" y="0" width="50" height="38"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="50" height="38" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="建木官网" transform="translate(-853.000000, -4167.000000)">
+            <g id="编组-16" transform="translate(853.000000, 4167.000000)">
+                <use id="矩形" stroke="#3695FF" mask="url(#mask-2)" stroke-width="0.6" fill="#DCEDFF" stroke-dasharray="2" xlink:href="#path-1"></use>
+                <use id="矩形备份-3" stroke="#3695FF" mask="url(#mask-4)" stroke-width="0.6" fill="#DCEDFF" stroke-dasharray="2" xlink:href="#path-3"></use>
+                <use id="矩形备份-5" stroke="#3695FF" mask="url(#mask-6)" stroke-width="0.6" fill="#DCEDFF" stroke-dasharray="2" xlink:href="#path-5"></use>
+                <polygon id="路径" fill="#FF6A00" fill-rule="nonzero" points="138 76 138 46 168 46 168 76"></polygon>
+                <polygon id="路径" fill="#9248CF" fill-rule="nonzero" points="60 118 60 88 90 88 90 118 60 118"></polygon>
+                <polygon id="路径" fill="#FF6A00" fill-rule="nonzero" points="99 118 99 88 129 88 129 118 99 118"></polygon>
+                <polygon id="路径" fill="#376ED9" fill-rule="nonzero" points="137 118 137 88 167 88 167 118"></polygon>
+                <polygon id="路径" fill="#000000" fill-rule="nonzero" points="177.000343 88 207 88 207 118 177 118 177 88"></polygon>
+                <polygon id="路径" fill="#3388FF" fill-rule="nonzero" points="137 4 167 4 167 34 137 34"></polygon>
+                <polygon id="路径" fill="#2AAF6F" fill-rule="nonzero" points="99 46 129 46 129 76 99.0219206 76 99.0219206 46"></polygon>
+                <polygon id="路径" fill="#00C1DE" fill-rule="nonzero" points="60 46 90 46 90 76 60 76"></polygon>
+                <polygon id="路径" fill="#E53935" fill-rule="nonzero" points="21 88 51 88 51 118 21 118"></polygon>
+                <path d="M220.993044,131 L4.2375192,131 C1.91250867,131 1.27897692e-13,132.806234 1.27897692e-13,134.99663 C1.27897692e-13,137.193766 1.91250867,139 4.2375192,139 L220.993044,139 C223.318054,139 225.230563,137.193766 225.230563,134.99663 C225.230563,132.806234 223.318054,131 220.993044,131 Z" id="路径" fill="#656D78" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

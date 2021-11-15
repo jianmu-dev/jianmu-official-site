@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1140px" height="610px" viewBox="0 0 1140 610" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>蒙版备份</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="1140" height="543"></rect>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="建木官网" transform="translate(-390.000000, -3999.000000)">
+            <g id="蒙版备份" transform="translate(390.000000, 4065.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版"></g>
+                <path d="M-140,9 C59.0372294,45.0256031 273.922078,54.5590533 504.654545,37.6003508 C735.387013,20.6416483 947.168831,33.358487 1140,75.7508669 L1136.01039,470 L-140,470 L-140,9 Z" fill="#EEF6FF" opacity="0.301258176" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>
