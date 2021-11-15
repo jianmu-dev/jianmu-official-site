@@ -167,118 +167,78 @@ onMounted(async () => {
 <template>
   <!-- 文档入口 -->
   <div class="official-document-entry">
-    <div class="document-title">
-      建木持续集成平台
-    </div>
+    <div class="document-title">建木持续集成平台</div>
     <div class="document-content">
       建木持续集成平台基于建木，致力于为国内开发者与DevOps人员提供极致用户体验，提升开发、上线、运维的效率，让用户专注于提供业务价值。
     </div>
     <!-- 按钮 -->
     <div class="btns-container">
-      <div
-        class="quick-start-btn document-btn-common"
-        @click="quickStart"
-      >
+      <div class="quick-start-btn document-btn-common" @click="quickStart">
         快速开始
       </div>
-      <div
-        class="document-btn document-btn-common"
-        @click="toDocument"
-      >
+      <div class="document-btn document-btn-common" @click="toDocument">
         文档
       </div>
     </div>
   </div>
   <!-- 配置即代码 -->
   <div class="official-common-container">
-    <div class="common-title">
-      配置即代码
-    </div>
+    <div class="common-title">配置即代码</div>
     <div class="common-description">
       提供声明式语法将流程代码化，通过代码库进行版本控制，快速实现幂等部署与故障恢复。
     </div>
     <div class="configure">
       <!-- 控制器 -->
       <div class="controller">
-        <img
-          src="@/assets/official-h5/svgs/left.svg"
-          v-if="workFlowFlag"
-        >
+        <img src="@/assets/official-h5/svgs/left.svg" v-if="workFlowFlag" />
         <img
           src="@/assets/official-h5/svgs/left-active.svg"
           @click="toWorkFlow"
           v-else
-        >
-        <div
-          class="controller-title"
-          v-if="workFlowFlag"
-        >
-          <img src="@/assets/official-h5/svgs/workflow-label.svg">
+        />
+        <div class="controller-title" v-if="workFlowFlag">
+          <img src="@/assets/official-h5/svgs/workflow-label.svg" />
           流程DSL
         </div>
-        <div
-          class="controller-title"
-          v-else
-        >
-          <img src="@/assets/official-h5/svgs/flowchart.svg">
+        <div class="controller-title" v-else>
+          <img src="@/assets/official-h5/svgs/flowchart.svg" />
           管道DSL
         </div>
 
-        <img
-          src="@/assets/official-h5/svgs/right.svg"
-          v-if="pipeLineFlag"
-        >
+        <img src="@/assets/official-h5/svgs/right.svg" v-if="pipeLineFlag" />
         <img
           src="@/assets/official-h5/svgs/right-active.svg"
           v-else
           @click="toPipeLine"
-        >
+        />
       </div>
       <!-- dsl展示 -->
       <div class="dsl-show">
-        <jm-dsl-editor
-          :value="workFlowFlag ? workflow : pipeline"
-          readonly
-        />
+        <jm-dsl-editor :value="workFlowFlag ? workflow : pipeline" readonly />
       </div>
     </div>
   </div>
   <!-- 流程可视化 -->
   <div class="official-common-container visualization">
-    <div class="common-title">
-      流程可视化
-    </div>
+    <div class="common-title">流程可视化</div>
     <div class="common-description">
       流程配置可视化，任务编排与执行状态一目了然。
     </div>
     <!-- 轮播图 -->
     <div class="visualization-swipper">
       <div class="swipper-shadow" />
-      <el-carousel
-        indicator-position="outside"
-        arrow="never"
-      >
-        <el-carousel-item
-          v-for="item in 4"
-          :key="item"
-        />
+      <el-carousel indicator-position="outside" arrow="never">
+        <el-carousel-item v-for="item in 4" :key="item" />
       </el-carousel>
     </div>
   </div>
   <!-- 示例-按钮 -->
   <div class="btns-container">
-    <div
-      class="common-btn"
-      @click="toExample"
-    >
-      示例
-    </div>
+    <div class="common-btn" @click="toExample">示例</div>
   </div>
   <!-- 节点生态 -->
   <div class="official-common-container node-ecology">
-    <div class="common-title">
-      节点生态
-    </div>
+    <div class="common-title">节点生态</div>
     <div class="common-description">
       使用官方与社区提供的节点自由组合，灵活满足各类需求。贡献节点，分享自己的成果。
     </div>
@@ -293,19 +253,14 @@ onMounted(async () => {
         <img
           :src="`${item.icon}?imageView2/2/w/96/h/96/interlace/1/q/100`"
           class="node-img"
-        >
+        />
         <div class="node-title">{{ item.name }}</div>
       </a>
     </div>
   </div>
   <!-- 节点库-按钮 -->
   <div class="btns-container">
-    <div
-      class="common-btn"
-      @click="toNodeStore"
-    >
-      节点库
-    </div>
+    <div class="common-btn" @click="toNodeStore">节点库</div>
   </div>
 </template>
 
@@ -316,7 +271,7 @@ onMounted(async () => {
   padding: 54px 30px 0 30px;
   .document-title {
     font-size: 48px;
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 46px;
   }
   .document-content {
@@ -386,6 +341,7 @@ onMounted(async () => {
         align-items: center;
         font-size: 30px;
         color: #042749;
+        font-weight: 700;
         img {
           margin-right: 20px;
         }
