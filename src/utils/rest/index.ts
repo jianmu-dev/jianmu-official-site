@@ -1,12 +1,11 @@
 import axios, { Method, AxiosRequestTransformer } from 'axios';
 import qs from 'qs';
 import { HttpError, TimeoutError } from '@/utils/rest/error';
-console.log(import.meta);
 
 const instance = axios.create({
   // `baseURL` will be prepended to `url` unless `url` is absolute.
   // baseURL: 'http://xxx.xxx.xxx.xxx/',
-  baseURL: import.meta.env.VITE_AXIOS_BASE_URL as string | undefined,
+  // baseURL: import.meta.env.VITE_AXIOS_BASE_URL as string | undefined,
   // default is `0` (no timeout)
   // timeout: 10 * 1000,
 });
@@ -94,4 +93,7 @@ export default async function rest({
   const newToken = res.headers['x-authorization-token'];
 
   return m === 'head' ? res.headers : res.data;
+}
+function mode(mode: any, arg1: string) {
+  throw new Error('Function not implemented.');
 }

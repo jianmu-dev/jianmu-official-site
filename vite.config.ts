@@ -1,10 +1,18 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
+// 按需引入element-plus
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
@@ -18,7 +26,7 @@ export default defineConfig({
         // 导入依赖autoprefixer，用来给不同的浏览器自动添加相应前缀，比如-webkit-,-moz-等
         require('autoprefixer'),
         // 导入依赖postcss-px-to-viewport
-        require('postcss-px-to-viewport')({
+        require('./src/components/postcss-px-to-viewport')({
           // 要转换的单位
           unitToConvert: 'px',
           // 视窗的宽度

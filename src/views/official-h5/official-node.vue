@@ -10,7 +10,6 @@ import { START_PAGE_NUM } from '@/utils/rest/constants';
 const workflow =
   'workflow:\n' +
   '  name: 建木官网CDN CI/CD\n' +
-  '  ref: jianmu_official_site_cdn_cicd\n' +
   '  description: 建木官网CDN CI/CD\n' +
   '  start:\n' +
   '    type: start\n' +
@@ -80,7 +79,6 @@ const workflow =
 const pipeline =
   'pipeline:\n' +
   '  name: 建木官网CDN CI/CD\n' +
-  '  ref: jianmu_official_site_cdn_cicd\n' +
   '  description: 建木官网CDN CI/CD\n' +
   '  git_clone:\n' +
   '    type: git_clone:1.0.0\n' +
@@ -395,11 +393,8 @@ onMounted(async () => {
     }
     // dsl展示
     .dsl-show {
-      width: 690px;
-      height: 493px;
       background: #19253b;
       padding: 20px 16px;
-      display: flex;
       font-size: 21px;
       line-height: 30px;
       ::v-deep(.CodeMirror .CodeMirror-linenumber) {
@@ -411,6 +406,12 @@ onMounted(async () => {
         padding-right: 15px;
         margin-right: 20px;
         border-right: 1px solid #4a638f;
+      }
+      ::v-deep(.CodeMirror-scroll) {
+        width: 690px;
+        height: 493px;
+        top: 0;
+        left: 0;
       }
     }
   }

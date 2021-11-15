@@ -1,10 +1,10 @@
 <template>
-  <jm-scrollbar
+  <el-scrollbar
     class="jm-dsl-editor"
     @click="clickEmpty"
   >
     <textarea ref="textareaRef" />
-  </jm-scrollbar>
+  </el-scrollbar>
 </template>
 
 <script type="text/ecmascript-6">
@@ -129,7 +129,9 @@ export default defineComponent({
     z-index: 0;
     height: inherit;
     background-color: #19253b;
-
+    * {
+      font-family: Hiragino Sans GB, sans-serif;
+    }
     .CodeMirror-gutters {
       z-index: 0;
       background-color: #19253b;
