@@ -5,6 +5,9 @@ import router from './router';
 import './global.less';
 import { globalErrorHandler } from '@/utils/global-error-handler';
 import component from '@/components';
+// 安装百度统计
+import './utils/baidu-tongji.ts';
+
 const app = createApp(App);
 // 全局注册组件
 app.use(component);
