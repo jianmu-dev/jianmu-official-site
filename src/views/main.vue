@@ -12,7 +12,7 @@ import {
   quickStart,
   doc,
   example,
-} from '@/constants';
+} from '@/utils/constants';
 const nodeSearchDate = ref<IPageVo<INodeDefinitionVo>>();
 const height = ref<number>(10);
 const offsetHeight = ref<number>(0);
@@ -71,7 +71,7 @@ const scrollHeightHandler = () => {
     }
   }
 };
-function getStyle(element: HTMLElement, attr: string) {
+function getStyle (element: HTMLElement, attr: string) {
   // @ts-ignore
   if (element.currentStyle) {
     // @ts-ignore

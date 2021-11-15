@@ -12,7 +12,7 @@ import {
   example,
   dsl,
   workFlow,
-} from '@/constants';
+} from '@/utils/constants';
 const nodeSearchDate = ref<IPageVo<INodeDefinitionVo>>();
 const { proxy } = getCurrentInstance() as any;
 onMounted(async () => {
