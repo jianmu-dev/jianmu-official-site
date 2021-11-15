@@ -14,7 +14,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         resolvers: [ElementPlusResolver()],
       }),
     ],
-    base: command === 'build' && mode === 'cdn' ? `https://cdn.jianmu.run/${name}/${version}/` : '/',
+    base: command === 'build' && mode === 'cdn' ? `https://cdn.jianmu.run/${name}/web/${version}/` : '/',
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
