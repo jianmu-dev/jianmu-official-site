@@ -25,5 +25,6 @@ import OfficialProduct from './official-product.vue';
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
+  color: #042749;
 }
 </style>

@@ -125,6 +125,7 @@ const contribution = () => {
   width: 690px;
   height: 94px;
   font-size: 30px;
+  font-weight: 700;
   text-align: center;
   line-height: 94px;
   color: #fff;
@@ -139,8 +140,7 @@ const contribution = () => {
   background-size: 100%;
   .product-characteristics-title {
     font-size: 36px;
-    color: #012c53;
-    font-weight: 500;
+    font-weight: 700;
   }
   // 产品公共样式
   .product-common-container {
@@ -151,13 +151,11 @@ const contribution = () => {
     }
     .product-title {
       font-size: 30px;
-      color: #042749;
-      font-weight: 500;
+      font-weight: 700;
       margin: 20px 0;
     }
     .product-description {
       font-size: 30px;
-      color: #042749;
       line-height: 48px;
     }
   }
@@ -169,8 +167,7 @@ const contribution = () => {
   margin-bottom: 80px;
   .belonging-community-title {
     font-size: 36px;
-    font-weight: 500;
-    color: #012c53;
+    font-weight: 700;
     margin-bottom: 50px;
   }
   .community-img-container {
@@ -184,7 +181,6 @@ const contribution = () => {
   }
   .community-description {
     font-size: 30px;
-    color: #042749;
     line-height: 48px;
   }
 }
@@ -196,8 +192,7 @@ const contribution = () => {
   margin-bottom: 60px;
   .participating-units-title {
     font-size: 36px;
-    font-weight: 500;
-    color: #012c53;
+    font-weight: 700;
     margin-bottom: 45px;
   }
   .participating-units-imgs {
@@ -233,13 +228,11 @@ const contribution = () => {
   margin-bottom: 68px;
   .cloud-description {
     font-size: 30px;
-    color: #042749;
     line-height: 48px;
     margin-bottom: 26px;
   }
   .cloud-links {
-    font-weight: 500;
-    color: #042749;
+    font-weight: 700;
     font-size: 30px;
     line-height: 48px;
   }

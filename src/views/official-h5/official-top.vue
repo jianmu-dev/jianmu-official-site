@@ -25,7 +25,6 @@
   }
   .logo-text {
     font-size: 36px;
-    color: #012c53;
     font-weight: 800;
     display: inline-block;
     height: 40px;

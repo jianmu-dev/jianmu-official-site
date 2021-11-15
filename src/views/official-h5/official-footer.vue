@@ -3,7 +3,7 @@
 <template>
   <!-- 底部 -->
   <div class="official-footer">
-    ©2020-2021 版权所有 九州云信息科技有限公司
+    ©2020-{{ new Date().getFullYear() }} 版权所有 九州云信息科技有限公司
     <div>邮箱：<a href="mailto:support@jianmu.dev">support@jianmu.dev</a></div>
   </div>
 </template>
@@ -18,7 +18,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #385775;
   font-size: 20px;
   border-top: 1px solid #e3eaf0;
 }

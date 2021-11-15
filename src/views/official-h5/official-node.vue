@@ -253,9 +253,13 @@ onMounted(async () => {
     </div>
     <!-- 轮播图 -->
     <div class="visualization-swipper">
-      <el-carousel indicator-position="outside">
+      <div class="swipper-shadow" />
+      <el-carousel
+        indicator-position="outside"
+        arrow="never"
+      >
         <el-carousel-item
-          v-for="item in 5"
+          v-for="item in 4"
           :key="item"
         />
       </el-carousel>
@@ -312,13 +316,11 @@ onMounted(async () => {
   padding: 54px 30px 0 30px;
   .document-title {
     font-size: 48px;
-    color: #012c53;
     font-weight: 500;
     margin-bottom: 46px;
   }
   .document-content {
     font-size: 30px;
-    color: #042749;
     line-height: 48px;
     margin-bottom: 60px;
   }
@@ -328,7 +330,7 @@ onMounted(async () => {
     height: 90px;
     display: block;
     font-size: 30px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 90px;
     text-align: center;
     border-radius: 10px;
@@ -340,7 +342,7 @@ onMounted(async () => {
   }
   .document-btn {
     background: #fff;
-    border: 1px solid #0f2647;
+    border: 1px solid #a7b4c2;
   }
 }
 // 公共盒子+标题内容样式
@@ -352,13 +354,11 @@ onMounted(async () => {
   // 标题
   .common-title {
     font-size: 36px;
-    color: #012c53;
-    font-weight: 500;
+    font-weight: 700;
   }
   // 描述
   .common-description {
     font-size: 30px;
-    color: #042749;
     margin: 40px 0 60px 0;
     line-height: 48px;
   }
@@ -428,13 +428,28 @@ onMounted(async () => {
   .visualization-swipper {
     width: 690px;
     height: 402px;
+    position: relative;
+    .swipper-shadow {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 690px;
+      height: 348px;
+      box-shadow: 0px 0px 30px 0px #dce3ef;
+    }
+    ::v-deep(.el-carousel__container) {
+      height: 348px;
+    }
+
     // 轮播图切换条
     ::v-deep(.el-carousel__indicators) {
-      margin-top: 50px;
+      margin-top: 20px;
       .el-carousel__button {
         background: #096dd9;
-        width: 28px;
-        height: 4px;
+        width: 40px;
+        height: 6px;
+        margin-right: 20px;
+        border-radius: 3px;
       }
     }
     ::v-deep(.el-carousel__item) {
@@ -456,10 +471,6 @@ onMounted(async () => {
       background: url('@/assets/carousel-imgs/4.png') no-repeat;
       background-size: 100%;
     }
-    .el-carousel__item:nth-of-type(5) {
-      background: url('@/assets/carousel-imgs/5.png') no-repeat;
-      background-size: 100%;
-    }
   }
 }
 // 公共按钮样式
@@ -474,6 +485,7 @@ onMounted(async () => {
     width: 690px;
     height: 94px;
     font-size: 30px;
+    font-weight: 700;
     text-align: center;
     line-height: 94px;
     color: #fff;
