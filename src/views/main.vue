@@ -68,7 +68,6 @@ const animateScroll = (height: number) => {
 };
 // 处理卷轴上下滚动时动态调整显示内容高度
 const scrollHeightHandler = () => {
-  console.log(mainRef.value?.clientHeight);
   let h = 0;
   // 如果当前滚动高度小于上一次的滚动高度，向上滚动
   if ((mainRef.value?.scrollTop as number) < scrollTop.value) {
@@ -198,7 +197,6 @@ onBeforeUnmount(() => {
         max-width: 1600px;
         margin: 0 auto;
         .scroll {
-          // margin-top: 160px;
           margin-top: 150px;
           .scroll-bar,
           .scroll-bar-bottom {

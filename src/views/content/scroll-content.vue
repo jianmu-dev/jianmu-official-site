@@ -356,7 +356,6 @@ const tabClick = (index: number) => {
         width: 100%;
         box-shadow: 0px 0px 40px 0px #768094;
         ::v-deep(.jm-dsl-editor) {
-          // height: 530px;
           .CodeMirror {
             &.cm-s-ayu-mirage {
               &.CodeMirror-wrap {

@@ -52,7 +52,6 @@ import { hub, contribution } from '@/utils/constants';
     }
     .jianmu {
       font-weight: 800;
-      // color: #012c53;
       color: #042749;
       letter-spacing: 1px;
       font-size: 24px;
