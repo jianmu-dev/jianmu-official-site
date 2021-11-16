@@ -5,6 +5,12 @@ import { nodeSearch } from '@/api/node-search';
 import { IPageVo } from '@/api/dto/common';
 import { INodeDefinitionVo } from '@/api/dto/node-search';
 import { START_PAGE_NUM } from '@/utils/rest/constants';
+// 轮播图图片
+import swipperOne from '@/assets/carousel-imgs/1.png';
+import swipperTwo from '@/assets/carousel-imgs/2.png';
+import swipperThree from '@/assets/carousel-imgs/3.png';
+import swipperFour from '@/assets/carousel-imgs/4.png';
+const images = [swipperOne, swipperTwo, swipperThree, swipperFour];
 
 // dsl模拟展示代码
 const workflow =
@@ -199,47 +205,51 @@ onMounted(async () => {
     </div>
     <div class="configure">
       <!-- 控制器 -->
-      <div class="controller">
-        <img
-          src="@/assets/official-h5/svgs/left.svg"
-          v-if="workFlowFlag"
-        >
-        <img
-          src="@/assets/official-h5/svgs/left-active.svg"
-          @click="toWorkFlow"
-          v-else
-        >
-        <div
-          class="controller-title"
-          v-if="workFlowFlag"
-        >
-          <img src="@/assets/official-h5/svgs/workflow-label.svg">
-          流程
-        </div>
-        <div
-          class="controller-title"
-          v-else
-        >
-          <img src="@/assets/official-h5/svgs/flowchart.svg">
-          管道
-        </div>
+      <div class="controller-container">
+        <div class="controller">
+          <img
+            src="@/assets/official-h5/svgs/left.svg"
+            v-if="workFlowFlag"
+          >
+          <img
+            src="@/assets/official-h5/svgs/left-active.svg"
+            @click="toWorkFlow"
+            v-else
+          >
+          <div
+            class="controller-title"
+            v-if="workFlowFlag"
+          >
+            <img src="@/assets/official-h5/svgs/workflow-label.svg">
+            流程
+          </div>
+          <div
+            class="controller-title"
+            v-else
+          >
+            <img src="@/assets/official-h5/svgs/flowchart.svg">
+            管道
+          </div>
 
-        <img
-          src="@/assets/official-h5/svgs/right.svg"
-          v-if="pipeLineFlag"
-        >
-        <img
-          src="@/assets/official-h5/svgs/right-active.svg"
-          v-else
-          @click="toPipeLine"
-        >
+          <img
+            src="@/assets/official-h5/svgs/right.svg"
+            v-if="pipeLineFlag"
+          >
+          <img
+            src="@/assets/official-h5/svgs/right-active.svg"
+            v-else
+            @click="toPipeLine"
+          >
+        </div>
       </div>
       <!-- dsl展示 -->
       <div class="dsl-show">
-        <jm-dsl-editor
-          :value="workFlowFlag ? workflow : pipeline"
-          readonly
-        />
+        <div class="dsl-show-container">
+          <jm-dsl-editor
+            :value="workFlowFlag ? workflow : pipeline"
+            readonly
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -254,15 +264,17 @@ onMounted(async () => {
     <!-- 轮播图 -->
     <div class="visualization-swipper">
       <div class="swipper-shadow" />
-      <el-carousel
-        indicator-position="outside"
-        arrow="never"
+      <van-swipe
+        :autoplay="3000"
+        indicator-color="#096DD9"
       >
-        <el-carousel-item
-          v-for="item in 4"
-          :key="item"
-        />
-      </el-carousel>
+        <van-swipe-item
+          v-for="(image, index) in images"
+          :key="index"
+        >
+          <img v-lazy="image">
+        </van-swipe-item>
+      </van-swipe>
     </div>
   </div>
   <!-- 示例-按钮 -->
@@ -364,54 +376,66 @@ onMounted(async () => {
   }
   // 配置即代码
   .configure {
-    background: url('@/assets/official-h5/svgs/configure.svg');
-    background-size: 100%;
-    padding: 0 30px 30px 30px;
-    margin-bottom: 50px;
-    // 控制器
-    .controller {
-      height: 94px;
+    margin-bottom: 80px;
+    // dsl代码-控制器
+    .controller-container {
       padding: 0 30px;
-      border: 1px solid #a5b5c3;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      img {
-        width: 32px;
-        height: 33px;
-      }
-      .controller-title {
+      .controller {
+        height: 94px;
+        padding: 0 30px;
+        border: 1px solid #a5b5c3;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        font-size: 30px;
-        color: #042749;
-        font-weight: 700;
         img {
-          margin-right: 20px;
+          width: 32px;
+          height: 33px;
+        }
+        .controller-title {
+          display: flex;
+          align-items: center;
+          font-size: 30px;
+          color: #042749;
+          font-weight: 700;
+          img {
+            margin-right: 20px;
+          }
         }
       }
     }
+
     // dsl展示
     .dsl-show {
-      background: #19253b;
-      padding: 20px 16px;
+      background: url('@/assets/official-h5/svgs/configure.svg');
+      background-size: 100% 100%;
       font-size: 21px;
       line-height: 30px;
-      ::v-deep(.CodeMirror .CodeMirror-linenumber) {
-        color: #c1d7ff;
-      }
-      ::v-deep(.CodeMirror-gutter) {
-        color: #c1d7ff;
-        text-align: center;
-        padding-right: 15px;
-        margin-right: 20px;
-        border-right: 1px solid #4a638f;
-      }
-      ::v-deep(.CodeMirror-scroll) {
-        width: 690px;
-        height: 493px;
-        top: 0;
-        left: 0;
+      padding-bottom: 40px;
+      .dsl-show-container {
+        padding: 0 30px;
+        ::v-deep(.jm-dsl-editor) {
+          padding-bottom: 22px;
+        }
+        ::v-deep(.CodeMirror-sizer) {
+          padding: 18px 16px;
+        }
+        ::v-deep(.CodeMirror .CodeMirror-linenumber) {
+          color: #c1d7ff;
+          text-align: center;
+        }
+        ::v-deep(.CodeMirror-gutter) {
+          color: #c1d7ff;
+          text-align: center;
+          padding-right: 15px;
+          margin-right: 20px;
+          border-right: 1px solid #4a638f;
+        }
+        ::v-deep(.CodeMirror-scroll) {
+          width: 690px;
+          height: 493px;
+          top: 0;
+          left: 0;
+        }
       }
     }
   }
@@ -421,6 +445,7 @@ onMounted(async () => {
   background: url('@/assets/official-h5/svgs/visualization.svg') no-repeat;
   background-size: 100% 100%;
   padding: 0 30px;
+  height: 634px;
   .common-title,
   .common-description {
     padding: 0;
@@ -437,38 +462,25 @@ onMounted(async () => {
       height: 348px;
       box-shadow: 0px 0px 30px 0px #dce3ef;
     }
-    ::v-deep(.el-carousel__container) {
-      height: 348px;
-    }
-    // 轮播图切换条
-    ::v-deep(.el-carousel__indicators) {
-      margin-top: 20px;
-      .el-carousel__button {
-        background: #096dd9;
-        width: 40px;
-        height: 6px;
-        margin-right: 20px;
-        border-radius: 3px;
+    ::v-deep(.van-swipe) {
+      position: static;
+      // 轮播图内容
+      .van-swipe-item {
+        height: 348px;
+        img {
+          height: 348px;
+        }
       }
-    }
-    ::v-deep(.el-carousel__item) {
-      height: 348px;
-    }
-    .el-carousel__item:nth-of-type(1) {
-      background: url('@/assets/carousel-imgs/1.png') no-repeat;
-      background-size: 100%;
-    }
-    .el-carousel__item:nth-of-type(2) {
-      background: url('@/assets/carousel-imgs/2.png') no-repeat;
-      background-size: 100%;
-    }
-    .el-carousel__item:nth-of-type(3) {
-      background: url('@/assets/carousel-imgs/3.png') no-repeat;
-      background-size: 100%;
-    }
-    .el-carousel__item:nth-of-type(4) {
-      background: url('@/assets/carousel-imgs/4.png') no-repeat;
-      background-size: 100%;
+      // 轮播图切换点
+      .van-swipe__indicators {
+        .van-swipe__indicator {
+          background: #bcc3cc;
+          width: 40px;
+          height: 6px;
+          margin-right: 20px;
+          border-radius: 3px;
+        }
+      }
     }
   }
 }
