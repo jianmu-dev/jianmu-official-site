@@ -1,6 +1,6 @@
 {
   "name": "jianmu-official-site",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -16,6 +16,7 @@
     "px2rem-loader": "^0.1.9",
     "qs": "^6.10.1",
     "unplugin-vue-components": "^0.17.2",
+    "vant": "^3.2.8",
     "vue": "^3.2.6",
     "vue-clipboard3": "^1.0.1",
     "vue-router": "^4.0.12"
