@@ -33,7 +33,7 @@ import { hub, contribution } from '@/utils/constants';
   align-items: center;
   justify-content: space-between;
   .logo-area {
-    margin-left: 2%;
+    margin-left: 3%;
     display: flex;
     align-items: center;
 
@@ -52,7 +52,8 @@ import { hub, contribution } from '@/utils/constants';
     }
     .jianmu {
       font-weight: 800;
-      color: #012c53;
+      // color: #012c53;
+      color: #042749;
       letter-spacing: 1px;
       font-size: 24px;
     }

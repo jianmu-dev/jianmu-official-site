@@ -27,7 +27,7 @@ import { quickStart, doc, example } from '@/utils/constants';
 .description {
   display: flex;
   height: 413px;
-  margin: -30px 0px 70px 2%;
+  margin: -30px 0px 70px 3%;
   justify-content: space-between;
   .left {
     margin-top: 80px;
@@ -42,6 +42,7 @@ import { quickStart, doc, example } from '@/utils/constants';
       margin-top: 100px;
       display: flex;
       .item {
+        color: #042749;
         cursor: pointer;
         user-select: none;
         box-sizing: border-box;
