@@ -74,8 +74,8 @@ const scrollHeightHandler = () => {
     if (
       mainRef.value!.clientHeight <= 693
         ? mainRef.value!.scrollTop >
-          4830 - height.value + (693 - mainRef.value!.clientHeight) + 60
-        : mainRef.value!.scrollTop > 4830 - height.value
+          4850 - height.value + (693 - mainRef.value!.clientHeight) + 60
+        : mainRef.value!.scrollTop > 4850 - height.value
     ) {
       h = 4855;
     } else {
@@ -98,8 +98,8 @@ const scrollHeightHandler = () => {
     if (
       mainRef.value!.clientHeight <= 693
         ? mainRef.value!.scrollTop >
-          4830 - height.value + (693 - mainRef.value!.clientHeight)
-        : mainRef.value!.scrollTop > 4830 - height.value
+          4850 - height.value + (693 - mainRef.value!.clientHeight)
+        : mainRef.value!.scrollTop > 4850 - height.value
     ) {
       h = 4855;
     } else {
