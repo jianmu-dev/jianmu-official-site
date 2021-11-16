@@ -4,15 +4,9 @@ import { nodeSearch } from '@/api/node-search';
 import { INodeDefinitionVo } from '@/api/dto/node-search';
 import { IPageVo } from '@/api/dto/common';
 import { START_PAGE_NUM } from '@/utils/rest/constants';
-import {
-  dsl,
-  workFlow,
-  hub,
-  contribution,
-  quickStart,
-  doc,
-  example,
-} from '@/utils/constants';
+import NavTop from '@/views/nav/nav-top.vue';
+import NavBottom from '@/views/nav/nav-bottom.vue';
+import { dsl, workFlow, quickStart, doc, example } from '@/utils/constants';
 const nodeSearchDate = ref<IPageVo<INodeDefinitionVo>>();
 const height = ref<number>(10);
 const offsetHeight = ref<number>(0);
@@ -83,7 +77,7 @@ const scrollHeightHandler = () => {
           4749 - height.value + (693 - mainRef.value!.clientHeight) + 60
         : mainRef.value!.scrollTop > 4749 - height.value
     ) {
-      h = 4808;
+      h = 4875;
     } else {
       // 将main元素的滚动高度，复制一份
       scrollTop.value = mainRef.value?.scrollTop as number;
@@ -107,7 +101,7 @@ const scrollHeightHandler = () => {
           4749 - height.value + (693 - mainRef.value!.clientHeight)
         : mainRef.value!.scrollTop > 4749 - height.value
     ) {
-      h = 4808;
+      h = 4875;
     } else {
       // 卷轴的高度=初始高度+main的滚动偏移值
       if (mainRef.value!.clientHeight <= 693) {
@@ -123,7 +117,6 @@ const scrollHeightHandler = () => {
   if (h < height.value) {
     h = height.value;
   }
-  // _this!.style.height = h + 'px';
   animateScroll(h);
 };
 const initScroll = (): void => {
@@ -170,34 +163,12 @@ const tabClick = (index: number) => {
 <template>
   <div class="main" ref="mainRef">
     <div class="container">
-      <div class="header">
-        <div class="logo-area">
-          <div class="logo">
-            <a href="/">
-              <img src="~@/assets/svgs/jianmu-logo.svg" />
-            </a>
-          </div>
-          <div class="divider-line"></div>
-          <h2 class="jianmu">建木</h2>
-        </div>
-        <div class="link-area">
-          <div class="node-library-link item" @click="hub">
-            <span>节点库</span>
-            <img src="~@/assets/svgs/\node-library-link-icon.svg" />
-          </div>
-          <div class="attribution-link item" @click="contribution">
-            <span>参与贡献</span>
-            <img src="~@/assets/svgs/attribution-link-icon.svg" />
-          </div>
-        </div>
-      </div>
+      <nav-top />
       <div class="content-bg">
         <div class="content-wrapper">
           <div class="description">
             <div class="left">
-              <div class="top-card">
-                <!-- <img src="~@/assets/pngs/top-card.png" /> -->
-              </div>
+              <div class="top-card"></div>
               <div class="operation-btns">
                 <div class="item quick-start" @click="quickStart">
                   <span>快速开始</span>
@@ -482,13 +453,7 @@ const tabClick = (index: number) => {
         </div>
       </div>
     </div>
-    <div class="bottom-block">
-      <div class="copy-info">
-        ©2020-{{ new Date().getFullYear() }} 版权所有 九州云信息科技有限公司
-        <span>邮箱：</span
-        ><span><a href="mailto:support@jianmu.dev">support@jianmu.dev</a></span>
-      </div>
-    </div>
+    <nav-bottom></nav-bottom>
   </div>
 </template>
 <style lang="less" scoped>
@@ -497,70 +462,6 @@ const tabClick = (index: number) => {
   overflow-x: hidden;
   overflow-y: auto;
   .container {
-    .header {
-      max-width: 1600px;
-      margin: 0 auto;
-      display: flex;
-      height: 90px;
-      align-items: center;
-      justify-content: space-between;
-      .logo-area {
-        margin-left: 2%;
-        display: flex;
-        align-items: center;
-
-        .logo {
-          width: 122px;
-          img {
-            width: 100%;
-          }
-        }
-        .divider-line {
-          margin: 0 15px;
-          width: 1px;
-          height: 20px;
-          background: #c2dfff;
-          border-radius: 1px;
-        }
-        .jianmu {
-          font-weight: 800;
-          color: #012c53;
-          letter-spacing: 1px;
-          font-size: 24px;
-        }
-      }
-      .link-area {
-        margin-right: 3%;
-        display: flex;
-        .item {
-          cursor: pointer;
-          user-select: none;
-          &.node-library-link {
-            background-color: #042749;
-            margin-right: 40px;
-          }
-          &.attribution-link {
-            color: #042749;
-          }
-          border-radius: 4px;
-          box-shadow: 0px 4px 10px 0px #dadada;
-          width: 140px;
-          height: 44px;
-          box-sizing: border-box;
-          display: flex;
-          justify-content: space-between;
-          color: #ffffff;
-          padding: 10px;
-          span {
-            font-size: 16px;
-          }
-          img {
-            width: 24px;
-            height: 24px;
-          }
-        }
-      }
-    }
     .content-bg {
       height: 5566px;
       background-repeat: no-repeat;
@@ -651,7 +552,7 @@ const tabClick = (index: number) => {
               .scroll-content {
                 background-color: #fff;
                 .pr-1 {
-                  padding-top: 90px;
+                  padding-top: 60px;
                   display: flex;
                   flex-direction: column;
                   align-items: center;
@@ -676,6 +577,7 @@ const tabClick = (index: number) => {
                 }
                 .pr-2 {
                   height: 765px;
+                  margin-top: -20px;
                   background-image: url('@/assets/svgs/pr-2-bg.svg');
                   background-repeat: no-repeat;
                   background-size: 110% 110%;
@@ -778,8 +680,7 @@ const tabClick = (index: number) => {
                   position: relative;
                   flex-direction: column;
                   align-items: center;
-                  padding: 0 60px;
-                  margin: 30px 0 100px;
+                  margin: 80px 60px 130px;
                   .title {
                     font-size: 32px;
                     font-weight: 600;
@@ -792,15 +693,16 @@ const tabClick = (index: number) => {
                     line-height: 30px;
                   }
                   ::v-deep(.el-carousel) {
-                    width: 100%;
+                    width: 99%;
                     .el-carousel__item {
                       img {
                         width: 100%;
+                        height: 590px;
                       }
                     }
                     .el-carousel__indicators {
                       .el-carousel__indicator {
-                        margin-top: 50px;
+                        margin-top: 60px;
                         &.is-active {
                           .el-carousel__button {
                             background-color: #042749;
@@ -827,14 +729,13 @@ const tabClick = (index: number) => {
                     left: 0.5%;
                     box-shadow: 0px 0px 30px 0px #dce3ef;
                     width: 99%;
-                    height: 640px;
+                    height: 610px;
                   }
                 }
                 .pr-4 {
                   display: flex;
                   flex-direction: column;
                   align-items: center;
-                  margin-top: 30px;
                   background-image: url('@/assets/svgs/pr-4-bg.svg');
                   background-position: top left;
                   background-repeat: no-repeat;
@@ -854,7 +755,7 @@ const tabClick = (index: number) => {
                     color: #333333;
                   }
                   .icon-wrapper {
-                    margin-top: 150px;
+                    margin-top: 110px;
                     width: 1100px;
                     display: flex;
                     justify-content: center;
@@ -894,7 +795,7 @@ const tabClick = (index: number) => {
                 }
                 .pr-5 {
                   color: #333333;
-                  margin: 100px 0 0;
+                  margin: 130px 0 0;
                   display: flex;
                   flex-direction: column;
                   align-items: center;
@@ -921,7 +822,7 @@ const tabClick = (index: number) => {
                       justify-content: flex-start;
                       margin-right: 160px;
                       width: 200px;
-                      margin-bottom: 70px;
+                      margin-bottom: 50px;
                       &:nth-child(3n) {
                         margin-right: 0px;
                       }
@@ -941,12 +842,12 @@ const tabClick = (index: number) => {
                   }
                 }
                 .pr-6 {
-                  padding-top: 80px;
+                  padding-top: 60px;
                   display: flex;
                   flex-direction: column;
                   align-items: center;
                   background-image: url('@/assets/svgs/pr-6-bg.svg');
-                  background-size: 120%;
+                  background-size: 100%;
                   background-repeat: no-repeat;
                   height: 543px;
                   .title {
@@ -998,7 +899,7 @@ const tabClick = (index: number) => {
                       color: #042749;
 
                       .heading {
-                        margin-top: 40px;
+                        margin: 40px 0px 16px;
                         font-weight: 600;
                         font-size: 20px;
                       }
@@ -1017,7 +918,7 @@ const tabClick = (index: number) => {
                   flex-direction: column;
                   align-items: center;
                   color: #042749;
-                  margin-top: 60px;
+                  margin-top: 80px;
                   .title {
                     height: 32px;
                     font-weight: 600;
@@ -1046,7 +947,7 @@ const tabClick = (index: number) => {
                   margin-top: 80px;
                   border-top: 1px solid #dfe7ee;
                   .cooperator-wrapper {
-                    margin: 70px 0;
+                    margin: 65px 0;
                     display: flex;
                     justify-content: space-around;
                     align-items: center;
@@ -1097,6 +998,7 @@ const tabClick = (index: number) => {
                     .bottom {
                       margin-top: 16px;
                       width: 270px;
+                      font-weight: 800;
                       a {
                         color: #042749;
                         text-decoration: none;
@@ -1110,30 +1012,6 @@ const tabClick = (index: number) => {
               }
             }
           }
-        }
-      }
-    }
-  }
-  .bottom-block {
-    border: 1px solid #e3eaf0;
-    height: 64px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .copy-info {
-      width: 577px;
-      font-size: 16px;
-      font-weight: 400;
-      color: #666666;
-      span:nth-child(1) {
-        margin-left: 25px;
-      }
-      a {
-        text-decoration: none;
-        color: #666666;
-        &:hover {
-          text-decoration: underline;
         }
       }
     }
