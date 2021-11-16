@@ -20,14 +20,12 @@
     width: 577px;
     font-size: 16px;
     font-weight: 400;
-    // color: #666666;
     color: #042749;
     span:nth-child(1) {
       margin-left: 25px;
     }
     a {
       text-decoration: none;
-      // color: #666666;
       color: #042749;
       &:hover {
         text-decoration: underline;

@@ -235,7 +235,7 @@ const tabClick = (index: number) => {
     <div class="pr-bottom">
       <div class="left">
         <div class="qrcode">
-          <img src="~@/assets/pngs/qrcode.png" />
+          <img src="~@/assets/pngs/qr-code-big.png" />
         </div>
       </div>
       <div class="right">
@@ -694,7 +694,7 @@ const tabClick = (index: number) => {
       flex-direction: column;
       align-items: center;
       .qrcode {
-        width: 124px;
+        width: 158px;
         img {
           width: 100%;
         }
