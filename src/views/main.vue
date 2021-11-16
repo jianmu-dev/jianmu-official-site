@@ -68,15 +68,15 @@ const animateScroll = (height: number) => {
 };
 // 处理卷轴上下滚动时动态调整显示内容高度
 const scrollHeightHandler = () => {
-  // const _this = scrollContainerRef.value;
+  console.log(mainRef.value?.clientHeight);
   let h = 0;
   // 如果当前滚动高度小于上一次的滚动高度，向上滚动
   if ((mainRef.value?.scrollTop as number) < scrollTop.value) {
     if (
       mainRef.value!.clientHeight <= 693
         ? mainRef.value!.scrollTop >
-          4749 - height.value + (693 - mainRef.value!.clientHeight) + 60
-        : mainRef.value!.scrollTop > 4749 - height.value
+          4830 - height.value + (693 - mainRef.value!.clientHeight) + 60
+        : mainRef.value!.scrollTop > 4830 - height.value
     ) {
       h = 4855;
     } else {
@@ -99,8 +99,8 @@ const scrollHeightHandler = () => {
     if (
       mainRef.value!.clientHeight <= 693
         ? mainRef.value!.scrollTop >
-          4749 - height.value + (693 - mainRef.value!.clientHeight)
-        : mainRef.value!.scrollTop > 4749 - height.value
+          4830 - height.value + (693 - mainRef.value!.clientHeight)
+        : mainRef.value!.scrollTop > 4830 - height.value
     ) {
       h = 4855;
     } else {
@@ -133,10 +133,8 @@ const initScroll = (): void => {
     height.value = 10;
   }
   scrollContainerRef.value!.style.height = `${height.value}px`;
-  console.log('dangqian', height.value);
 };
 onMounted(() => {
-  console.log('init', height.value);
   mainRef.value?.addEventListener('scroll', scrollHeightHandler);
   // 监听window的缩放，重新调整卷轴的默认高度
   window.addEventListener('resize', initScroll);
@@ -172,7 +170,7 @@ onBeforeUnmount(() => {
             </div>
             <div class="scroll-container" ref="scrollContainerRef">
               <div class="scroll-wrapper">
-                <ScrollContent ref="scrollContentRef" />
+                <scroll-content ref="scrollContentRef" />
               </div>
             </div>
             <div class="scroll-bar-bottom" ref="scrollBarBottomRef">

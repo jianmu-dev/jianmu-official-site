@@ -297,13 +297,14 @@ const tabClick = (index: number) => {
     padding: 20px;
     .pr-2-left {
       color: #042749;
-      margin-top: 110px;
+      margin-top: 135px;
       margin-right: 50px;
       width: 326px;
       .title {
         font-size: 32px;
       }
       .desc {
+        margin-top: 30px;
         width: 326px;
         font-size: 16px;
         line-height: 30px;
@@ -492,7 +493,7 @@ const tabClick = (index: number) => {
           font-size: 15px;
           font-weight: 400;
           color: #042749;
-          width: 87px;
+          width: 105px;
           text-align: center;
           a {
             text-decoration: none;
