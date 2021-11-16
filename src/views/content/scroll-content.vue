@@ -331,6 +331,7 @@ const tabClick = (index: number) => {
           cursor: pointer;
           user-select: none;
           background-color: #fff;
+          color: #042749;
           img {
             width: 24px;
             height: 24px;
@@ -392,10 +393,10 @@ const tabClick = (index: number) => {
     flex-direction: column;
     align-items: center;
     margin: 80px 60px 130px;
+    color: #042749;
     .title {
       font-size: 32px;
       font-weight: 600;
-      color: #042749;
     }
     .desc {
       margin: 25px 0 50px;
@@ -423,6 +424,7 @@ const tabClick = (index: number) => {
             }
           }
           .el-carousel__button {
+            margin-right: 20px;
             &:hover {
               opacity: 1;
             }
@@ -452,10 +454,10 @@ const tabClick = (index: number) => {
     background-repeat: no-repeat;
     background-size: 115%;
     height: 675px;
+    color: #042749;
     .title {
       font-size: 32px;
       font-weight: 600;
-      color: #042749;
     }
     .desc {
       margin: 25px 0 0px;
@@ -463,7 +465,6 @@ const tabClick = (index: number) => {
       font-weight: 400;
       line-height: 30px;
       width: 416px;
-      color: #333333;
     }
     .icon-wrapper {
       margin-top: 110px;
@@ -476,7 +477,7 @@ const tabClick = (index: number) => {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
         margin-right: 10px;
         width: 140px;
         .icon {
@@ -491,7 +492,7 @@ const tabClick = (index: number) => {
           font-size: 15px;
           font-weight: 400;
           color: #042749;
-          width: 100%;
+          width: 87px;
           text-align: center;
           a {
             text-decoration: none;
@@ -505,7 +506,7 @@ const tabClick = (index: number) => {
     }
   }
   .pr-5 {
-    color: #333333;
+    color: #042749;
     margin: 130px 0 0;
     display: flex;
     flex-direction: column;
@@ -545,7 +546,7 @@ const tabClick = (index: number) => {
         }
         .name {
           font-weight: 600;
-          color: #333333;
+          color: #042749;
           font-size: 30px;
           margin-left: 20px;
         }
