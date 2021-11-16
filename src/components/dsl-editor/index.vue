@@ -1,7 +1,7 @@
 <template>
-  <jm-scrollbar class="jm-dsl-editor" @click="clickEmpty">
+  <el-scrollbar class="jm-dsl-editor" @click="clickEmpty">
     <textarea ref="textareaRef"></textarea>
-  </jm-scrollbar>
+  </el-scrollbar>
 </template>
 
 <script type="text/ecmascript-6">
