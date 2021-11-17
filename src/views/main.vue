@@ -182,7 +182,7 @@ onBeforeUnmount(() => {
   overflow-y: auto;
   .container {
     .content-bg {
-      margin-top: 90px;
+      margin-top: 70px;
       height: 5566px;
       background-repeat: no-repeat;
       background-position: center 90px;

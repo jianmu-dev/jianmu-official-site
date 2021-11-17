@@ -88,7 +88,7 @@ const tabClick = (index: number) => {
         align-items: center;
         padding: 5px;
         width: 136px;
-        height: 46px;
+        height: 40px;
         cursor: pointer;
         user-select: none;
         background-color: #fff;
@@ -111,7 +111,7 @@ const tabClick = (index: number) => {
       }
     }
     .tab-content {
-      margin-top: 58px;
+      margin-top: 52px;
       height: 550px;
       width: 100%;
       box-shadow: 0px 0px 40px 0px #768094;
