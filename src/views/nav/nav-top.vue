@@ -37,7 +37,7 @@ import { hub, contribution } from '@/utils/constants';
   box-shadow: 0px 2px 10px 0px #eff0f3;
   .nav-wrapper {
     max-width: 1600px;
-    height: 90px;
+    height: 70px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -78,6 +78,7 @@ import { hub, contribution } from '@/utils/constants';
           margin-right: 40px;
         }
         &.attribution-link {
+          background-color: #fff;
           color: #042749;
         }
         border-radius: 4px;
@@ -88,7 +89,7 @@ import { hub, contribution } from '@/utils/constants';
         display: flex;
         justify-content: space-between;
         color: #ffffff;
-        padding: 10px;
+        padding: 10px 15px;
         span {
           font-size: 16px;
         }
