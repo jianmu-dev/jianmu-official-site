@@ -13,7 +13,10 @@ export const doc = () => {
 export const example = () => {
   window.open('https://ci.jianmu.dev', '_blank');
 };
-
+// 能够展示出两根卷轴时的最小屏幕可视高度
+export const minShowScrollHeight = 693;
+// 卷轴能够滚动的高度
+export const canScrollHeight = 4855;
 export const dsl =
   'pipeline:\n' +
   '  name: 建木官网CDN CI/CD\n' +
