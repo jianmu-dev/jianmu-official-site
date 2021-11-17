@@ -1,17 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted, getCurrentInstance, onBeforeUnmount } from 'vue';
-import { nodeSearch } from '@/api/node-search';
-import { INodeDefinitionVo } from '@/api/dto/node-search';
-import { IPageVo } from '@/api/dto/common';
-import { START_PAGE_NUM } from '@/utils/rest/constants';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import NavTop from '@/views/nav/nav-top.vue';
 import NavBottom from '@/views/nav/nav-bottom.vue';
 import Description from '@/views/content/description.vue';
 import ScrollContent from '@/views/content/scroll-content.vue';
-const nodeSearchDate = ref<IPageVo<INodeDefinitionVo>>();
+import { minShowScrollHeight, canScrollHeight } from '@/utils/constants';
 const height = ref<number>(10);
 const offsetHeight = ref<number>(0);
-const { proxy } = getCurrentInstance() as any;
 const scrollContainerRef = ref<HTMLElement>();
 // main 元素
 const mainRef = ref<HTMLElement>();
@@ -72,19 +67,23 @@ const scrollHeightHandler = () => {
   // 如果当前滚动高度小于上一次的滚动高度，向上滚动
   if ((mainRef.value?.scrollTop as number) < scrollTop.value) {
     if (
-      mainRef.value!.clientHeight <= 693
+      mainRef.value!.clientHeight <= minShowScrollHeight
         ? mainRef.value!.scrollTop >
-          4850 - height.value + (693 - mainRef.value!.clientHeight) + 60
-        : mainRef.value!.scrollTop > 4850 - height.value
+          canScrollHeight -
+            height.value +
+            (minShowScrollHeight - mainRef.value!.clientHeight)
+        : mainRef.value!.scrollTop > canScrollHeight - height.value
     ) {
-      h = 4855;
+      h = canScrollHeight;
     } else {
       // 将main元素的滚动高度，复制一份
       scrollTop.value = mainRef.value?.scrollTop as number;
-      // 高度小于693
-      if (mainRef.value!.clientHeight <= 693) {
+      // 高度小于693,(693 - mainRef.value!.clientHeight)为小屏时需要加上的偏移量
+      if (mainRef.value!.clientHeight <= minShowScrollHeight) {
         h =
-          height.value + scrollTop.value - (693 - mainRef.value!.clientHeight);
+          height.value +
+          scrollTop.value -
+          (minShowScrollHeight - mainRef.value!.clientHeight);
         offsetHeight.value = height.value + scrollTop.value;
       } else {
         h = height.value + scrollTop.value;
@@ -96,17 +95,21 @@ const scrollHeightHandler = () => {
     scrollTop.value = mainRef.value?.scrollTop as number;
     // 向下滚动
     if (
-      mainRef.value!.clientHeight <= 693
+      mainRef.value!.clientHeight <= minShowScrollHeight
         ? mainRef.value!.scrollTop >
-          4850 - height.value + (693 - mainRef.value!.clientHeight)
-        : mainRef.value!.scrollTop > 4850 - height.value
+          canScrollHeight -
+            height.value +
+            (minShowScrollHeight - mainRef.value!.clientHeight)
+        : mainRef.value!.scrollTop > canScrollHeight - height.value
     ) {
-      h = 4855;
+      h = canScrollHeight;
     } else {
       // 卷轴的高度=初始高度+main的滚动偏移值
-      if (mainRef.value!.clientHeight <= 693) {
+      if (mainRef.value!.clientHeight <= minShowScrollHeight) {
         h =
-          height.value + scrollTop.value - (693 - mainRef.value!.clientHeight);
+          height.value +
+          scrollTop.value -
+          (minShowScrollHeight - mainRef.value!.clientHeight);
         offsetHeight.value = height.value + scrollTop.value;
       } else {
         h = height.value + scrollTop.value;
@@ -139,16 +142,6 @@ onMounted(() => {
   window.addEventListener('resize', initScroll);
   // 初始卷轴的默认初始显示高度
   initScroll();
-});
-onMounted(async () => {
-  try {
-    nodeSearchDate.value = await nodeSearch({
-      pageNum: START_PAGE_NUM,
-      pageSize: 21,
-    });
-  } catch (err) {
-    proxy.$thow(err, proxy);
-  }
 });
 onBeforeUnmount(() => {
   // 取消监听事件
