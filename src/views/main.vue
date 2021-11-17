@@ -151,8 +151,8 @@ onBeforeUnmount(() => {
 </script>
 <template>
   <div class="main" ref="mainRef">
+    <nav-top />
     <div class="container">
-      <nav-top />
       <div class="content-bg">
         <div class="content-wrapper">
           <description />
@@ -182,10 +182,11 @@ onBeforeUnmount(() => {
   overflow-y: auto;
   .container {
     .content-bg {
+      margin-top: 90px;
       height: 5566px;
       background-repeat: no-repeat;
-      background-position: top center;
-      background-image: url('@/assets/pngs/main-bg.png');
+      background-position: center 90px;
+      background-image: url('@/assets/pngs/main-bg-none.png');
       .content-wrapper {
         max-width: 1600px;
         margin: 0 auto;

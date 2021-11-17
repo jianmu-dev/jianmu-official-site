@@ -5,6 +5,9 @@ import { quickStart, doc, example } from '@/utils/constants';
   <div class="description">
     <div class="left">
       <div class="top-card"></div>
+      <div class="arrow">
+        <img src="@/assets/pngs/arrow.png" alt="" />
+      </div>
       <div class="operation-btns">
         <div class="item quick-start" @click="quickStart">
           <span>快速开始</span>
@@ -38,8 +41,16 @@ import { quickStart, doc, example } from '@/utils/constants';
       background-repeat: no-repeat;
       background-position: top center;
     }
+    .arrow {
+      margin-top: 10px;
+      width: 114px;
+      height: 56px;
+      img {
+        width: 100%;
+      }
+    }
     .operation-btns {
-      margin-top: 100px;
+      margin-top: 50px;
       display: flex;
       .item {
         color: #042749;
