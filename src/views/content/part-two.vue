@@ -111,6 +111,8 @@ const tabClick = (index: number) => {
       }
     }
     .tab-content {
+      background-color: #1a253b;
+      padding: 30px 0;
       margin-top: 52px;
       height: 550px;
       width: 100%;
@@ -119,7 +121,7 @@ const tabClick = (index: number) => {
         .CodeMirror {
           &.cm-s-ayu-mirage {
             &.CodeMirror-wrap {
-              padding: 24px 0;
+              // padding: 24px 0;
               .CodeMirror-scroll {
                 .CodeMirror-sizer {
                   .CodeMirror-lines {
