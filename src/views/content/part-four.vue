@@ -32,9 +32,7 @@ onMounted(async () => {
       >
         <div class="icon">
           <a :href="`https://hub.jianmu.dev/${item.ownerRef}/${item.ref}`">
-            <img
-              :src="`${item.icon}?imageView2/2/w/82/h/82/interlace/1/q/100`"
-            />
+            <img :src="`${item.icon}?imageMogr2/thumbnail/123x/sharpen/1`" />
           </a>
         </div>
         <span class="icon-desc"
