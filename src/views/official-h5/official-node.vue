@@ -263,7 +263,7 @@ onMounted(async () => {
         :href="`https://hub.jianmu.dev/${item.ownerRef}/${item.ref}`"
       >
         <img
-          :src="`${item.icon}?imageView2/2/w/96/h/96/interlace/1/q/100`"
+          :src="`${item.icon}?imageMogr2/thumbnail/132x/sharpen/1`"
           class="node-img"
         />
         <div class="node-title">{{ item.name }}</div>
@@ -466,7 +466,7 @@ onMounted(async () => {
   // 节点展示
   .node-show {
     width: 750px;
-    height: 300px;
+    height: 314px;
     padding: 0 30px;
     display: flex;
     flex-wrap: wrap;
@@ -480,8 +480,8 @@ onMounted(async () => {
       margin-right: 4px;
       // 节点图片
       .node-img {
-        width: 87px;
-        height: 87px;
+        width: 88px;
+        height: 88px;
         margin-bottom: 11px;
         border-radius: 22.19px;
       }
