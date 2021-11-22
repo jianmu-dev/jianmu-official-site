@@ -29,7 +29,7 @@ import { hub, contribution } from '@/utils/constants';
 <style lang="less" scoped>
 .nav-top {
   position: fixed;
-  z-index: 20;
+  z-index: 1;
   top: 0;
   left: 0;
   right: 0;

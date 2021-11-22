@@ -78,7 +78,6 @@ const tabClick = (index: number) => {
     position: relative;
     .tab-btns {
       position: absolute;
-      z-index: 1;
       align-self: flex-end;
       display: flex;
       .item {
