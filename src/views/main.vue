@@ -64,7 +64,6 @@ const animateScroll = (height: number) => {
 // 处理卷轴上下滚动时动态调整显示内容高度
 const scrollHeightHandler = () => {
   let h = 0;
-  // 如果当前滚动高度小于上一次的滚动高度，向上滚动
   if ((mainRef.value?.scrollTop as number) < scrollTop.value) {
     if (
       mainRef.value!.clientHeight <= minShowScrollHeight
@@ -124,7 +123,7 @@ const scrollHeightHandler = () => {
 };
 const initScroll = (): void => {
   // 解决浏览器窗口缩放后，页面出现空白的问题
-  mainRef.value?.scrollTo(0, 0);
+  // mainRef.value?.scrollTo(0, 0);
   // 卷轴的初始高度
   height.value =
     document.documentElement.clientHeight -
@@ -134,7 +133,10 @@ const initScroll = (): void => {
     // 屏幕展示的区域小的时候，将卷轴饿高度设置为10，让其折叠
     height.value = 10;
   }
-  scrollContainerRef.value!.style.height = `${height.value}px`;
+  scrollContainerRef.value!.style.height = `${
+    height.value + scrollTop.value
+  }px`;
+  console.log(scrollContainerRef.value?.style.height);
 };
 onMounted(() => {
   mainRef.value?.addEventListener('scroll', scrollHeightHandler);
@@ -177,6 +179,8 @@ onBeforeUnmount(() => {
 </template>
 <style lang="less" scoped>
 .main {
+  position: relative;
+  z-index: 0;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
@@ -205,8 +209,6 @@ onBeforeUnmount(() => {
           .scroll-container {
             overflow: hidden;
             margin: -5px auto;
-            position: relative;
-            z-index: 11;
             .scroll-wrapper {
               max-width: 90%;
               background-color: #f2f4f7;
