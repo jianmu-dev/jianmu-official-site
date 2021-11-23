@@ -11,13 +11,20 @@
         OpsDev领域中共性、有价值的需求做了⼀次完整的梳理和重写，最终以“建⽊”开源项⽬的形态呈现。
       </div>
       <div class="bottom">
-        <span>项⽬官⽹：</span
-        ><a href="https://jianmu.dev">https://jianmu.dev</a>
-        <br />
-        <span>项⽬托管：</span
-        ><a href="https://gitee.com/jianmu-dev">https://gitee.com/jianmu-dev</a>
-        <span>项⽬文档：</span
-        ><a href="https://docs.jianmu.dev">https://docs.jianmu.dev</a>
+        <div class="item">
+          <span>项⽬官⽹：</span
+          ><a href="https://jianmu.dev">https://jianmu.dev</a>
+        </div>
+        <div class="item">
+          <span>项⽬托管：</span
+          ><a href="https://gitee.com/jianmu-dev"
+            >https://gitee.com/jianmu-dev</a
+          >
+        </div>
+        <div class="item">
+          <span>项⽬文档：</span
+          ><a href="https://docs.jianmu.dev">https://docs.jianmu.dev</a>
+        </div>
       </div>
     </div>
   </div>
@@ -50,7 +57,6 @@
     }
     .bottom {
       margin-top: 16px;
-      width: 280px;
       font-weight: 800;
       a {
         color: #042749;
