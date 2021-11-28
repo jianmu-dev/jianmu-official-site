@@ -15,7 +15,7 @@ import { hub, contribution } from '@/utils/constants';
       </div>
       <div class="link-area">
         <div class="node-library-link item" @click="hub">
-          <span>节点库</span>
+          <span>建木Hub</span>
           <img src="~@/assets/svgs/node-library-link-icon.svg" />
         </div>
         <div class="attribution-link item" @click="contribution">
