@@ -272,7 +272,7 @@ onMounted(async () => {
   </div>
   <!-- 节点库-按钮 -->
   <div class="btns-container">
-    <div class="common-btn" @click="toNodeStore">节点库</div>
+    <div class="common-btn" @click="toNodeStore">建木Hub</div>
   </div>
 </template>
 
