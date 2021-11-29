@@ -18,9 +18,9 @@ export const minShowScrollHeight = 693;
 // 卷轴能够滚动的高度
 export const canScrollHeight = 4855;
 export const dsl =
+  'name: 建木官网CDN CI/CD\n' +
+  'description: 建木官网CDN CI/CD\n\n' +
   'pipeline:\n' +
-  '  name: 建木官网CDN CI/CD\n' +
-  '  description: 建木官网CDN CI/CD\n' +
   '  git_clone:\n' +
   '    type: git_clone:1.0.0\n' +
   '    param:\n' +
@@ -59,9 +59,9 @@ export const dsl =
   '      msgtype: "text"\n' +
   '      mentioned_list: "[]"';
 export const workFlow =
+  'name: 建木官网CDN CI/CD\n' +
+  'description: 建木官网CDN CI/CD\n\n' +
   'workflow:\n' +
-  '  name: 建木官网CDN CI/CD\n' +
-  '  description: 建木官网CDN CI/CD\n' +
   '  start:\n' +
   '    type: start\n' +
   '    targets:\n' +
