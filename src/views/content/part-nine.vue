@@ -2,7 +2,13 @@
   <div class="part-nine">
     <div class="left">
       <div class="qrcode">
-        <img src="~@/assets/pngs/qr-code-big.png" />
+        <span class="wechat title">微信公众号</span>
+        <img src="~@/assets/pngs/jm.png" />
+      </div>
+      <div class="qrcode qq">
+        <span class="qq title">建木交流QQ群</span>
+        <img src="~@/assets/pngs/qq.png" />
+        <span class="qq-number">群号: 273549324</span>
       </div>
     </div>
     <div class="right">
@@ -39,12 +45,30 @@
   font-size: 14px;
   .left {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     .qrcode {
-      width: 158px;
+      font-size: 14px;
+      color: #042749;
+      width: 124px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .title {
+        text-align: center;
+        opacity: 0.5;
+      }
       img {
         width: 100%;
+      }
+      &.qq {
+        margin-left: 25px;
+
+        .qq-number {
+          font-size: 12px;
+          display: inline-block;
+          margin-left: 20px;
+          font-weight: 400;
+        }
       }
     }
   }
@@ -52,11 +76,14 @@
     margin-left: 20px;
     font-weight: 400;
     line-height: 24px;
+    color: #042749;
     .top {
       width: 375px;
+      margin-bottom: 10px;
     }
     .bottom {
-      margin-top: 16px;
+      padding-top: 10px;
+      border-top: 1px solid #dfe7ee;
       font-weight: 800;
       a {
         color: #042749;
