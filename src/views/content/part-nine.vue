@@ -64,9 +64,9 @@
         margin-left: 25px;
 
         .qq-number {
+          text-align: center;
           font-size: 12px;
           display: inline-block;
-          margin-left: 20px;
           font-weight: 400;
         }
       }
