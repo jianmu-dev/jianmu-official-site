@@ -104,7 +104,15 @@ const contribution = () => {
       OpsDev领域中共性、有价值的需求做了⼀次完整的梳理和重写，最终以“建⽊”开源项⽬的形态呈现。
     </div>
     <div class="cloud-img-container">
-      <img src="@/assets/official-h5/pngs/kaiyuan-jianmu.png">
+      <div class="single we-chat">
+        <span class="cloud-title">微信公众号</span>
+        <img src="@/assets/official-h5/pngs/we-chat.png">
+      </div>
+      <div class="single">
+        <span class="cloud-title">建木交流QQ群</span>
+        <img src="@/assets/official-h5/pngs/qq.png">
+        <span class="qq-num">群号: 273549324</span>
+      </div>
     </div>
     <!-- 链接 -->
     <div class="cloud-links">
@@ -229,7 +237,7 @@ const contribution = () => {
   .cloud-description {
     font-size: 30px;
     line-height: 48px;
-    margin-bottom: 26px;
+    margin-bottom: 60px;
   }
   .cloud-links {
     font-weight: 700;
@@ -237,12 +245,30 @@ const contribution = () => {
     line-height: 48px;
   }
   .cloud-img-container {
-    padding-bottom: 37px;
+    padding-bottom: 50px;
     display: flex;
     justify-content: center;
-    img {
-      width: 270px;
-      height: 270px;
+    .single {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .cloud-title {
+        font-size: 28px;
+        color: #042749;
+        opacity: 0.5;
+        line-height: 30px;
+      }
+      img {
+        width: 240px;
+        height: 240px;
+      }
+      .qq-num {
+        font-size: 24px;
+        line-height: 23px;
+      }
+    }
+    .we-chat {
+      margin-right: 46px;
     }
   }
 }
