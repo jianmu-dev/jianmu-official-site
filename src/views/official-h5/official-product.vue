@@ -111,7 +111,7 @@ const contribution = () => {
       <div class="single">
         <span class="cloud-title">建木交流QQ群</span>
         <img src="@/assets/official-h5/pngs/qq.png">
-        <span class="qq-num">群号: 273549324</span>
+        <span class="qq-num">群号: 273649324</span>
       </div>
     </div>
     <!-- 链接 -->
