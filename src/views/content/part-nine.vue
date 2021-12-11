@@ -8,7 +8,7 @@
       <div class="qrcode qq">
         <span class="qq title">建木交流QQ群</span>
         <img src="~@/assets/pngs/qq.png" />
-        <span class="qq-number">群号: 273549324</span>
+        <span class="qq-number">群号: 273649324</span>
       </div>
     </div>
     <div class="right">
