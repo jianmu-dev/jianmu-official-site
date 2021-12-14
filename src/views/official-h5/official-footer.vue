@@ -3,8 +3,14 @@
 <template>
   <!-- 底部 -->
   <div class="official-footer">
-    ©2020-{{ new Date().getFullYear() }} 版权所有 九州云信息科技有限公司
-    <div>邮箱：<a href="mailto:support@jianmu.dev">support@jianmu.dev</a></div>
+    <img src="@/assets/official-h5/pngs/mulan.png" class="mulan-icon" />
+    <div class="links">
+      <a class="link" href="https://portal.mulanos.cn">木兰社区孵化项目</a>
+      <i class="line"></i>
+      <a class="link" href="https://docs.jianmu.dev">使用手册</a>
+      <i class="line"></i>
+      <a class="link" href="mailto:support@jianmu.dev">联系我们</a>
+    </div>
   </div>
 </template>
 
@@ -12,13 +18,33 @@
 // 底部
 .official-footer {
   width: 100%;
-  height: 100px;
-  padding: 12px 0;
+  height: 88px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
   border-top: 1px solid #e3eaf0;
+  .mulan-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .links {
+    display: flex;
+    align-items: center;
+    color: #385775;
+    font-size: 20px;
+    .line {
+      display: inline-block;
+      width: 1px;
+      height: 14px;
+      background: #e3eaf0;
+    }
+    .link {
+      display: inline-block;
+      padding: 0 20px;
+    }
+    .link:first-child {
+      padding-left: 10px;
+    }
+  }
 }
 </style>
