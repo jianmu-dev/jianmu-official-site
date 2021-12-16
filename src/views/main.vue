@@ -19,6 +19,7 @@ const scrollBarBottomRef = ref<HTMLElement>();
 const scrollTop = ref<number>(0);
 const scrollInterval = ref<any>();
 const preHeight = ref<number>(0);
+const heightNumber = ref<number>(0);
 const animateScroll = (height: number) => {
   if (scrollInterval.value) {
     clearInterval(scrollInterval.value);
@@ -68,9 +69,9 @@ const scrollHeightHandler = () => {
     if (
       mainRef.value!.clientHeight <= minShowScrollHeight
         ? mainRef.value!.scrollTop >
-          canScrollHeight -
-            height.value +
-            (minShowScrollHeight - mainRef.value!.clientHeight)
+        canScrollHeight -
+        height.value +
+        (minShowScrollHeight - mainRef.value!.clientHeight)
         : mainRef.value!.scrollTop > canScrollHeight - height.value
     ) {
       h = canScrollHeight;
@@ -96,9 +97,9 @@ const scrollHeightHandler = () => {
     if (
       mainRef.value!.clientHeight <= minShowScrollHeight
         ? mainRef.value!.scrollTop >
-          canScrollHeight -
-            height.value +
-            (minShowScrollHeight - mainRef.value!.clientHeight)
+        canScrollHeight -
+        height.value +
+        (minShowScrollHeight - mainRef.value!.clientHeight)
         : mainRef.value!.scrollTop > canScrollHeight - height.value
     ) {
       h = canScrollHeight;
@@ -119,15 +120,15 @@ const scrollHeightHandler = () => {
   if (h < height.value) {
     h = height.value;
   }
+  heightNumber.value = h;
   animateScroll(h);
 };
 const initScroll = (): void => {
   // 解决浏览器窗口缩放后，页面出现空白的问题
   // mainRef.value?.scrollTo(0, 0);
   // 卷轴的初始高度
-  height.value =
-    document.documentElement.clientHeight -
-    (scrollBarRef.value!.offsetTop - document.documentElement.scrollTop) -
+  height.value = document.documentElement.clientHeight -
+    scrollBarRef.value!.offsetTop -
     scrollBarRef.value!.clientHeight * 2;
   if (height.value < 10) {
     // 屏幕展示的区域小的时候，将卷轴饿高度设置为10，让其折叠
@@ -136,7 +137,10 @@ const initScroll = (): void => {
   scrollContainerRef.value!.style.height = `${
     height.value + scrollTop.value
   }px`;
-  console.log(scrollContainerRef.value?.style.height);
+  // 如果可滚动的高度大于卷轴内容的高度，强制将可滚动高度固定
+  if (height.value + scrollTop.value >= 4855) {
+    scrollContainerRef.value!.style.height = `${4855}px`;
+  }
 };
 onMounted(() => {
   mainRef.value?.addEventListener('scroll', scrollHeightHandler);
@@ -153,22 +157,22 @@ onBeforeUnmount(() => {
 </script>
 <template>
   <div class="main" ref="mainRef">
-    <nav-top />
+    <nav-top/>
     <div class="container">
       <div class="content-bg">
         <div class="content-wrapper">
-          <description />
+          <description/>
           <div class="scroll" ref="scrollRef">
             <div class="scroll-bar" ref="scrollBarRef">
-              <img src="~@/assets/pngs/bar-top.png" />
+              <img src="~@/assets/pngs/bar-top.png"/>
             </div>
             <div class="scroll-container" ref="scrollContainerRef">
               <div class="scroll-wrapper">
-                <scroll-content ref="scrollContentRef" />
+                <scroll-content ref="scrollContentRef"/>
               </div>
             </div>
             <div class="scroll-bar-bottom" ref="scrollBarBottomRef">
-              <img src="~@/assets/pngs/bar-bottom.png" />
+              <img src="~@/assets/pngs/bar-bottom.png"/>
             </div>
           </div>
         </div>
@@ -184,6 +188,7 @@ onBeforeUnmount(() => {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+
   .container {
     .content-bg {
       margin-top: 70px;
@@ -191,24 +196,30 @@ onBeforeUnmount(() => {
       background-repeat: no-repeat;
       background-position: center 90px;
       background-image: url('@/assets/pngs/main-bg-none.png');
+
       .content-wrapper {
         max-width: 1600px;
         margin: 0 auto;
+
         .scroll {
           margin-top: 150px;
+
           .scroll-bar,
           .scroll-bar-bottom {
             height: 30px;
             max-width: 99%;
             margin: 0 auto;
+
             img {
               height: 100%;
               width: 100%;
             }
           }
+
           .scroll-container {
             overflow: hidden;
             margin: -5px auto;
+
             .scroll-wrapper {
               max-width: 90%;
               background-color: #f2f4f7;
