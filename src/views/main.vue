@@ -19,7 +19,6 @@ const scrollBarBottomRef = ref<HTMLElement>();
 const scrollTop = ref<number>(0);
 const scrollInterval = ref<any>();
 const preHeight = ref<number>(0);
-const heightNumber = ref<number>(0);
 const animateScroll = (height: number) => {
   if (scrollInterval.value) {
     clearInterval(scrollInterval.value);
@@ -120,7 +119,6 @@ const scrollHeightHandler = () => {
   if (h < height.value) {
     h = height.value;
   }
-  heightNumber.value = h;
   animateScroll(h);
 };
 const initScroll = (): void => {
