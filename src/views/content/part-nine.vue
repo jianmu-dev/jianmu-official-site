@@ -37,7 +37,7 @@
 </template>
 <style lang="less" scoped>
 .part-nine {
-  padding: 55px 0;
+  padding: 40px 0;
   display: flex;
   justify-content: center;
   background: #f6fafe;
