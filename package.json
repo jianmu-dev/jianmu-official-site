@@ -1,6 +1,6 @@
 {
   "name": "jianmu-official-site",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "scripts": {
     "serve": "vite",
     "build": "vite build",
