@@ -47,7 +47,7 @@ const tabClick = (index: number) => {
 <style lang="less" scoped>
 .part-two {
   height: 765px;
-  margin-top: -40px;
+  margin-top: -50px;
   background-image: url('@/assets/svgs/pr-2-bg.svg');
   background-repeat: no-repeat;
   background-size: 110% 110%;

@@ -40,7 +40,7 @@
 </template>
 <style lang="less" scoped>
 .part-six {
-  padding-top: 100px;
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
