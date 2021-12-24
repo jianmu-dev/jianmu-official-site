@@ -30,7 +30,7 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-  margin: 80px 60px 130px;
+  margin: 75px 60px 95px;
   color: #042749;
   .title {
     font-size: 32px;
@@ -52,7 +52,7 @@
     }
     .el-carousel__indicators {
       .el-carousel__indicator {
-        margin-top: 60px;
+        margin-top: 50px;
         &.is-active {
           .el-carousel__button {
             background-color: #042749;

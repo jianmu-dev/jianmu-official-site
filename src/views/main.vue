@@ -5,6 +5,7 @@ import NavBottom from '@/views/nav/nav-bottom.vue';
 import Description from '@/views/content/description.vue';
 import ScrollContent from '@/views/content/scroll-content.vue';
 import { minShowScrollHeight, canScrollHeight } from '@/utils/constants';
+
 const height = ref<number>(10);
 const offsetHeight = ref<number>(0);
 const scrollContainerRef = ref<HTMLElement>();

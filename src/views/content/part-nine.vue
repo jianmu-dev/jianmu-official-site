@@ -37,12 +37,13 @@
 </template>
 <style lang="less" scoped>
 .part-nine {
-  padding: 50px 0;
+  padding: 55px 0;
   display: flex;
   justify-content: center;
   background: #f6fafe;
   color: #042749;
   font-size: 14px;
+  margin-top: 35px;
   .left {
     display: flex;
     align-items: flex-start;
