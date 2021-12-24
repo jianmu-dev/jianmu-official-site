@@ -15,8 +15,8 @@ const contribution = () => {
     <!-- 产品公共部分 -->
     <div class="product-common-container">
       <img
-        class="product-img"
-        src="@/assets/official-h5/svgs/git-ops.svg"
+          class="product-img"
+          src="@/assets/official-h5/svgs/git-ops.svg"
       >
       <div class="product-title">
         配置即代码
@@ -27,8 +27,8 @@ const contribution = () => {
     </div>
     <div class="product-common-container">
       <img
-        class="product-img"
-        src="@/assets/official-h5/svgs/environment.svg"
+          class="product-img"
+          src="@/assets/official-h5/svgs/environment.svg"
       >
       <div class="product-title">
         环境隔离性
@@ -39,8 +39,8 @@ const contribution = () => {
     </div>
     <div class="product-common-container">
       <img
-        class="product-img"
-        src="@/assets/official-h5/svgs/technological-process.svg"
+          class="product-img"
+          src="@/assets/official-h5/svgs/technological-process.svg"
       >
       <div class="product-title">
         流程可视化
@@ -52,8 +52,8 @@ const contribution = () => {
   </div>
   <!-- 参与贡献-按钮 -->
   <div
-    class="common-btn"
-    @click="contribution"
+      class="common-btn"
+      @click="contribution"
   >
     参与贡献
   </div>
@@ -64,8 +64,8 @@ const contribution = () => {
     </div>
     <div class="community-img-container">
       <img
-        src="@/assets/official-h5/pngs/belonging-community.png"
-        class="community-img"
+          src="@/assets/official-h5/pngs/belonging-community.png"
+          class="community-img"
       >
     </div>
     <div class="community-description">
@@ -75,26 +75,31 @@ const contribution = () => {
   <!-- 参与单位 -->
   <div class="participating-units-container">
     <div class="participating-units-title">
-      参与单位
+      合作伙伴
     </div>
     <!-- 参与单位图片 -->
     <div class="participating-units-imgs">
       <img
-        src="@/assets/official-h5/pngs/esi.png"
-        class="cis-img"
+          src="@/assets/official-h5/pngs/esi.png"
+          class="cis-img"
       >
-      <img
-        src="@/assets/official-h5/pngs/cloud.png"
-        class="cloud-img"
-      >
-      <img
-        src="@/assets/official-h5/pngs/gitee.png"
-        class="gitee-img"
-      >
-      <img
-        src="@/assets/official-h5/pngs/shs.png"
-        class="shs-img"
-      >
+      <div>
+        <img
+            src="@/assets/official-h5/pngs/cloud.png"
+            class="cloud-img"
+        >
+        <img
+            src="@/assets/official-h5/pngs/gitee.png"
+            class="gitee-img"
+        >
+      </div>
+      <div>
+        <img
+            src="@/assets/official-h5/pngs/shs.png"
+            class="shs-img"
+        >
+        <img src="@/assets/official-h5/pngs/shanyang.png" class="shanyang-img">
+      </div>
     </div>
   </div>
   <!-- 九州云描述 -->
@@ -194,6 +199,8 @@ const contribution = () => {
 }
 // 参与单位
 .participating-units-container {
+  width:750px;
+  height:468px;
   padding: 0 30px;
   background: url('@/assets/official-h5/svgs/participating-units.svg');
   background-size: 100%;
@@ -204,29 +211,32 @@ const contribution = () => {
     margin-bottom: 45px;
   }
   .participating-units-imgs {
-    width: 690px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    .cis-img {
-      width: 500px;
-      height: 90px;
+    width:500px;
+    margin:0 auto;
+    div{
+      display: flex;
+      justify-content: space-between;
     }
-    img {
-      margin-bottom: 40px;
+    div:nth-of-type(1){
+      margin:40px 0;
     }
-    .cloud-img {
-      width: 202px;
-      height: 90px;
-      margin-right: 50px;
+    img{
+      height:90px;
     }
-    .gitee-img {
-      width: 218px;
-      height: 90px;
+    .cis-img{
+      width:500px;
     }
-    .shs-img {
-      width: 276px;
-      height: 90px;
+    .cloud-img{
+      width:202px;
+    }
+    .gitee-img{
+      width:218px;
+    }
+    .shs-img{
+      width:276px;
+    }
+    .shanyang-img{
+      width:181px;
     }
   }
 }
