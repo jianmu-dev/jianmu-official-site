@@ -15,8 +15,8 @@ const contribution = () => {
     <!-- 产品公共部分 -->
     <div class="product-common-container">
       <img
-          class="product-img"
-          src="@/assets/official-h5/svgs/git-ops.svg"
+        class="product-img"
+        src="@/assets/official-h5/svgs/git-ops.svg"
       >
       <div class="product-title">
         配置即代码
@@ -27,8 +27,8 @@ const contribution = () => {
     </div>
     <div class="product-common-container">
       <img
-          class="product-img"
-          src="@/assets/official-h5/svgs/environment.svg"
+        class="product-img"
+        src="@/assets/official-h5/svgs/environment.svg"
       >
       <div class="product-title">
         环境隔离性
@@ -39,8 +39,8 @@ const contribution = () => {
     </div>
     <div class="product-common-container">
       <img
-          class="product-img"
-          src="@/assets/official-h5/svgs/technological-process.svg"
+        class="product-img"
+        src="@/assets/official-h5/svgs/technological-process.svg"
       >
       <div class="product-title">
         流程可视化
@@ -52,8 +52,8 @@ const contribution = () => {
   </div>
   <!-- 参与贡献-按钮 -->
   <div
-      class="common-btn"
-      @click="contribution"
+    class="common-btn"
+    @click="contribution"
   >
     参与贡献
   </div>
@@ -64,8 +64,8 @@ const contribution = () => {
     </div>
     <div class="community-img-container">
       <img
-          src="@/assets/official-h5/pngs/belonging-community.png"
-          class="community-img"
+        src="@/assets/official-h5/pngs/belonging-community.png"
+        class="community-img"
       >
     </div>
     <div class="community-description">
@@ -80,25 +80,28 @@ const contribution = () => {
     <!-- 参与单位图片 -->
     <div class="participating-units-imgs">
       <img
-          src="@/assets/official-h5/pngs/esi.png"
-          class="cis-img"
+        src="@/assets/official-h5/pngs/esi.png"
+        class="cis-img"
       >
       <div>
         <img
-            src="@/assets/official-h5/pngs/cloud.png"
-            class="cloud-img"
+          src="@/assets/official-h5/pngs/cloud.png"
+          class="cloud-img"
         >
         <img
-            src="@/assets/official-h5/pngs/gitee.png"
-            class="gitee-img"
+          src="@/assets/official-h5/pngs/gitee.png"
+          class="gitee-img"
         >
       </div>
       <div>
         <img
-            src="@/assets/official-h5/pngs/shs.png"
-            class="shs-img"
+          src="@/assets/official-h5/pngs/shs.png"
+          class="shs-img"
         >
-        <img src="@/assets/official-h5/pngs/shanyang.png" class="shanyang-img">
+        <img
+          src="@/assets/official-h5/pngs/shanyang.png"
+          class="shanyang-img"
+        >
       </div>
     </div>
   </div>
