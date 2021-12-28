@@ -39,7 +39,7 @@ const closeMenu = () =>{
     class="menu-active  border-bottom-common"
   >
     <div class="official-logo">
-      <img src="@/assets/official-h5/svgs/logo-active.svg">
+      <img src="@/assets/official-h5/svgs/logo.svg">
       <span class="logo-text">建木</span>
     </div>
     <img
@@ -121,6 +121,11 @@ background:#F0F7FF;
       margin-bottom:50px;
       font-size:36px;
       color: #012C53;
+      &:active,
+      &:visited,
+      &:link{
+        text-decoration: none;
+      }
     }
   }
 }
