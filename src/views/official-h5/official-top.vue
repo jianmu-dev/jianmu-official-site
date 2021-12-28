@@ -21,7 +21,7 @@ const closeMenu = () =>{
   <!-- logo -->
   <div
     class="official-logo-container border-bottom-common"
-    v-if="!menuVisible"
+    v-show="!menuVisible"
   >
     <div class="official-logo">
       <img src="@/assets/official-h5/svgs/logo.svg">
@@ -35,7 +35,7 @@ const closeMenu = () =>{
   </div>
   <!-- 激活状态顶部 -->
   <div
-    v-else
+    v-show="menuVisible"
     class="menu-active  border-bottom-common"
   >
     <div class="official-logo">
