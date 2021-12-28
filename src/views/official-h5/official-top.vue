@@ -36,7 +36,7 @@ const closeMenu = () =>{
   <!-- 激活状态顶部 -->
   <div
     v-show="menuVisible"
-    class="menu-active  border-bottom-common"
+    class="menu-active"
   >
     <div class="official-logo">
       <img src="@/assets/official-h5/svgs/logo.svg">
@@ -101,7 +101,8 @@ const closeMenu = () =>{
 }
 // 菜单激活状态顶部
 .menu-active{
-background:#F0F7FF;
+  background:#F0F7FF;
+  border-bottom:1px solid rgba(0,0,0,0.05);
 }
 // 菜单蒙层
 .menu-mantle{
