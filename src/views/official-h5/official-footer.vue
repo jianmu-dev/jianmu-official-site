@@ -3,13 +3,25 @@
 <template>
   <!-- 底部 -->
   <div class="official-footer">
-    <img src="@/assets/official-h5/pngs/mulan.png" class="mulan-icon" />
+    <img
+      src="@/assets/official-h5/pngs/mulan.png"
+      class="mulan-icon"
+    >
     <div class="links">
-      <a class="link" href="https://portal.mulanos.cn">木兰社区孵化项目</a>
-      <i class="line"></i>
-      <a class="link" href="https://docs.jianmu.dev">使用手册</a>
-      <i class="line"></i>
-      <a class="link" href="mailto:support@jianmu.dev">联系我们</a>
+      <a
+        class="link"
+        href="https://portal.mulanos.cn"
+      >木兰社区孵化项目</a>
+      <i class="line" />
+      <a
+        class="link"
+        href="https://docs.jianmu.dev"
+      >使用手册</a>
+      <i class="line" />
+      <a
+        class="link"
+        href="mailto:support@jianmu.dev"
+      >联系我们</a>
     </div>
   </div>
 </template>
