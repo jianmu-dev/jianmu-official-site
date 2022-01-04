@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { hub, contribution } from '@/utils/constants';
+import { hub, contribution, blog } from '@/utils/constants';
 </script>
 <template>
   <div class="nav-top">
@@ -14,14 +14,15 @@ import { hub, contribution } from '@/utils/constants';
         <h2 class="jianmu">建木</h2>
       </div>
       <div class="link-area">
-        <div class="node-library-link item" @click="hub">
+        <a :href="hub" target="_blank" class="link-item">
           <span>建木Hub</span>
-          <img src="~@/assets/svgs/node-library-link-icon.svg" />
-        </div>
-        <div class="attribution-link item" @click="contribution">
+        </a>
+        <a :href="blog" target="_blank" class="link-item">
+          <span>博客</span>
+        </a>
+        <a :href='contribution' target="_blank" class="link-item">
           <span>参与贡献</span>
-          <img src="~@/assets/svgs/attribution-link-icon.svg" />
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -68,34 +69,16 @@ import { hub, contribution } from '@/utils/constants';
       }
     }
     .link-area {
-      margin-right: 3%;
+      //margin-right: 3%;
       display: flex;
-      .item {
-        cursor: pointer;
-        user-select: none;
-        &.node-library-link {
-          background-color: #042749;
-          margin-right: 40px;
-        }
-        &.attribution-link {
-          background-color: #fff;
-          color: #042749;
-        }
-        border-radius: 4px;
-        box-shadow: 0px 4px 10px 0px #dadada;
-        width: 140px;
-        height: 44px;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: space-between;
-        color: #ffffff;
-        padding: 10px 15px;
-        span {
-          font-size: 16px;
-        }
-        img {
-          width: 24px;
-          height: 24px;
+      .link-item{
+        margin-right: 37px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #042749;
+        text-decoration: none;
+        &:hover{
+          color: #096DD9;
         }
       }
     }
