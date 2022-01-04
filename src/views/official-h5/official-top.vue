@@ -57,7 +57,7 @@ const closeMenu = () =>{
     <!-- 链接容器 -->
     <div class="link-container">
       <a href="https://hub.jianmu.run/">建木Hub</a>
-      <!--      <a href="#">博客</a>-->
+      <a href="https://blog.jianmu.dev/">博客</a>
       <!--      <a href="#">贡献者</a>-->
       <a href="https://gitee.com/jianmu-dev/jianmu-ci-server">参与贡献</a>
     </div>
