@@ -1,9 +1,6 @@
-export const hub = () => {
-  window.open('https://hub.jianmu.dev', '_blank');
-};
-export const contribution = () => {
-  window.open('https://gitee.com/jianmu-dev/jianmu-ci-server', '_blank');
-};
+export const hub = 'https://hub.jianmu.dev';
+export const contribution = 'https://gitee.com/jianmu-dev/jianmu-ci-server';
+export const blog = 'https://blog.test.jianmu.dev';
 export const quickStart = () => {
   window.open('https://docs.jianmu.dev/guide/quick-start.html', '_blank');
 };
