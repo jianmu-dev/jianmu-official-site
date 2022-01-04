@@ -1,6 +1,6 @@
 export const hub = 'https://hub.jianmu.dev';
 export const contribution = 'https://gitee.com/jianmu-dev/jianmu-ci-server';
-export const blog = 'https://blog.test.jianmu.dev';
+export const blog = 'https://blog.jianmu.dev';
 export const quickStart = () => {
   window.open('https://docs.jianmu.dev/guide/quick-start.html', '_blank');
 };
