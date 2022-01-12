@@ -19,7 +19,7 @@
   .cooperator {
     margin: 0 auto;
     background-image: url("@/assets/pngs/cooperation.png");
-    width: 948px;
+    width: 1140px;
     height: 290px;
     background-size: contain;
     background-position: center center;
