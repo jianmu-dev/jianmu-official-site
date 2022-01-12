@@ -79,10 +79,12 @@ const contribution = () => {
     </div>
     <!-- 参与单位图片 -->
     <div class="participating-units-imgs">
-      <img
-        src="@/assets/official-h5/pngs/esi.png"
-        class="cis-img"
-      >
+      <div>
+        <img
+          src="@/assets/official-h5/pngs/esi.png"
+          class="cis-img"
+        >
+      </div>
       <div>
         <img
           src="@/assets/official-h5/pngs/cloud.png"
@@ -92,6 +94,10 @@ const contribution = () => {
           src="@/assets/official-h5/pngs/gitee.png"
           class="gitee-img"
         >
+        <img
+          src="@/assets/official-h5/pngs/shanyang.png"
+          class="shanyang-img"
+        >
       </div>
       <div>
         <img
@@ -99,8 +105,8 @@ const contribution = () => {
           class="shs-img"
         >
         <img
-          src="@/assets/official-h5/pngs/shanyang.png"
-          class="shanyang-img"
+          src="@/assets/official-h5/pngs/ezsvs.png"
+          class="ezsvs-img"
         >
       </div>
     </div>
@@ -149,137 +155,173 @@ const contribution = () => {
   border-radius: 10px;
   margin: 60px 0px 80px 30px;
 }
+
 // 产品特性
 .product-characteristics {
   padding: 0px 30px;
   background: url('@/assets/official-h5/svgs/product.svg');
   background-size: 100%;
+
   .product-characteristics-title {
     font-size: 36px;
     font-weight: 700;
   }
+
   // 产品公共样式
   .product-common-container {
     margin-top: 50px;
+
     .product-img {
       width: 150px;
       height: 85px;
     }
+
     .product-title {
       font-size: 30px;
       font-weight: 700;
       margin: 20px 0;
     }
+
     .product-description {
       font-size: 30px;
       line-height: 48px;
     }
   }
 }
+
 // 所属社区
 .belonging-community-container {
   padding: 0 30px;
   margin-top: 30px;
   margin-bottom: 80px;
+
   .belonging-community-title {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 50px;
   }
+
   .community-img-container {
     margin-bottom: 30px;
     display: flex;
     justify-content: center;
+
     .community-img {
       width: 248px;
       height: 86px;
     }
   }
+
   .community-description {
     font-size: 30px;
     line-height: 48px;
   }
 }
+
 // 参与单位
 .participating-units-container {
-  width:750px;
-  height:468px;
+  width: 750px;
+  height: 468px;
   padding: 0 30px;
   background: url('@/assets/official-h5/svgs/participating-units.svg');
   background-size: 100%;
   margin-bottom: 60px;
+
   .participating-units-title {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 45px;
   }
+
   .participating-units-imgs {
-    width:500px;
-    margin:0 auto;
-    div{
+    margin: 0 auto;
+
+    div {
       display: flex;
-      justify-content: space-between;
+      //justify-content: space-between;
+      justify-content: center;
     }
-    div:nth-of-type(1){
-      margin:40px 0;
+
+    div:nth-of-type(2) {
+      margin: 40px 0;
     }
-    img{
-      height:90px;
+
+    img {
+      height: 90px;
     }
-    .cis-img{
-      width:500px;
+
+    .cis-img {
+      width: 500px;
     }
-    .cloud-img{
-      width:202px;
+
+    .cloud-img {
+      width: 202px;
     }
-    .gitee-img{
-      width:218px;
+
+    .gitee-img {
+      width: 218px;
+      margin: 0 43px 0 42px;
     }
-    .shs-img{
-      width:276px;
+
+    .shs-img {
+      width: 276px;
+      margin-right:48px;
     }
-    .shanyang-img{
+
+    .shanyang-img {
+      width: 181px;
+    }
+    .ezsvs-img{
       width:181px;
     }
   }
 }
+
 // 九州云描述
 .cloud-container {
   padding: 0 30px;
   margin-bottom: 68px;
+
   .cloud-description {
     font-size: 30px;
     line-height: 48px;
     margin-bottom: 60px;
   }
+
   .cloud-links {
     font-weight: 700;
     font-size: 30px;
     line-height: 48px;
   }
+
   .cloud-img-container {
     padding-bottom: 50px;
     display: flex;
     justify-content: center;
+
     .single {
       display: flex;
       flex-direction: column;
       align-items: center;
+
       .cloud-title {
         font-size: 28px;
         color: #042749;
         opacity: 0.5;
         line-height: 30px;
       }
+
       img {
         width: 240px;
         height: 240px;
       }
+
       .qq-num {
         font-size: 24px;
         line-height: 23px;
       }
     }
+
     .we-chat {
       margin-right: 46px;
     }
