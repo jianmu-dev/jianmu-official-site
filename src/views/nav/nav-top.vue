@@ -69,7 +69,6 @@ import { hub, contribution, blog } from '@/utils/constants';
       }
     }
     .link-area {
-      //margin-right: 3%;
       display: flex;
       .link-item{
         margin-right: 37px;
@@ -77,6 +76,9 @@ import { hub, contribution, blog } from '@/utils/constants';
         font-weight: 500;
         color: #042749;
         text-decoration: none;
+        &:last-child{
+          margin-right: 40px;
+        }
         &:hover{
           color: #096DD9;
         }
