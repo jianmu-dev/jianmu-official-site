@@ -13,7 +13,7 @@
     </div>
     <div class="right">
       <div class="top">
-        九州云在“开源·赋能云边变⾰”的理想和共同⽬标指引下，重新对DevOps &
+        建木团队在“开源·赋能云边变⾰”的理想和共同⽬标指引下，重新对DevOps &
         OpsDev领域中共性、有价值的需求做了⼀次完整的梳理和重写，最终以“建⽊”开源项⽬的形态呈现。
       </div>
       <div class="bottom">
