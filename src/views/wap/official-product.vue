@@ -159,7 +159,7 @@ const contribution = () => {
 // 产品特性
 .product-characteristics {
   padding: 0px 30px;
-  background: url('@/assets/wap/official-h5/svgs/product.svg');
+  background: url('@/assets/wap/svgs/product.svg');
   background-size: 100%;
 
   .product-characteristics-title {
@@ -223,7 +223,7 @@ const contribution = () => {
   width: 750px;
   height: 468px;
   padding: 0 30px;
-  background: url('@/assets/wap/official-h5/svgs/participating-units.svg');
+  background: url('@/assets/wap/svgs/participating-units.svg');
   background-size: 100%;
   margin-bottom: 60px;
 
