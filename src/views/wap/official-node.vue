@@ -407,7 +407,7 @@ onMounted(async () => {
 
     // dsl展示
     .dsl-show {
-      background: url('@/assets/wap/official-h5/svgs/configure.svg');
+      background: url('@/assets/wap/svgs/configure.svg');
       background-size: 100% 100%;
       font-size: 21px;
       line-height: 30px;
@@ -443,7 +443,7 @@ onMounted(async () => {
 }
 // 流程可视化
 .visualization {
-  background: url('@/assets/wap/official-h5/svgs/visualization.svg') no-repeat;
+  background: url('@/assets/wap/svgs/visualization.svg') no-repeat;
   background-size: 100% 100%;
   padding: 0 30px;
   height: 634px;
@@ -506,7 +506,7 @@ onMounted(async () => {
 }
 // 节点生态
 .node-ecology {
-  background: url('@/assets/wap/official-h5/svgs/node-ecology.svg');
+  background: url('@/assets/wap/svgs/node-ecology.svg');
   background-size: 100%;
   // 节点展示
   .node-show {
