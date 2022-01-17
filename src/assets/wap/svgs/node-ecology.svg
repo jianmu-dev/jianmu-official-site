@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="750px" height="488px" viewBox="0 0 750 488" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 6 + 编组 6 蒙版</title>
+    <defs>
+        <polygon id="path-1" points="0.520295247 417.579855 1238.25407 0.0163556063 1238.88718 475.792461 19.5136524 475.792461"></polygon>
+        <filter id="filter-3">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.000000 0 0 0 0 0.568627 0 0 0 0 1.000000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+        <linearGradient x1="100%" y1="54.0014716%" x2="0%" y2="50.343025%" id="linearGradient-4">
+            <stop stop-color="#EBF5FE" offset="0%"></stop>
+            <stop stop-color="#E9F5FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.140511446">
+        <g id="建木-H5" transform="translate(0.000000, -3073.000000)">
+            <g id="编组-7" transform="translate(-312.500000, 3072.500000)">
+                <g id="编组-6-+-编组-6-蒙版" transform="translate(0.500000, 6.500000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="蒙版" fill="#F6FAFE" opacity="0.544126999" xlink:href="#path-1"></use>
+                    <g id="编组-6" opacity="0.726607922" mask="url(#mask-2)" stroke="#597EF7">
+                        <g transform="translate(628.152808, 445.865100) rotate(5.000000) translate(-628.152808, -445.865100) translate(-26.847192, -5.134900)">
+                            <line x1="0.518561701" y1="517.929259" x2="1224.50232" y2="0.269981292" id="路径-4备份-2"></line>
+                            <line x1="0.518561701" y1="621.816371" x2="1224.37481" y2="86.5818252" id="路径-4备份-4"></line>
+                            <line x1="0.518561701" y1="671.96877" x2="1237.62671" y2="132.060282" id="路径-4备份-5"></line>
+                            <line x1="19.5119189" y1="714.060961" x2="1237.44459" y2="181.966025" id="路径-4备份-6"></line>
+                            <line x1="77.6031952" y1="738.771352" x2="1289.31838" y2="209.743562" id="路径-4备份-7"></line>
+                            <line x1="71.5565618" y1="791.753048" x2="1308.93357" y2="251.260301" id="路径-4备份-8"></line>
+                            <line x1="84.1922837" y1="831.886837" x2="1308.75145" y2="301.166044" id="路径-4备份-9"></line>
+                            <line x1="77.7582142" y1="900.789089" x2="1308.86896" y2="348.356247" id="路径-4备份-10"></line>
+                            <line x1="0.518561701" y1="567.186079" x2="1237.7465" y2="35.4104218" id="路径-4备份-3"></line>
+                        </g>
+                    </g>
+                    <g filter="url(#filter-3)" id="编组-6" opacity="0.431322674">
+                        <g mask="url(#mask-2)">
+                            <g transform="translate(944.243852, 357.438741) scale(1, -1) rotate(-5.000000) translate(-944.243852, -357.438741) translate(-31.756148, -218.561259)" stroke="#597EF7">
+                                <line x1="0.316555953" y1="506.673565" x2="1237.41722" y2="0.223894638" id="路径-4"></line>
+                                <line x1="0.316555953" y1="557.273754" x2="1237.41722" y2="50.8240828" id="路径-4备份"></line>
+                                <line x1="0.316555953" y1="611.008467" x2="1237.41722" y2="104.558796" id="路径-4备份-2"></line>
+                                <line x1="0.316555953" y1="714.895579" x2="1237.41722" y2="208.445908" id="路径-4备份-4"></line>
+                                <line x1="0.316555953" y1="765.047977" x2="1237.41722" y2="258.598307" id="路径-4备份-5"></line>
+                                <line x1="637.227133" y1="765.047977" x2="1874.3278" y2="258.598307" id="路径-4备份-11"></line>
+                                <line x1="19.3099131" y1="807.140169" x2="1256.41058" y2="300.690499" id="路径-4备份-6"></line>
+                                <line x1="656.220491" y1="807.140169" x2="1893.32115" y2="300.690499" id="路径-4备份-12"></line>
+                                <line x1="39.5694941" y1="851.471308" x2="1276.67016" y2="345.021637" id="路径-4备份-7"></line>
+                                <line x1="676.480072" y1="851.471308" x2="1913.58074" y2="345.021637" id="路径-4备份-13"></line>
+                                <line x1="39.5694941" y1="902.967074" x2="1276.67016" y2="396.517404" id="路径-4备份-8"></line>
+                                <line x1="676.480072" y1="902.967074" x2="1913.58074" y2="396.517404" id="路径-4备份-14"></line>
+                                <line x1="676.480072" y1="1060.5889" x2="1913.58074" y2="554.139229" id="路径-4备份-17"></line>
+                                <line x1="60.462187" y1="945.954845" x2="1297.56285" y2="439.505174" id="路径-4备份-9"></line>
+                                <line x1="697.372764" y1="945.954845" x2="1934.47343" y2="439.505174" id="路径-4备份-15"></line>
+                                <line x1="697.372764" y1="1103.57667" x2="1934.47343" y2="597.126999" id="路径-4备份-18"></line>
+                                <line x1="714.466786" y1="993.868297" x2="1951.56745" y2="487.418627" id="路径-4备份-16"></line>
+                                <line x1="714.466786" y1="1151.49012" x2="1951.56745" y2="645.040452" id="路径-4备份-19"></line>
+                                <line x1="0.316555953" y1="660.265287" x2="1237.41722" y2="153.815616" id="路径-4备份-3"></line>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+                <polygon id="三角形" fill="url(#linearGradient-4)" opacity="0.490484193" points="23.5 144.5 1239.5 488.5 24.1330036 488.5"></polygon>
+                <ellipse id="椭圆形备份-10" stroke="#A4E9A3" stroke-width="3" fill="#FFFFFF" opacity="0.501930414" cx="331.5" cy="452" rx="8.5" ry="4"></ellipse>
+                <ellipse id="椭圆形备份-6" stroke="#A4E9A3" stroke-width="3" fill="#FFFFFF" opacity="0.501930414" cx="424.5" cy="336" rx="8.5" ry="4"></ellipse>
+                <ellipse id="椭圆形备份-7" stroke="#A4E9A3" stroke-width="3" fill="#FFFFFF" opacity="0.501930414" cx="772.5" cy="441" rx="8.5" ry="4"></ellipse>
+                <ellipse id="椭圆形备份-3" stroke="#80B5FF" stroke-width="3" fill="#FFFFFF" opacity="0.501930414" cx="320.5" cy="261" rx="8.5" ry="4"></ellipse>
+                <ellipse id="椭圆形备份-4" stroke="#80B5FF" stroke-width="3" fill="#FFFFFF" opacity="0.501930414" cx="511.5" cy="251" rx="8.5" ry="4"></ellipse>
+                <ellipse id="椭圆形备份-12" stroke="#80B5FF" stroke-width="3" fill="#FFFFFF" opacity="0.501930414" cx="968.5" cy="165" rx="8.5" ry="4"></ellipse>
+                <ellipse id="椭圆形备份-8" stroke="#80B5FF" stroke-width="3" fill="#FFFFFF" opacity="0.501930414" cx="1057.5" cy="343" rx="8.5" ry="4"></ellipse>
+                <ellipse id="椭圆形备份-11" stroke="#80B5FF" stroke-width="3" fill="#FFFFFF" opacity="0.501930414" cx="798.5" cy="37" rx="8.5" ry="4"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>
