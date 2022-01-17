@@ -1,13 +1,15 @@
 import { createApp } from 'vue';
 import type { ComponentPublicInstance } from 'vue';
 import App from './app.vue';
-import router from './router';
-import './global.less';
+import webRouter from './router/web';
+import wapRouter from './router/wap';
+import { isWap } from '@/utils/ua';
 import { globalErrorHandler } from '@/utils/global-error-handler';
 import component from '@/components';
 // 安装百度统计
 import './utils/baidu-tongji.ts';
-
+isWap() ? import('./global-wap.less') : import('./global-web.less');
+const router = isWap() ? wapRouter : webRouter;
 const app = createApp(App);
 // 全局注册组件
 app.use(component);
