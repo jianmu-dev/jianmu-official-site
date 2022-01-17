@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="141px" height="89px" viewBox="0 0 141 89" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 16</title>
+    <defs>
+        <rect id="path-1" x="6.88647746" y="52.5876461" width="128.964942" height="23.7896494"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="128.964942" height="23.7896494" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect id="path-3" x="31.9282137" y="26.293823" width="78.8814691" height="23.7896494"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="78.8814691" height="23.7896494" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <rect id="path-5" x="79.5075125" y="0" width="31.3021703" height="23.7896494"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="31.3021703" height="23.7896494" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="建木-H5" transform="translate(-30.000000, -4209.000000)">
+            <g id="编组-16" transform="translate(30.000000, 4209.000000)">
+                <use id="矩形" stroke="#3695FF" mask="url(#mask-2)" fill="#DCEDFF" stroke-dasharray="1.252086811352254" xlink:href="#path-1"></use>
+                <use id="矩形备份-3" stroke="#3695FF" mask="url(#mask-4)" fill="#DCEDFF" stroke-dasharray="1.252086811352254" xlink:href="#path-3"></use>
+                <use id="矩形备份-5" stroke="#3695FF" mask="url(#mask-6)" fill="#DCEDFF" stroke-dasharray="1.252086811352254" xlink:href="#path-5"></use>
+                <polygon id="路径" fill="#FF6A00" fill-rule="nonzero" points="86.39399 47.5792988 86.39399 28.7979967 105.175292 28.7979967 105.175292 47.5792988"></polygon>
+                <polygon id="路径" fill="#9248CF" fill-rule="nonzero" points="37.5626043 73.8731219 37.5626043 55.0918197 56.3439065 55.0918197 56.3439065 73.8731219 37.5626043 73.8731219"></polygon>
+                <polygon id="路径" fill="#FF6A00" fill-rule="nonzero" points="61.9782972 73.8731219 61.9782972 55.0918197 80.7595993 55.0918197 80.7595993 73.8731219 61.9782972 73.8731219"></polygon>
+                <polygon id="路径" fill="#376ED9" fill-rule="nonzero" points="85.7679466 73.8731219 85.7679466 55.0918197 104.549249 55.0918197 104.549249 73.8731219"></polygon>
+                <polygon id="路径" fill="#000000" fill-rule="nonzero" points="110.809897 55.0918197 129.590985 55.0918197 129.590985 73.8731219 110.809683 73.8731219 110.809683 55.0918197"></polygon>
+                <polygon id="路径" fill="#3388FF" fill-rule="nonzero" points="85.7679466 2.50417362 104.549249 2.50417362 104.549249 21.2854758 85.7679466 21.2854758"></polygon>
+                <polygon id="路径" fill="#2AAF6F" fill-rule="nonzero" points="61.9782972 28.7979967 80.7595993 28.7979967 80.7595993 47.5792988 61.9920204 47.5792988 61.9920204 28.7979967"></polygon>
+                <polygon id="路径" fill="#00C1DE" fill-rule="nonzero" points="37.5626043 28.7979967 56.3439065 28.7979967 56.3439065 47.5792988 37.5626043 47.5792988"></polygon>
+                <polygon id="路径" fill="#E53935" fill-rule="nonzero" points="13.1469115 55.0918197 31.9282137 55.0918197 31.9282137 73.8731219 13.1469115 73.8731219"></polygon>
+                <path d="M138.351238,82.0116861 L2.65287095,82.0116861 C1.19731344,82.0116861 8.0069507e-14,83.4251624 8.0069507e-14,85.1392661 C8.0069507e-14,86.8586439 1.19731344,88.2721202 2.65287095,88.2721202 L138.351238,88.2721202 C139.806795,88.2721202 141.004109,86.8586439 141.004109,85.1392661 C141.004109,83.4251624 139.806795,82.0116861 138.351238,82.0116861 Z" id="路径" fill="#656D78" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>
