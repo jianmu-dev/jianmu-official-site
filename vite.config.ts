@@ -4,7 +4,8 @@ import vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { name, version } from './package.json';
-
+// mock服务
+import { viteMockServe } from 'vite-plugin-mock';
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
   return {
@@ -12,6 +13,15 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       vue(),
       Components({
         resolvers: [ElementPlusResolver()],
+      }),
+      viteMockServe({
+        // 解析根目录下的mock文件夹
+        mockPath: 'mock',
+        localEnabled: command === 'serve',
+        // 打开后，可以读取 ts 文件模块。请注意，打开后将无法监视.js 文件。
+        supportTs: true,
+        // 监视文件更改
+        watchFiles: true,
       }),
     ],
     base: command === 'build' && mode === 'cdn' ? `https://cdn.jianmu.run/${name}/web/${version}/` : '/',

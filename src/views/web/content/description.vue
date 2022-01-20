@@ -30,7 +30,7 @@ import { quickStart, doc, example } from '@/utils/constants';
 .description {
   display: flex;
   height: 413px;
-  margin: -30px 0px 70px 3%;
+  margin: -30px 0px 64px 3%;
   justify-content: space-between;
   .left {
     margin-top: 80px;
