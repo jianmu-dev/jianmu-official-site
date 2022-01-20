@@ -1,20 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onUpdated } from 'vue';
 
 // 菜单显隐
 const menuVisible = ref<boolean>(false);
+document.body.style.overflow = '';
 // 打开菜单
 const openMenu = () => {
   menuVisible.value = true;
   // 打开菜单溢出部分不滚动
-  document.body.style.overflow = 'hidden';
+  // document.body.style.overflow = 'hidden';
 };
 // 关闭菜单
 const closeMenu = () => {
   menuVisible.value = false;
   // 关闭菜单后溢出滚动
-  document.body.style.overflow = '';
+  // document.body.style.overflow = '';
 };
+onUpdated(() => {
+  document.body.style.overflow = menuVisible.value ? 'hidden' : '';
+});
 </script>
 
 <template>
@@ -24,7 +28,9 @@ const closeMenu = () => {
     v-show="!menuVisible"
   >
     <div class="official-logo">
-      <img src="@/assets/wap/svgs/logo.svg">
+      <router-link :to="{name:'index'}">
+        <img src="@/assets/wap/svgs/logo.svg">
+      </router-link>
       <span class="logo-text">建木</span>
     </div>
     <img
@@ -39,7 +45,9 @@ const closeMenu = () => {
     class="menu-active"
   >
     <div class="official-logo">
-      <img src="@/assets/wap/svgs/logo.svg">
+      <router-link :to="{name:'index'}">
+        <img src="@/assets/wap/svgs/logo.svg">
+      </router-link>
       <span class="logo-text">建木</span>
     </div>
     <img
@@ -58,13 +66,11 @@ const closeMenu = () => {
     <div class="link-container">
       <a href="https://hub.jianmu.run/">建木Hub</a>
       <a href="https://blog.jianmu.dev/">博客</a>
-      <!--      <a href="#">贡献者</a>-->
+      <router-link :to="{name:'contributor'}">
+        贡献者
+      </router-link>
       <a href="https://gitee.com/jianmu-dev/jianmu-ci-server">参与贡献</a>
     </div>
-  </div>
-  <!-- 建木介绍 -->
-  <div class="official-description-container border-bottom-common">
-    <div class="jianmu-description-img" />
   </div>
 </template>
 

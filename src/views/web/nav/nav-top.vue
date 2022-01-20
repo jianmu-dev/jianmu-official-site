@@ -20,6 +20,9 @@ import { hub, contribution, blog } from '@/utils/constants';
         <a :href="blog" target="_blank" class="link-item">
           <span>博客</span>
         </a>
+        <router-link to="/contributor" class="link-item">
+          <span>贡献者</span>
+        </router-link>
         <a :href='contribution' target="_blank" class="link-item">
           <span>参与贡献</span>
         </a>
@@ -38,7 +41,7 @@ import { hub, contribution, blog } from '@/utils/constants';
   box-shadow: 0px 2px 10px 0px #eff0f3;
   .nav-wrapper {
     max-width: 1600px;
-    height: 70px;
+    height: 64px;
     margin: 0 auto;
     display: flex;
     align-items: center;
