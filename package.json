@@ -8,12 +8,12 @@
     "lint": "eslint 'src/**/*.{js,jsx,vue,ts,tsx}' --fix"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.0",
     "axios": "0.21.1",
+    "autoprefixer": "^10.4.0",
+    "postcss-px-to-viewport": "^1.1.1",
     "codemirror": "5.62.0",
     "element-plus": "^1.2.0-beta.2",
     "mockjs": "^1.1.0",
-    "postcss-px-to-viewport": "^1.1.1",
     "qs": "^6.10.1",
     "unplugin-vue-components": "^0.17.2",
     "vant": "3.2.8",
