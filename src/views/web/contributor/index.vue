@@ -20,8 +20,8 @@ const tabClick = (index:number) => {
   mainRef.value?.addEventListener('scroll', handler);
 };
 // 贡献者,团队信息
-const contributors = ref<IContributorVo[]>();
-const teams = ref<ITeamVo[]>();
+const contributors = ref<IContributorVo[]>([]);
+const teams = ref<ITeamVo[]>([]);
 const contributeWrapperRef = ref<HTMLElement>();
 const contributorRef = ref<HTMLElement>();
 const mainRef = ref<HTMLElement>();
@@ -82,7 +82,7 @@ onMounted(async () => {
      <div class="contributor-pc">
        <div class="anchor" id="contributor"></div>
        <div class="part-title">贡献者</div>
-       <div class="contributor-wrapper" v-if="contributors?.length>0">
+       <div class="contributor-wrapper" v-if="contributors.length>0">
          <div class="contributor-part">
            <div class="item" v-for="(item,index) in contributors" :key="index">
              <member-info-viewer customizeClass='contributor-item-viewer' :name="item.username" :img-url="item.avatarUrl" />
@@ -104,7 +104,7 @@ onMounted(async () => {
        <div class="anchor" id="team"></div>
        <div class="part-title">团队</div>
        <div class="team-part">
-         <div class="team-wrapper" v-if="teams?.length>0">
+         <div class="team-wrapper" v-if="teams.length>0">
            <div class="team-part-card" v-for="(item,index) in teams" :key="index">
              <div class="team-name">{{item.name}}</div>
              <div class="team-desc">{{item.purpose}}</div>

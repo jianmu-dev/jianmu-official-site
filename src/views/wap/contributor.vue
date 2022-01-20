@@ -20,8 +20,8 @@ const tabClick = (index: number) => {
 };
 const teamRef = ref<HTMLElement>();
 // 贡献者,团队信息
-const contributors = ref<IContributorVo[]>();
-const teams = ref<ITeamVo[]>();
+const contributors = ref<IContributorVo[]>([]);
+const teams = ref<ITeamVo[]>([]);
 const handler = () => {
   if (!teamRef.value) {
     return;
@@ -71,7 +71,7 @@ onBeforeUnmount(() => {
       <div class="anchor" id="contributor"></div>
       <div class="title">贡献者</div>
       <div class="contributor-wrapper">
-        <div class="contributor-container" v-if="contributors?.length>0">
+        <div class="contributor-container" v-if="contributors.length>0">
           <div class="contributor-item" v-for="(item,index) in contributors" :key="index">
             <member-info-viewer customizeClass="contributor-item-viewer" :img-url="item.avatarUrl" :name="item.username"/>
           </div>
@@ -94,7 +94,7 @@ onBeforeUnmount(() => {
       <div class="anchor" id="team"></div>
       <div class="title">团队</div>
       <div class="team-wrapper">
-        <div class="team-container" v-if="teams?.length>0">
+        <div class="team-container" v-if="teams.length>0">
           <div class="team-card" v-for="(item,index) in teams" :key="index">
             <div class="team-name">{{ item.name }}</div>
             <div class="team-desc">{{ item.purpose }}</div>
