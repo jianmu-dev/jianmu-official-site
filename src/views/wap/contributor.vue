@@ -39,10 +39,8 @@ onMounted(() => {
 });
 onMounted(async () => {
   try {
-    const { data } = await queryContributors();
-    contributors.value = data;
-    const { data: res } = await queryTeams();
-    teams.value = res;
+    contributors.value = await queryContributors();
+    teams.value = await queryTeams();
   } catch (err) {
     console.warn(err.message);
   }
