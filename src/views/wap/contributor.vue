@@ -9,6 +9,8 @@ import { queryTeams } from '@/api/teams';
 import sleep from '@/utils/sleep';
 
 const currentIndex = ref<number>(1);
+const contributorCount = ref<number>(0);
+const teamCount = ref<number>(0);
 const tabClick = async (index: number) => {
   window.document.removeEventListener('scroll', handler);
   currentIndex.value = index;
@@ -42,7 +44,9 @@ onMounted(() => {
 onMounted(async () => {
   try {
     contributors.value = await queryContributors();
+    contributorCount.value = contributors.value.length;
     teams.value = await queryTeams();
+    teamCount.value = teams.value.length;
   } catch (err) {
     console.warn(err.message);
   }
@@ -73,7 +77,7 @@ onBeforeUnmount(() => {
     <div class="split-line"></div>
     <div class="part">
       <div class="anchor" id="contributor"></div>
-      <div class="title">贡献者</div>
+      <div class="title">贡献者・{{contributorCount}}</div>
       <div class="contributor-wrapper">
         <div class="contributor-container" v-if="contributors.length>0">
           <div class="contributor-item" v-for="(item,index) in contributors" :key="index">
@@ -99,7 +103,7 @@ onBeforeUnmount(() => {
     </div>
     <div class="part" ref="teamRef">
       <div class="anchor" id="team"></div>
-      <div class="title">团队</div>
+      <div class="title team">团队・{{teamCount}}</div>
       <div class="team-wrapper">
         <div class="team-container" v-if="teams.length>0">
           <div class="team-card" v-for="(item,index) in teams" :key="index">
@@ -242,7 +246,6 @@ onBeforeUnmount(() => {
     padding-top: 22px;
     background-color: #fff;
     position: relative;
-    //margin-bottom: 60px;
 
     .anchor {
       position: absolute;
@@ -259,6 +262,9 @@ onBeforeUnmount(() => {
       font-size: 30px;
       font-weight: 500;
       color: #385775;
+      &.team{
+        margin-bottom: 30px;
+      }
     }
 
     .contributor-wrapper {
@@ -299,7 +305,8 @@ onBeforeUnmount(() => {
     }
 
     .team-wrapper {
-      padding: 30px 30px 40px;
+      //padding: 30px 30px 40px;
+      padding: 0 30px 40px;
     }
 
     .team-card {
