@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onUpdated } from 'vue';
-
+import { useRoute } from 'vue-router';
+const route = useRoute();
 // 菜单显隐
 const menuVisible = ref<boolean>(false);
 document.body.style.overflow = '';
@@ -66,8 +67,8 @@ onUpdated(() => {
     <div class="link-container">
       <a href="https://hub.jianmu.run/">建木Hub</a>
       <a href="https://blog.jianmu.dev/">博客</a>
-      <router-link :to="{name:'contributor'}">
-        贡献者
+      <router-link :to="{name:'contributor'}" :class="[route.path==='/contributor'?'link-active':'']">
+        <span>贡献者</span>
       </router-link>
       <a href="https://gitee.com/jianmu-dev/jianmu-ci-server">参与贡献</a>
     </div>
@@ -122,6 +123,9 @@ onUpdated(() => {
   top:122px;
   // 链接容器
   .link-container{
+    .link-active{
+      color: #096DD9;
+    }
     padding:203px 0 0 60px;
     a{
       display: block;

@@ -7,7 +7,7 @@ const props = defineProps<{teamName:string}>();
 const teamsInfo = ref<ITeamVo>();
 onMounted(async () => {
   try {
-    const { data } = await queryTeams();
+    const data = await queryTeams();
     teamsInfo.value = data.find(item => item.name === props.teamName);
   } catch (err) {
     console.warn(err.message);
@@ -23,7 +23,11 @@ onMounted(async () => {
     </div>
     <div class="contributor-wrapper">
       <div class="contributor-item" v-for="(item,index) in teamsInfo?.contributors" :key="index">
-        <member-info-viewer customizeClass="team-item-viewer" :img-url="item.avatarUrl" :name="item.username"/>
+        <member-info-viewer
+          customizeClass="team-item-viewer"
+          :img-url="item.avatarUrl"
+          :name="item.username"
+        />
       </div>
     </div>
   </div>
@@ -33,7 +37,7 @@ onMounted(async () => {
 <style lang='less'>
 .team-detail{
   width: 750px;
-  min-height: calc(100vh - 88px);
+  min-height: calc(100vh - 208px);
   .detail-content{
     .bg-card{
       padding:40px 0 0 30px;

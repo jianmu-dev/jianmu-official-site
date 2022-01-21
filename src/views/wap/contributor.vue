@@ -73,7 +73,10 @@ onBeforeUnmount(() => {
       <div class="contributor-wrapper">
         <div class="contributor-container" v-if="contributors.length>0">
           <div class="contributor-item" v-for="(item,index) in contributors" :key="index">
-            <member-info-viewer customizeClass="contributor-item-viewer" :img-url="item.avatarUrl" :name="item.username"/>
+            <member-info-viewer
+              customizeClass="contributor-item-viewer"
+              :img-url="item.avatarUrl" :name="item.username"
+            />
           </div>
         </div>
         <div class="empty" v-else>
@@ -151,9 +154,6 @@ onBeforeUnmount(() => {
     width: 690px;
     height: 260px;
     margin: 30px auto 40px;
-  }
-  a {
-    text-decoration: none;
   }
   .btn {
     width: 690px;
