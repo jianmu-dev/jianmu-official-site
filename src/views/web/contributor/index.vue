@@ -25,13 +25,13 @@ const tabClick = async (index: number) => {
 const contributors = ref<IContributorVo[]>([]);
 const teams = ref<ITeamVo[]>([]);
 const contributeWrapperRef = ref<HTMLElement>();
-const contributorRef = ref<HTMLElement>();
+const teamRef = ref<HTMLElement>();
 const mainRef = ref<HTMLElement>();
 const handler = () => {
-  if (!contributorRef.value) {
+  if (!teamRef.value) {
     return;
   }
-  const { top, height } = contributorRef.value.getBoundingClientRect();
+  const { top, height } = teamRef.value.getBoundingClientRect();
   const radio = 157 / height;
   if (top <= radio * height) {
     currentIndex.value = 2;
@@ -64,7 +64,7 @@ onMounted(async () => {
       <div class="section">
         <div class="block">
           <h1 class="title">建木项目贡献者</h1>
-          <div class="description">反馈问题，提交代码，和建木社区相促进、共同成长。</div>
+          <div class="description">反馈问题，提交代码，和建木社区相互促进、共同成长。</div>
           <a href="https://gitee.com/jianmu-dev/governance#%E8%B4%A1%E7%8C%AE%E8%80%85" target="_blank">
             <div class="btn">成为贡献者</div>
           </a>
@@ -86,8 +86,11 @@ onMounted(async () => {
         <div class="contributor-wrapper" v-if="contributors?.length>0">
           <div class="contributor-part">
             <div class="item" v-for="(item,index) in contributors" :key="index">
-              <member-info-viewer customizeClass='contributor-item-viewer' :name="item.username"
-                                  :img-url="item.avatarUrl"/>
+              <member-info-viewer
+                customizeClass='contributor-item-viewer'
+                :name="item.username"
+                :img-url="item.avatarUrl"
+              />
             </div>
           </div>
         </div>
@@ -102,7 +105,7 @@ onMounted(async () => {
           </el-empty>
         </div>
       </div>
-      <div class="team" ref="contributorRef">
+      <div class="team" ref="teamRef">
         <div class="anchor" id="team"></div>
         <div class="part-title">团队</div>
         <div class="team-part">
@@ -111,8 +114,12 @@ onMounted(async () => {
               <div class="team-name">{{ item.name }}</div>
               <div class="team-desc">{{ item.purpose }}</div>
               <div class="team-member">
-                <member-info-viewer customizeClass='team-item-viewer' v-for="(m,i) in item.contributors" :key="i"
-                                    :name="m.username" :width="48" :img-url="m.avatarUrl"/>
+                <member-info-viewer
+                  customizeClass='team-item-viewer'
+                  v-for="(m,i) in item.contributors"
+                  :key="i"
+                  :name="m.username" :width="48" :img-url="m.avatarUrl"
+                />
               </div>
             </div>
           </div>
@@ -281,6 +288,7 @@ onMounted(async () => {
 
         .item {
           .contributor-item-viewer {
+            cursor: pointer;
             width: 64px;
             height: 64px;
           }
@@ -358,6 +366,7 @@ onMounted(async () => {
             .team-item-viewer {
               width: 48px;
               height: 48px;
+              cursor: pointer;
             }
 
             .member-info-viewer {

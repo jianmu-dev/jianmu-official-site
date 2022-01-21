@@ -5,10 +5,13 @@ const props = withDefaults(defineProps<{
   name:string,
   customizeClass?:string
 }>(), { customizeClass: '' });
+const toProfile = (username:string) => {
+  window.open(`https://gitee.com/${username}`, '_blank');
+};
 </script>
 <template>
   <div class="member-info-viewer">
-    <div :class="['avatar',props.customizeClass ? props.customizeClass:'']">
+    <div :class="['avatar',props.customizeClass ? props.customizeClass:'']" @click="toProfile(props.name)">
     <img :src="props.imgUrl" alt="">
     </div>
     <jm-text-viewer :value='props.name' class="name"/>

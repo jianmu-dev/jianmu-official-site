@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { hub, contribution, blog } from '@/utils/constants';
+import { useRoute } from 'vue-router';
+const route = useRoute();
 </script>
 <template>
   <div class="nav-top">
     <div class="nav-wrapper">
       <div class="logo-area">
         <div class="logo">
-          <router-link :to="{name:'index'}">
+          <a href="/">
             <img src="~@/assets/web/svgs/jianmu-logo.svg" />
-          </router-link>
+          </a>
         </div>
         <div class="divider-line"></div>
         <h2 class="jianmu">建木</h2>
@@ -20,7 +22,7 @@ import { hub, contribution, blog } from '@/utils/constants';
         <a :href="blog" target="_blank" class="link-item">
           <span>博客</span>
         </a>
-        <router-link :to="{name:'contributor'}" class="link-item">
+        <router-link :to="{name:'contributor'}" :class="['link-item',route.path==='/contributor'?'link-active':'']">
           <span>贡献者</span>
         </router-link>
         <a :href='contribution' target="_blank" class="link-item">
@@ -75,6 +77,9 @@ import { hub, contribution, blog } from '@/utils/constants';
       display: flex;
       margin-right: 3%;
       .link-item{
+        &.link-active{
+          color: #096DD9;
+        }
         margin-right: 37px;
         font-size: 16px;
         font-weight: 500;
