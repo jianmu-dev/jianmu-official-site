@@ -6,9 +6,10 @@ import { IContributorVo } from '@/api/dto/contributors';
 import { ITeamVo } from '@/api/dto/teams';
 import { queryContributors } from '@/api/contributors';
 import { queryTeams } from '@/api/teams';
+import sleep from '@/utils/sleep';
 
 const currentIndex = ref<number>(1);
-const tabClick = (index: number) => {
+const tabClick = async (index: number) => {
   window.document.removeEventListener('scroll', handler);
   currentIndex.value = index;
   if (currentIndex.value === 1) {
@@ -16,6 +17,7 @@ const tabClick = (index: number) => {
   } else {
     window.location.href = '#team';
   }
+  await sleep(100);
   window.document.addEventListener('scroll', handler);
 };
 const teamRef = ref<HTMLElement>();
