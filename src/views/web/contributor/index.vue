@@ -222,7 +222,7 @@ onMounted(async () => {
     background: rgba(255, 255, 255, 0.9);
     height: 64px;
     z-index: 2;
-    box-shadow: 0 2px 10px 0 #EFF0F3;
+    border-bottom: 1px solid #E7ECF1;
 
     .tabs-wrapper {
       max-width: 1600px;

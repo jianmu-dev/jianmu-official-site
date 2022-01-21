@@ -55,6 +55,10 @@ onBeforeUnmount(() => {
   <official-top/>
   <div class="contributor">
     <div class="bg-card">
+      <div class="bg-title">建木项目贡献者</div>
+      <div class="desc">
+        反馈问题，提交代码，和建木社区相互促进、共同成长。
+      </div>
     </div>
     <a href="https://gitee.com/jianmu-dev/governance#%E8%B4%A1%E7%8C%AE%E8%80%85"
        target="_blank">
@@ -133,14 +137,17 @@ onBeforeUnmount(() => {
 <style lang="less">
 .contributor {
   width: 750px;
-  .empty{
-    .el-empty{
+
+  .empty {
+    .el-empty {
       padding: 0;
-      .el-empty__image{
+
+      .el-empty__image {
         width: 72px;
         height: 72px;
       }
-      .el-empty__description{
+
+      .el-empty__description {
         margin-top: 5px;
         color: #8095A9;
         font-size: 24px;
@@ -148,13 +155,31 @@ onBeforeUnmount(() => {
       }
     }
   }
+
   .bg-card {
     background-image: url("@/assets/wap/pngs/bg-1.png");
     background-size: 100%;
     width: 690px;
     height: 260px;
     margin: 30px auto 40px;
+    padding-top: 60px;
+
+    .bg-title {
+      color: #012C53;
+      font-size: 36px;
+      font-weight: 600;
+      margin: 0 0 14px 30px;
+    }
+
+    .desc {
+      width: 352px;
+      font-weight: 400;
+      color: #385775;
+      font-size: 24px;
+      margin-left: 30px;
+    }
   }
+
   .btn {
     width: 690px;
     height: 94px;
@@ -238,9 +263,11 @@ onBeforeUnmount(() => {
 
     .contributor-wrapper {
       padding: 30px 30px 40px;
-      .contributor-container{
+
+      .contributor-container {
         display: flex;
         flex-wrap: wrap;
+
         .contributor-item {
           font-size: 24px;
           width: 210px;
@@ -270,7 +297,8 @@ onBeforeUnmount(() => {
         }
       }
     }
-    .team-wrapper{
+
+    .team-wrapper {
       padding: 30px 30px 40px;
     }
 
@@ -296,9 +324,11 @@ onBeforeUnmount(() => {
       .team-members {
         display: flex;
         align-items: center;
-        a{
+
+        a {
           text-decoration: none;
         }
+
         .team-member {
           font-size: 24px;
           min-width: 116px;
