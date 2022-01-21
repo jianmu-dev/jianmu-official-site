@@ -242,6 +242,7 @@ onBeforeUnmount(() => {
         display: flex;
         flex-wrap: wrap;
         .contributor-item {
+          font-size: 24px;
           width: 210px;
           height: 190px;
           box-sizing: border-box;
@@ -299,6 +300,7 @@ onBeforeUnmount(() => {
           text-decoration: none;
         }
         .team-member {
+          font-size: 24px;
           min-width: 116px;
           display: flex;
           flex-direction: column;

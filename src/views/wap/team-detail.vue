@@ -63,6 +63,7 @@ onMounted(async () => {
       padding: 0 30px;
       flex-wrap: wrap;
       .contributor-item{
+        font-size: 24px;
         width: 210px;
         height: 190px;
         margin: 0 30px 30px 0;
