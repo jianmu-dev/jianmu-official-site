@@ -8,10 +8,12 @@ export default createRouter({
       children: [
         {
           path: '',
+          name: 'index',
           component: () => import('@/layout/web/platform.vue'),
         },
         {
           path: 'contributor',
+          name: 'contributor',
           component: () => import('@/views/web/contributor/index.vue'),
         },
       ],

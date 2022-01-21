@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import NavBottom1 from '@/views/web/nav/nav-bottom-1.vue';
 import MemberInfoViewer from '@/views/common/member-info-viewer/index.vue';
 import { queryContributors } from '@/api/contributors';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
@@ -130,7 +129,6 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <nav-bottom-1/>
   </div>
 </template>
 <style lang="less">

@@ -6,9 +6,9 @@ import { hub, contribution, blog } from '@/utils/constants';
     <div class="nav-wrapper">
       <div class="logo-area">
         <div class="logo">
-          <a href="/">
+          <router-link :to="{name:'index'}">
             <img src="~@/assets/web/svgs/jianmu-logo.svg" />
-          </a>
+          </router-link>
         </div>
         <div class="divider-line"></div>
         <h2 class="jianmu">建木</h2>
@@ -20,7 +20,7 @@ import { hub, contribution, blog } from '@/utils/constants';
         <a :href="blog" target="_blank" class="link-item">
           <span>博客</span>
         </a>
-        <router-link to="/contributor" class="link-item">
+        <router-link :to="{name:'contributor'}" class="link-item">
           <span>贡献者</span>
         </router-link>
         <a :href='contribution' target="_blank" class="link-item">
