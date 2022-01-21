@@ -74,9 +74,9 @@ onMounted(async () => {
     </div>
     <div class="tabs">
       <div class="tabs-wrapper">
-        <div :class="['tab-item',currentIndex===1 ? 'active':'']" @click="tabClick(1)">贡献者 . {{ contributorCount }}
+        <div :class="['tab-item',currentIndex===1 ? 'active':'']" @click="tabClick(1)">贡献者・{{ contributorCount }}
         </div>
-        <div :class="['tab-item',currentIndex===2 ? 'active':'']" @click="tabClick(2)">团队 . {{ teamCount }}</div>
+        <div :class="['tab-item',currentIndex===2 ? 'active':'']" @click="tabClick(2)">团队・{{ teamCount }}</div>
       </div>
     </div>
     <div class="contribute-content">
