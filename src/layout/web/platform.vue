@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import NavBottom from '@/views/web/nav/nav-bottom.vue';
 import Description from '@/views/web/content/description.vue';
 import ScrollContent from '@/views/web/content/scroll-content.vue';
 import { minShowScrollHeight, canScrollHeight } from '@/utils/constants';
@@ -177,7 +176,6 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
-    <nav-bottom></nav-bottom>
   </div>
 </template>
 <style lang="less" scoped>

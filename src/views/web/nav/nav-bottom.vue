@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <div class="bottom-block">
+  <div class="nav-bottom">
     <div class="copy-info">
       <div class="left">
         <div class="logo"></div>
@@ -22,7 +22,7 @@
   </div>
 </template>
 <style lang="less" scoped>
-.bottom-block {
+.nav-bottom {
   border: 1px solid #e3eaf0;
   height: 64px;
   width: 100%;
