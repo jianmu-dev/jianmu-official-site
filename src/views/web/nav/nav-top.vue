@@ -8,9 +8,9 @@ const route = useRoute();
     <div class="nav-wrapper">
       <div class="logo-area">
         <div class="logo">
-          <a href="/">
+          <router-link :to="{name:'index'}">
             <img src="~@/assets/web/svgs/jianmu-logo.svg" />
-          </a>
+            </router-link>
         </div>
         <div class="divider-line"></div>
         <h2 class="jianmu">建木</h2>
