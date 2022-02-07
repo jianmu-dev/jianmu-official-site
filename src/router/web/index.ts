@@ -4,12 +4,12 @@ export default createRouter({
   routes: [
     {
       path: '/',
-      component: () => import('@/views/web/main.vue'),
+      component: () => import('@/layout/web/platform.vue'),
       children: [
         {
           path: '',
           name: 'index',
-          component: () => import('@/layout/web/platform.vue'),
+          component: () => import('@/views/web/index.vue'),
         },
         {
           path: 'contributor',
