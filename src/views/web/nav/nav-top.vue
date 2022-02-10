@@ -22,9 +22,9 @@ const route = useRoute();
         <a :href="blog" target="_blank" class="link-item">
           <span>博客</span>
         </a>
-        <router-link :to="{name:'contributor'}" :class="['link-item',route.path==='/contributor'?'link-active':'']">
-          <span>贡献者</span>
-        </router-link>
+<!--        <router-link :to="{name:'contributor'}" :class="['link-item',route.path==='/contributor'?'link-active':'']">-->
+<!--          <span>贡献者</span>-->
+<!--        </router-link>-->
         <a :href='contribution' target="_blank" class="link-item">
           <span>参与贡献</span>
         </a>
