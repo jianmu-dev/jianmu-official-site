@@ -5,7 +5,7 @@ import {
 import { IPageVo } from './dto/common';
 import { restProxy } from '.';
 
-const baseUrl = 'https://api.jianmu.run/hub/view/node_definitions/search';
+const baseUrl = 'https://api.jianmuhub.com/hub/view/node_definitions/search';
 
 /**
  * 搜索节点定义库
