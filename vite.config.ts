@@ -24,7 +24,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         watchFiles: true,
       }),
     ],
-    base: command === 'build' && mode === 'cdn' ? `https://cdn.jianmu.run/${name}/${version}/` : '/',
+    base: command === 'build' && mode === 'cdn' ? `https://jianmu-official-site.assets.dghub.cn/${name}/${version}/` : '/',
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
