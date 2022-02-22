@@ -53,6 +53,9 @@
     .link {
       display: inline-block;
       padding: 0 20px;
+      &:active{
+        color: #096dd9;
+      }
     }
     .link:first-child {
       padding-left: 10px;
