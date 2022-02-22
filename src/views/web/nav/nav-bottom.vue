@@ -40,7 +40,8 @@
       color: #042749;
       text-decoration: none;
       &:hover {
-        text-decoration: underline;
+        color:#096dd9;
+        text-decoration: none;
       }
     }
     .left {
