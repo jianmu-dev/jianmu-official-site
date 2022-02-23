@@ -67,9 +67,9 @@ onUpdated(() => {
     <div class="link-container">
       <a href="https://hub.jianmu.dev/">建木Hub</a>
       <a href="https://blog.jianmu.dev/">博客</a>
-<!--      <router-link :to="{name:'contributor'}" :class="[route.path==='/contributor'?'link-active':'']">-->
-<!--        <span>贡献者</span>-->
-<!--      </router-link>-->
+      <router-link :to="{name:'contributor'}" :class="[route.path==='/contributor'?'link-active':'']">
+        <span>贡献者</span>
+      </router-link>
       <a href="https://gitee.com/jianmu-dev/jianmu-ci-server">参与贡献</a>
     </div>
   </div>
