@@ -88,7 +88,7 @@ onMounted(async () => {
             <div class="item" v-for="(item,index) in contributors" :key="index">
               <member-info-viewer
                 customizeClass='contributor-item-viewer'
-                :name="item.username"
+                :name="item.nickname"
                 :img-url="item.avatarUrl"
               />
             </div>
@@ -118,7 +118,7 @@ onMounted(async () => {
                   customizeClass='team-item-viewer'
                   v-for="(m,i) in item.contributors"
                   :key="i"
-                  :name="m.username" :width="48" :img-url="m.avatarUrl"
+                  :name="m.nickname" :width="48" :img-url="m.avatarUrl"
                 />
               </div>
             </div>

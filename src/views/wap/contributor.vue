@@ -83,7 +83,7 @@ onBeforeUnmount(() => {
           <div class="contributor-item" v-for="(item,index) in contributors" :key="index">
             <member-info-viewer
               customizeClass="contributor-item-viewer"
-              :img-url="item.avatarUrl" :name="item.username"
+              :img-url="item.avatarUrl" :name="item.nickname"
             />
           </div>
         </div>
@@ -111,7 +111,7 @@ onBeforeUnmount(() => {
             <div class="team-desc">{{ item.purpose }}</div>
             <div class="team-members">
               <div class="team-member" v-for="(m,i) in item.contributors.slice(0,5)" :key="i">
-                <member-info-viewer customizeClass="team-item-viewer" :img-url="m.avatarUrl" :name="m.username"/>
+                <member-info-viewer customizeClass="team-item-viewer" :img-url="m.avatarUrl" :name="m.nickname"/>
               </div>
               <router-link :to="{name:'team-detail',query:{teamName:item.name}}" v-if="item.contributors.length>=5">
                 <div class="more-btn">
