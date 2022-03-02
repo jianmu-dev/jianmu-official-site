@@ -15,7 +15,7 @@ const toProfile = (username:string) => {
     <div :class="['avatar',props.customizeClass ? props.customizeClass:'']" @click="toProfile(props.name)">
     <img :src="props.imgUrl" alt="">
     </div>
-    <jm-text-viewer :value='props.nickname' class="name"/>
+    <jm-text-viewer :value='props.nickName' class="name"/>
   </div>
 </template>
 <style lang="less" scoped>
