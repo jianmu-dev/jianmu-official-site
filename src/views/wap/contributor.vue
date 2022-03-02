@@ -77,13 +77,13 @@ onBeforeUnmount(() => {
     <div class="split-line"></div>
     <div class="part">
       <div class="anchor" id="contributor"></div>
-      <div class="title">贡献者・{{contributorCount}}</div>
+      <div class="title">贡献者・{{ contributorCount }}</div>
       <div class="contributor-wrapper">
         <div class="contributor-container" v-if="contributors.length>0">
           <div class="contributor-item" v-for="(item,index) in contributors" :key="index">
             <member-info-viewer
               customizeClass="contributor-item-viewer"
-              :img-url="item.avatarUrl" :name="item.nickname"
+              :img-url="item.avatarUrl" :name="item.username" :nick-name="item.nickname"
             />
           </div>
         </div>
@@ -103,7 +103,7 @@ onBeforeUnmount(() => {
     </div>
     <div class="part" ref="teamRef">
       <div class="anchor" id="team"></div>
-      <div class="title team">团队・{{teamCount}}</div>
+      <div class="title team">团队・{{ teamCount }}</div>
       <div class="team-wrapper">
         <div class="team-container" v-if="teams.length>0">
           <div class="team-card" v-for="(item,index) in teams" :key="index">
@@ -111,7 +111,8 @@ onBeforeUnmount(() => {
             <div class="team-desc">{{ item.purpose }}</div>
             <div class="team-members">
               <div class="team-member" v-for="(m,i) in item.contributors.slice(0,5)" :key="i">
-                <member-info-viewer customizeClass="team-item-viewer" :img-url="m.avatarUrl" :name="m.nickname"/>
+                <member-info-viewer customizeClass="team-item-viewer" :img-url="m.avatarUrl" :name="m.username"
+                                    :nick-name="m.nickname"/>
               </div>
               <router-link :to="{name:'team-detail',query:{teamName:item.name}}" v-if="item.contributors.length>=5">
                 <div class="more-btn">
@@ -262,7 +263,8 @@ onBeforeUnmount(() => {
       font-size: 30px;
       font-weight: 500;
       color: #385775;
-      &.team{
+
+      &.team {
         margin-bottom: 30px;
       }
     }
