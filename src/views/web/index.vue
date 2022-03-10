@@ -183,7 +183,7 @@ onBeforeUnmount(() => {
   .container {
     .content-bg {
       margin-top: 64px;
-      height: 5566px;
+      height: 5842px;
       background-repeat: no-repeat;
       background-position: center 90px;
       background-image: url('@/assets/web/pngs/main-bg-none.png');

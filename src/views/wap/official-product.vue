@@ -79,36 +79,6 @@ const contribution = () => {
     </div>
     <!-- 参与单位图片 -->
     <div class="participating-units-imgs">
-      <div>
-        <img
-          src="@/assets/wap/pngs/esi.png"
-          class="cis-img"
-        >
-      </div>
-      <div>
-        <img
-          src="@/assets/wap/pngs/cloud.png"
-          class="cloud-img"
-        >
-        <img
-          src="@/assets/wap/pngs/gitee.png"
-          class="gitee-img"
-        >
-        <img
-          src="@/assets/wap/pngs/shanyang.png"
-          class="shanyang-img"
-        >
-      </div>
-      <div>
-        <img
-          src="@/assets/wap/pngs/shs.png"
-          class="shs-img"
-        >
-        <img
-          src="@/assets/wap/pngs/ezsvs.png"
-          class="ezsvs-img"
-        >
-      </div>
     </div>
   </div>
   <!-- 九州云描述 -->
@@ -221,7 +191,7 @@ const contribution = () => {
 // 参与单位
 .participating-units-container {
   width: 750px;
-  height: 468px;
+  height: 607px;
   padding: 0 30px;
   background: url('@/assets/wap/svgs/participating-units.svg');
   background-size: 100%;
@@ -232,48 +202,11 @@ const contribution = () => {
     font-weight: 700;
     margin-bottom: 45px;
   }
-
-  .participating-units-imgs {
-    margin: 0 auto;
-
-    div {
-      display: flex;
-      //justify-content: space-between;
-      justify-content: center;
-    }
-
-    div:nth-of-type(2) {
-      margin: 40px 0;
-    }
-
-    img {
-      height: 90px;
-    }
-
-    .cis-img {
-      width: 500px;
-    }
-
-    .cloud-img {
-      width: 202px;
-    }
-
-    .gitee-img {
-      width: 218px;
-      margin: 0 43px 0 42px;
-    }
-
-    .shs-img {
-      width: 276px;
-      margin-right:48px;
-    }
-
-    .shanyang-img {
-      width: 181px;
-    }
-    .ezsvs-img{
-      width:181px;
-    }
+  .participating-units-imgs{
+    width: 689px;
+    height: 480px;
+    background-image: url("@/assets/wap/pngs/cooperation.png");
+    background-size: 100%;
   }
 }
 
