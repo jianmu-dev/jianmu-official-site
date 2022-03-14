@@ -194,7 +194,8 @@ const contribution = () => {
   height: 607px;
   padding: 0 30px;
   background: url('@/assets/wap/svgs/participating-units.svg');
-  background-size: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin-bottom: 60px;
 
   .participating-units-title {
@@ -203,8 +204,8 @@ const contribution = () => {
     margin-bottom: 45px;
   }
   .participating-units-imgs{
-    width: 689px;
-    height: 480px;
+    width: 690px;
+    height: 492px;
     background-image: url("@/assets/wap/pngs/cooperation.png");
     background-size: 100%;
   }
