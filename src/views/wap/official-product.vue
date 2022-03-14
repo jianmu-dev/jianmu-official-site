@@ -191,21 +191,16 @@ const contribution = () => {
 // 参与单位
 .participating-units-container {
   width: 750px;
-  height: 607px;
-  padding: 0 30px;
-  background: url('@/assets/wap/svgs/participating-units.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 
   .participating-units-title {
     font-size: 36px;
     font-weight: 700;
-    margin-bottom: 45px;
+    margin: 0 30px 16px;
   }
   .participating-units-imgs{
-    width: 690px;
-    height: 492px;
+    width: 750px;
+    height: 569px;
     background-image: url("@/assets/wap/pngs/cooperation.png");
     background-size: 100%;
   }
